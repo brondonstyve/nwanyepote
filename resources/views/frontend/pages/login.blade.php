@@ -76,7 +76,7 @@
                                     <input type="email" class="form-control" placeholder="Email" id="loginEmail">
                                     <label for="loginEmail">Email</label>
                                 </div>
-                                <a href="{{route('reset-password')}}" class="btn btn-primary rounded-pill btn-login w-100 mb-2">Envoyer</a>
+                                <a href="{{route('reset-password-front')}}" class="btn btn-primary rounded-pill btn-login w-100 mb-2">Envoyer</a>
                             </form>
                             <!-- /form -->
                         </div>

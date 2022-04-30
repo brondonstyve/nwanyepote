@@ -109,7 +109,7 @@
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-block">
-                        <a href="{{route('login')}}" class="btn btn-sm btn-primary rounded">Connexion</a>
+                        <a href="{{route('login')}}" class="btn btn-sm btn-primary rounded">Connexion</a> 
                     </li>
                     <li class="nav-item d-lg-none">
                         <button class="hamburger offcanvas-nav-btn"><span></span></button>

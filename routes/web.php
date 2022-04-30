@@ -61,7 +61,7 @@ Route::get('/caisse', [frontController::class, 'caisse'])->name("caisse");
 Route::get('/mon-compte', [frontController::class, 'compte'])->name("compte");
 Route::get('/connexion', [frontController::class, 'login'])->name("login");
 Route::get('/creer-compte', [frontController::class, 'signin'])->name("signin");
-Route::get('/changer-son-mot-de-passe', [frontController::class, 'resetPassword'])->name("reset-password");
+Route::get('/changer-son-mot-de-passe', [frontController::class, 'resetPassword'])->name("reset-password-front");
 
 
 

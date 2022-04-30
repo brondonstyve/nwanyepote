@@ -1,5 +1,5 @@
 
-@extends('frontend.base.base', ['title' => 'Nwanyepote | '] )
+@extends('frontend.base.base', ['title' => 'Nwanyepote'] )
 
 @section('css_js_header')
 {{-- css ou js spécifique à la page --}}
