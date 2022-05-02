@@ -17,7 +17,7 @@
                                     </button>
                                 </div>
                             @endif
-                            <h4 class="mb-0">{{ __('Forgot your password? Enter your email here') }}</h4>
+                            <h4 class="mb-0">{{ __('Mot de passe oublié? Entrez votre email ici') }}</h4>
                         </div>
                         <div class="card-body">
                             <form wire:submit.prevent="recoverPassword" action="#" method="POST" role="form text-left">
@@ -52,9 +52,8 @@
                                 <div wire:model="showFailureNotification"
                                     class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
                                     <span class="alert-text text-white">
-                                        {{ __('You are not registered as a user. Please sign
-                                        up') }}
-                                        <a class="text-info" href="{{ route('sign-up') }}">here</a></span>
+                                        {{ __('Vous n\'êtes pas enregistré en tant qu\'utilisateur. Veuillez vous enregistrer') }}
+                                        <a class="text-info" href="#">ici</a></span>
                                     <button wire:click="$set('showFailureNotification', false)" type="button"
                                         class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                     </button>
