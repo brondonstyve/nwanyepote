@@ -82,7 +82,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <span class="ms-1">{{ __('Teams') }}</span>
+                                    <span class="ms-1">{{ __('Equipes') }}</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -113,7 +113,7 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <span class="ms-1">{{ __('Projects') }}</span>
+                                    <span class="ms-1">{{ __('Projets') }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -126,7 +126,7 @@
     <div class="container-fluid py-4">
         <div class="card">
             <div class="card-header pb-0 px-3">
-                <h6 class="mb-0">{{ __('Profile Information') }}</h6>
+                <h6 class="mb-0">{{ __('Informations de Profil') }}</h6>
             </div>
             <div class="card-body pt-4 p-3">
 
@@ -145,7 +145,7 @@
                         class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
                         <span class="alert-icon text-white"><i class="ni ni-like-2"></i></span>
                         <span
-                            class="alert-text text-white">{{ __('Your profile information have been successfuly saved!') }}</span>
+                            class="alert-text text-white">{{ __('vos informations ont été mis à jour avec succès!') }}</span>
                         <button wire:click="$set('showSuccesNotification', false)" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                     </div>
@@ -155,7 +155,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user-name" class="form-control-label">{{ __('Full Name') }}</label>
+                                <label for="user-name" class="form-control-label">{{ __('Nom') }}</label>
                                 <div class="@error('user.name')border border-danger rounded-3 @enderror">
                                     <input wire:model="user.name" class="form-control" type="text" placeholder="Name"
                                         id="user-name">
@@ -177,30 +177,30 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user.phone" class="form-control-label">{{ __('Phone') }}</label>
+                                <label for="user.phone" class="form-control-label">{{ __('Téléphone') }}</label>
                                 <div class="@error('user.phone')border border-danger rounded-3 @enderror">
                                     <input wire:model="user.phone" class="form-control" type="tel"
-                                        placeholder="40770888444" id="phone">
+                                        placeholder="697320974" id="phone">
                                 </div>
                                 @error('user.phone') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="user.location" class="form-control-label">{{ __('Location') }}</label>
+                                <label for="user.location" class="form-control-label">{{ __('Localisation') }}</label>
                                 <div class="@error('user.location') border border-danger rounded-3 @enderror">
                                     <input wire:model="user.location" class="form-control" type="text"
-                                        placeholder="Location" id="name">
+                                        placeholder="Localisation" id="name">
                                 </div>
                                 @error('user.location') <div class="text-danger">{{ $message }}</div> @enderror
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="about">{{ 'About Me' }}</label>
+                        <label for="about">{{ 'A propos de moi' }}</label>
                         <div class="@error('user.about')border border-danger rounded-3 @enderror">
                             <textarea wire:model="user.about" class="form-control" id="about" rows="3"
-                                placeholder="Say something about yourself"></textarea>
+                                placeholder="Ecrivez quelque chose à propos de vous"></textarea>
                         </div>
                         @error('user.about') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
