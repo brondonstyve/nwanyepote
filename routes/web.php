@@ -1,6 +1,13 @@
 <?php
 
 use App\Http\Controllers\frontController;
+use App\Http\Livewire\AdminPageAccueil;
+use App\Http\Livewire\AdminPageArticle;
+use App\Http\Livewire\AdminPageCulture;
+use App\Http\Livewire\AdminPageFaq;
+use App\Http\Livewire\AdminPageRessource;
+use App\Http\Livewire\AdminPageSport;
+use App\Http\Livewire\AdminPageTourisme;
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\ResetPassword;
@@ -49,7 +56,7 @@ Route::get('/detail-evenement', [frontController::class, 'detailEvenement'])->na
 
 //article
 Route::get('/article', [frontController::class, 'article'])->name("article");
-Route::get('/detailArticle', [frontController::class, 'detailArticle'])->name("detail-article");
+Route::get('/detailArticle/{id}', [frontController::class, 'detailArticle'])->name("detail-article");
 
 //Boutique
 Route::get('/boutique', [frontController::class, 'boutique'])->name("boutique");
@@ -84,11 +91,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/static-sign-in', StaticSignIn::class)->name('sign-in');
     Route::get('/laravel-user-profile', UserProfile::class)->name('user-profile');
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
+    Route::get('/admin-page-accueil', AdminPageAccueil::class)->name('admin-page-accueil');
+    Route::get('/admin-page-ressources', AdminPageRessource::class)->name('admin-page-ressources');
+    Route::get('/admin-page-article', AdminPageArticle::class)->name('admin-page-article');
+    Route::get('/admin-page-culture', AdminPageCulture::class)->name('admin-page-culture');
+    Route::get('/admin-page-tourisme', AdminPageTourisme::class)->name('admin-page-tourisme');
+    Route::get('/admin-page-sport', AdminPageSport::class)->name('admin-page-sport');
+    Route::get('/admin-page-faq', AdminPageFaq::class)->name('admin-page-faq');
 });
 
 
 
 //Dernière instruction de vue. aucune instruction ne doit se situer en dessous de ce dernier.
-Route::fallback(function() {
-    return redirect()->route('index'); // la vue 404.blade.php
- });
+//Route::fallback(function() {
+//    return redirect()->route('index'); // la vue 404.blade.php
+// });

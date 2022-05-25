@@ -2,12 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\accueil;
+use App\Models\article;
+use App\Models\commentaireArticle;
+use App\Models\commentaireSite;
+use App\Models\contenueressource;
+use App\Models\culture;
+use App\Models\faq;
+use App\Models\pageArticle;
+use App\Models\pageCulture;
+use App\Models\pageFaq;
+use App\Models\pageSport;
+use App\Models\pageTourisme;
+use App\Models\reponseCommentaireArticle;
+use App\Models\ressource;
+use App\Models\sport;
+use App\Models\Tourisme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class frontController extends Controller
 {
     public function index(){
-        return view('frontend.pages.index');
+        $infosPage=accueil::first();
+        $commentaire=commentaireSite::get();
+        return view('frontend.pages.index',compact('infosPage','commentaire'));
     }
 
     public function propos(){
@@ -15,15 +34,21 @@ class frontController extends Controller
     }
 
     public function sport(){
-        return view('frontend.pages.sport');
+        $infosPage=pageSport::first();
+        $contenuSport=sport::paginate(6);
+        return view('frontend.pages.sport',compact('infosPage','contenuSport'));
     }
 
     public function tourisme(){
-        return view('frontend.pages.tourisme');
+        $infosPage=pageTourisme::first();
+        $contenuTourisme=Tourisme::paginate(6);
+        return view('frontend.pages.tourisme',compact('infosPage','contenuTourisme'));
     }
 
     public function culture(){
-        return view('frontend.pages.culture');
+        $infosPage=pageCulture::first();
+        $contenuCulture=culture::paginate(6);
+        return view('frontend.pages.culture',compact('infosPage','contenuCulture'));
     }
 
     public function evenement(){
@@ -35,11 +60,21 @@ class frontController extends Controller
     }
 
     public function article(){
-        return view('frontend.pages.article');
+        $infosPage=pageArticle::first();
+        return view('frontend.pages.article',compact('infosPage'));
     }
 
-    public function detailArticle(){
-        return view('frontend.pages.detailArticle');
+    public function detailArticle(Request $request){
+        $infosPage=pageArticle::first();
+        $article=article::find($request->id);
+        $suivant=article::find(($request->id+1));
+        $precedent=article::find(($request->id-1));
+        $nbComment=commentaireArticle::count()+reponseCommentaireArticle::count();
+        $aimer=DB::table('articles')
+        ->limit(3)
+        ->orderBy('created_at','desc')
+        ->get();
+        return view('frontend.pages.detailArticle',compact('infosPage','article','suivant','precedent','aimer','nbComment'));
     }
 
     public function contact(){
@@ -47,7 +82,9 @@ class frontController extends Controller
     }
 
     public function ressource(){
-        return view('frontend.pages.ressource');
+        $infosPage=ressource::first();
+        $ressources=contenueressource::get();
+        return view('frontend.pages.ressource',compact('infosPage','ressources'));
     }
 
     public function galerie(){
@@ -55,7 +92,9 @@ class frontController extends Controller
     }
 
     public function faq(){
-        return view('frontend.pages.faq');
+        $infosPage=pageFaq::first();
+        $faq=faq::get();
+        return view('frontend.pages.faq',compact('infosPage','faq'));
     }
 
     public function boutique(){
