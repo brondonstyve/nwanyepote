@@ -13,11 +13,13 @@
     <div class="container pt-10 pb-12 pt-md-14 pb-md-16 text-center">
         <div class="row">
             <div class="col-md-9 col-lg-7 col-xl-7 mx-auto">
-                <h1 class="display-1 mb-3  text-blue">Galerie Photo
+                @foreach ($infoGaleries as $infoGalerie)
+                <h1 class="display-1 mb-3  text-blue">{{ $infoGalerie->titre }}
                 </h1>
                 <p class="lead px-xxl-10 text-white">
-                    Nous vous proposons de vous plonger dans notre immensité culturele à travers une panoplie de visuel que nous vous proposons.
+                    {{ $infoGalerie->libelet }}
                 </p>
+                @endforeach
             </div>
             <!-- /column -->
         </div>
@@ -37,38 +39,25 @@
                     <div class="item col-md-6 mt-md-7 mt-lg-15" style="position: absolute; left: 0%; top: 0px;">
                         <div class="project-details d-flex justify-content-center align-self-end flex-column ps-0 pb-0">
                             <div class="post-header">
-                                <h2 class="display-4 mb-4 pe-xxl-15">Nos Meilleures photos. Les plus regardées par nos visiteurs</h2>
-                                <p class="lead fs-lg mb-0">Des idées traditionnelement réalisées selon nos cultures.</p>
+                                @foreach ($infoGaleries as $infoGalerie)
+                                    <h2 class="display-4 mb-4 pe-xxl-15">{{ $infoGalerie->titreb1 }}</h2>
+                                    <p class="lead fs-lg mb-0">{{ $infoGalerie->libeletb1 }}</p>
+                                @endforeach
                             </div>
                             <!-- /.post-header -->
                         </div>
                         <!-- /.project-details -->
                     </div>
                     <!-- /.item -->
-                    <div class="item col-md-6" style="position: absolute; left: 50%; top: 0px;">
-                        <figure class="lift rounded mb-6">
-                            <a href="#"> <img src="assets/img/photos/12.jpg" srcset="../../assets/assets/img/photos/12.jpg 2x" alt=""></a>
-                        </figure>
-                        <div class="post-category text-line mb-3 text-violet">Culturel</div>
-                        <h2 class="post-title h3">Ipsum Ultricies Cursus</h2>
-                    </div>
-                    <!-- /.item -->
-                    <div class="item col-md-6" style="position: absolute; left: 0%; top: 287.188px;">
-                        <figure class="lift rounded mb-6">
-                            <a href="#"> <img src="assets/img/photos/6.jpg" srcset="../../assets/img/photos/6.jpg 2x" alt=""></a>
-                        </figure>
-                        <div class="post-category text-line mb-3 text-leaf">Traditionnel</div>
-                        <h2 class="post-title h3">Mollis Ipsum Mattis</h2>
-                    </div>
-                    <!-- /.item -->
-                    <div class="item col-md-6" style="position: absolute; left: 50%; top: 667.594px;">
-                        <figure class="lift rounded mb-6">
-                            <a href="#"> <img src="assets/img/photos/7.jpg" srcset="../../assets/img/photos/7.jpg 2x" alt=""></a>
-                        </figure>
-                        <div class="post-category text-line mb-3 text-purple">Sport</div>
-                        <h2 class="post-title h3">Magna Tristique Inceptos</h2>
-                    </div>
-                    <!-- /.item -->
+                    @foreach ($galeries as $galerie)
+                        <div class="item col-md-6" style="position: absolute; left: 50%; top: 0px;">
+                            <figure class="lift rounded mb-6">
+                                <a href="#"> <img src="app/galeries/{{$galerie->image}}" srcset="app/galeries/{{$galerie->image}} 2x" alt=""></a>
+                            </figure>
+                            <div class="post-category text-line mb-3 text-violet">{{ $galerie->type }}</div>
+                            <h2 class="post-title h3">{{ $galerie->libelet }}</h2>
+                        </div>
+                    @endforeach
                 </div>
                 <!-- /.row -->
             </div>
@@ -84,8 +73,10 @@
     <div class="container py-14 py-md-16">
         <div class="row">
             <div class="col-lg-11 col-xl-10 mx-auto mb-10">
-                <h2 class="fs-16 text-uppercase text-muted text-center mb-3">Quelques photos</h2>
-                <h3 class="display-3 text-center px-lg-5 px-xl-10 px-xxl-16 mb-0">Des disigns purements Bamiléké du village Batié.</h3>
+                @foreach ($infoGaleries as $infoGalerie)
+                    <h2 class="fs-16 text-uppercase text-muted text-center mb-3">{{ $infoGalerie->texteb2 }}</h2>
+                    <h3 class="display-3 text-center px-lg-5 px-xl-10 px-xxl-16 mb-0">{{ $infoGalerie->titreb2 }}</h3>
+                @endforeach
             </div>
             <!-- /column -->
         </div>

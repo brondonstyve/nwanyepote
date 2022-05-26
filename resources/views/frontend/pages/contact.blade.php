@@ -13,12 +13,14 @@
     <div class="container pt-10 pb-12 pt-md-14 pb-md-16 text-center">
         <div class="row">
             <div class="col-md-7 col-lg-6 col-xl-10 mx-auto">
-                <h1 class="display-1 mb-3 text-blue">
-                    Contactez-nous
-                </h1>
-                <p class="lead px-lg-5 px-xxl-8">
-                    Pour toute information supplémentaires veuillez vous referer à ce contenu pour nous joindre d'une manière où d'une autre.
-                </p>
+                @foreach ($infoContactes as $infoContacte)
+                    <h1 class="display-1 mb-3 text-blue">
+                        {{ $infoContacte->titre_page }}
+                    </h1>
+                    <p class="lead px-lg-5 px-xxl-8">
+                        {{ $infoContacte->libelet_page }}
+                    </p>
+                @endforeach
             </div>
             <!-- /column -->
         </div>
@@ -87,75 +89,18 @@
             <!-- /column -->
         </div>
         <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-                <h2 class="display-4 mb-3 text-center">Laisser nous un message</h2>
-                <p class="lead text-center mb-10">Ecrivez nous ici et nous vous reviendrons le plus tôt possible.</p>
-                <form class="contact-form needs-validation" method="post" action="./assets/php/contact.php" novalidate>
-                    <div class="messages"></div>
-                    <div class="row gx-4">
-                        <div class="col-md-6">
-                            <div class="form-floating mb-4">
-                                <input id="form_name" type="text" name="name" class="form-control" placeholder="brondon" required>
-                                <label for="form_name">Nom *</label>
-                                <div class="valid-feedback"> Looks good! </div>
-                                <div class="invalid-feedback"> S'il vous plait votre nom. </div>
-                            </div>
-                        </div>
-                        <!-- /column -->
-                        <div class="col-md-6">
-                            <div class="form-floating mb-4">
-                                <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="styve" required>
-                                <label for="form_lastname">Prénom *</label>
-                                <div class="valid-feedback"> Looks good! </div>
-                                <div class="invalid-feedback"> S'il vous plait votre prénom. </div>
-                            </div>
-                        </div>
-                        <!-- /column -->
-                        <div class="col-md-6">
-                            <div class="form-floating mb-4">
-                                <input id="form_email" type="email" name="email" class="form-control" placeholder="brondonstyve@gmail.com" required>
-                                <label for="form_email">Adresse email *</label>
-                                <div class="valid-feedback"> Looks good! </div>
-                                <div class="invalid-feedback"> S'il vous plait votre adresse email. </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating mb-4">
-                                <input id="form_email" type="text" name="email" class="form-control" placeholder="698547458" required>
-                                <label for="form_email">Numéro de téléphone *</label>
-                                <div class="valid-feedback"> Looks good! </div>
-                                <div class="invalid-feedback"> S'il vous plait votre numéro de téléphone. </div>
-                            </div>
-                        </div>
-                        <!-- /column -->
-                        <div class="col-12">
-                            <div class="form-floating mb-4">
-                                <textarea id="form_message" name="message" class="form-control" placeholder="Your message" style="height: 150px" required></textarea>
-                                <label for="form_message">Message *</label>
-                                <div class="valid-feedback"> Looks good! </div>
-                                <div class="invalid-feedback"> S'il vous plait votre message. </div>
-                            </div>
-                        </div>
-                        <!-- /column -->
-                        <div class="col-12 text-center">
-                            <input type="submit" class="btn btn-primary rounded-pill btn-send mb-3" value="Envoyer votre message">
-                            <p class="text-muted"><strong>*</strong> ces champs sont obligatoires.</p>
-                        </div>
-                        <!-- /column -->
-                    </div>
-                    <!-- /.row -->
-                </form>
-                <!-- /form -->
-            </div>
-            <!-- /column -->
-        </div>
+        <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+            @foreach ($infoContactes as $infoContacte)
+                <h2 class="display-4 mb-3 text-center">{{ $infoContacte->titre_formulaire }}</h2>
+                <p class="lead text-center mb-10">{{ $infoContacte->libelet_formulaire }}</p>
+            @endforeach
+        @livewire('contact-message')
         <!-- /.row -->
     </div>
     <!-- /.container -->
 </section>
 <!-- /section -->
-
+@livewireScripts
 <!-- /end content section -->
 
 

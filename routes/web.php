@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\frontController;
+use App\Http\Livewire\Apropos;
 use App\Http\Livewire\AdminPageAccueil;
 use App\Http\Livewire\AdminPageArticle;
 use App\Http\Livewire\AdminPageCulture;
@@ -11,7 +12,10 @@ use App\Http\Livewire\AdminPageTourisme;
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\ResetPassword;
+use App\Http\Livewire\Contacte;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Evenement;
+use App\Http\Livewire\Galerie;
 use App\Http\Livewire\LaravelExamples\UserManagement;
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\StaticSignIn;
@@ -52,7 +56,7 @@ Route::get('/politique', [frontController::class, 'politique'])->name("politique
 
 //événement
 Route::get('/evenement', [frontController::class, 'evenement'])->name("evenement");
-Route::get('/detail-evenement', [frontController::class, 'detailEvenement'])->name("detail-evenement");
+Route::get('/detail-evenement/{id}', [frontController::class, 'detailEvenement'])->name("detail-evenement");
 
 //article
 Route::get('/article', [frontController::class, 'article'])->name("article");
@@ -82,8 +86,8 @@ Route::get('/changer-son-mot-de-passe', [frontController::class, 'resetPassword'
 Route::get('/login-admin', Login::class)->name('login-admin');
 
 Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
- 
-Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
+
+Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 
 //route pour utilisateurs connectés
 Route::middleware('auth')->group(function () {
@@ -91,6 +95,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/static-sign-in', StaticSignIn::class)->name('sign-in');
     Route::get('/laravel-user-profile', UserProfile::class)->name('user-profile');
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
+    Route::get('/contacte', Contacte::class)->name('contacte');
+    Route::get('/galeries', Galerie::class)->name('galeries');
+    Route::get('/apropo', Apropos::class)->name('apropo');
+    Route::get('/evenements', Evenement::class)->name('evenements');
     Route::get('/admin-page-accueil', AdminPageAccueil::class)->name('admin-page-accueil');
     Route::get('/admin-page-ressources', AdminPageRessource::class)->name('admin-page-ressources');
     Route::get('/admin-page-article', AdminPageArticle::class)->name('admin-page-article');
