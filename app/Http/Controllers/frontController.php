@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\models\infoEvenements;
 use App\models\contacteInfo;
+use App\models\infocontactes;
 use App\models\galeries;
 use App\Models\infoGaleries;
 use App\models\apropoBaties;
@@ -43,11 +44,11 @@ class frontController extends Controller
 
     public function propos()
     {
-        $partenaires = Partenaires::all();
-        $objectifs = Objectifs::all();
-        $caracteristiques = Caracteristiques::all();
-        $informations = InfoPageApropos::all();
-        $apropobs = ApropoBaties::all();
+        $partenaires = partenaires::all();
+        $objectifs = objectifs::all();
+        $caracteristiques = caracteristiques::all();
+        $informations = infoPageApropos::all();
+        $apropobs = apropoBaties::all();
         return view('frontend.pages.propos', compact('partenaires', 'objectifs', 'caracteristiques', 'informations', 'apropobs'));
     }
 
@@ -75,7 +76,7 @@ class frontController extends Controller
     public function evenement()
     {
         $lastid = npEvenements::latest('id')->first();
-        $infoEvent = InfoEvenements::all();
+        $infoEvent = infoEvenements::all();
         $lastEvents = npEvenements::where('id', $lastid->id)->get();
         $npEvents = npEvenements::all();
         return view('frontend.pages.evenement', compact('infoEvent', 'lastEvents', 'npEvents'));
@@ -83,7 +84,7 @@ class frontController extends Controller
 
     public function detailEvenement($id)
     {
-        $nombcoment = CommentaireEventnps::where('event_id', $id)->count();
+        $nombcoment = commentaireEventnps::where('event_id', $id)->count();
         $detailEvents = npEvenements::where('id', $id)->get();
         return view('frontend.pages.detailEvenement', compact('detailEvents', 'nombcoment'));
     }
@@ -110,8 +111,9 @@ class frontController extends Controller
 
     public function contact()
     {
-        $infoContactes = ContacteInfo::all();
-        return view('frontend.pages.contact', compact('infoContactes'));
+        $infoplateformes = infocontactes::all();
+        $infoContactes = contacteInfo::all();
+        return view('frontend.pages.contact', compact('infoContactes', 'infoplateformes'));
     }
 
     public function ressource()
@@ -123,8 +125,8 @@ class frontController extends Controller
 
     public function galerie()
     {
-        $galeries = Galeries::all();
-        $infoGaleries = InfoGaleries::all();
+        $galeries = galeries::all()->take(3);
+        $infoGaleries = infoGaleries::all();
         return view('frontend.pages.galerie', compact('infoGaleries', 'galeries'));
     }
 

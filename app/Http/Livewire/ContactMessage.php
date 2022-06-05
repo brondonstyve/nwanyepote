@@ -27,7 +27,7 @@ class ContactMessage extends Component
             'message' => 'required',
         ]);
 
-        $respons = ContacteMessage::create($validatedDate);
+        $respons = contacteMessage::create($validatedDate);
 
         $target = 'nwanyepote@gmail.com';
         $template = 'emails.contacte_message_email';

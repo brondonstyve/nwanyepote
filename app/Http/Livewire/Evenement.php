@@ -22,8 +22,8 @@ class Evenement extends Component
 
     public function render()
     {
-        $this->data2 = NpEvenements::all();
-        $this->data = InfoEvenements::all();
+        $this->data2 = npEvenements::all();
+        $this->data = infoEvenements::all();
         return view('livewire.evenement');
     }
 
@@ -40,7 +40,7 @@ class Evenement extends Component
         ]);
 
 
-        $respons = InfoEvenements::create($validatedDate);
+        $respons = infoEvenements::create($validatedDate);
 
         if ($respons) {
             session()->flash('message', " l'information a ete enregistrer avec succes.");
@@ -94,7 +94,7 @@ class Evenement extends Component
         $path = public_path() . "/app/evenement/";
         $img2->save($path . $name2);
 
-        $respons = NpEvenements::create([
+        $respons = npEvenements::create([
             'imagenp' => $file,
             'image_principal' => $name1,
             'titres' => $validatedDate['titres'],
@@ -123,7 +123,7 @@ class Evenement extends Component
 
     public function edit($id)
     {
-        $infoEdit = InfoEvenements::where('id', $id)->first();
+        $infoEdit = infoEvenements::where('id', $id)->first();
         $this->select_id = $id;
         $this->grang_titre = $infoEdit->grang_titre;
         $this->libelet = $infoEdit->libelet;
@@ -136,7 +136,7 @@ class Evenement extends Component
 
     public function edit2($id)
     {
-        $eventfoEdit = NpEvenements::where('id', $id)->first();
+        $eventfoEdit = npEvenements::where('id', $id)->first();
         $this->select_id = $id;
         $this->titres = $eventfoEdit->titres;
         $this->edition = $eventfoEdit->edition;
@@ -165,7 +165,7 @@ class Evenement extends Component
         ]);
 
         if ($this->select_id) {
-            $apropobId = InfoEvenements::find($this->select_id);
+            $apropobId = infoEvenements::find($this->select_id);
             $apropobId->update([
                 'grang_titre' => $this->grang_titre,
                 'libelet' => $this->libelet,
@@ -205,7 +205,7 @@ class Evenement extends Component
             $image1 = $this->image_principal;
             $image2 = $this->imagedp;
             if (empty($image) && empty($image1) && empty($image2)) {
-                $npEvenement = NpEvenements::find($this->select_id);
+                $npEvenement = npEvenements::find($this->select_id);
                 $npEvenement->update([
                     'titres' => $this->titres,
                     'edition' => $this->edition,
@@ -230,7 +230,7 @@ class Evenement extends Component
                     $img->save($path . $name);
                     $file = $file . '->' . $name;
                 }
-                $npEvenement = NpEvenements::find($this->select_id);
+                $npEvenement = npEvenements::find($this->select_id);
                 $npEvenement->update([
                     'imagenp' => $file,
                     'titres' => $this->titres,
@@ -254,7 +254,7 @@ class Evenement extends Component
                 $path = public_path() . "/app/evenement/";
                 $img->save($path . $name1);
 
-                $npEvenement = NpEvenements::find($this->select_id);
+                $npEvenement = npEvenements::find($this->select_id);
                 $npEvenement->update([
                     'image_principal' => $name1,
                     'titres' => $this->titres,
@@ -277,7 +277,7 @@ class Evenement extends Component
                 $path = public_path() . "/app/evenement/";
                 $img->save($path . $name2);
 
-                $npEvenement = NpEvenements::find($this->select_id);
+                $npEvenement = npEvenements::find($this->select_id);
                 $npEvenement->update([
                     'titres' => $this->titres,
                     'edition' => $this->edition,
@@ -305,7 +305,7 @@ class Evenement extends Component
                 $path = public_path() . "/app/evenement/";
                 $img->save($path . $name2);
 
-                $npEvenement = NpEvenements::find($this->select_id);
+                $npEvenement = npEvenements::find($this->select_id);
                 $npEvenement->update([
                     'image_principal' => $name1,
                     'titres' => $this->titres,
@@ -338,7 +338,7 @@ class Evenement extends Component
                 $path = public_path() . "/app/evenement/";
                 $img->save($path . $name2);
 
-                $npEvenement = NpEvenements::find($this->select_id);
+                $npEvenement = npEvenements::find($this->select_id);
                 $npEvenement->update([
                     'imagenp' => $file,
                     'titres' => $this->titres,
@@ -371,7 +371,7 @@ class Evenement extends Component
                 $path = public_path() . "/app/evenement/";
                 $img->save($path . $name1);
 
-                $npEvenement = NpEvenements::find($this->select_id);
+                $npEvenement = npEvenements::find($this->select_id);
                 $npEvenement->update([
                     'imagenp' => $file,
                     'image_principal' => $name1,
@@ -402,7 +402,7 @@ class Evenement extends Component
     public function destroy($id)
     {
         if ($id) {
-            $record = InfoEvenements::where('id', $id);
+            $record = infoEvenements::where('id', $id);
             $record->delete();
             session()->flash('message', 'le bloc a propos a ete supprimer avec succes.');
         } else {
@@ -413,7 +413,7 @@ class Evenement extends Component
     public function destroy2($id)
     {
         if ($id) {
-            $record = NpEvenements::where('id', $id);
+            $record = npEvenements::where('id', $id);
             $record->delete();
             session()->flash('message', 'le bloc a propos a ete supprimer avec succes.');
         } else {

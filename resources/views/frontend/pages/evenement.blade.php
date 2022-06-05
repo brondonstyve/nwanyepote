@@ -11,14 +11,23 @@
 <section class="wrapper bg-dark">
     <div class="container pt-10 pb-12 pt-md-14 pb-md-16 text-center">
         <div class="row">
-            @foreach ($infoEvent as $item)
+            @if (empty($infoEvent))
                 <div class="col-md-9 col-lg-7 col-xl-7 mx-auto">
-                    <h1 class="display-1 mb-3 text-blue">{{ $item->grang_titre }}
+                    <h1 class="display-1 mb-3 text-blue">Pas de grand titre
                     </h1>
-                    <p class="lead px-xxl-10 text-white">{{ $item->libelet }}
+                    <p class="lead px-xxl-10 text-white">veuiller remplire les informations de la pages
                     </p>
                 </div>
-            @endforeach
+            @else
+                @foreach ($infoEvent as $item)
+                    <div class="col-md-9 col-lg-7 col-xl-7 mx-auto">
+                        <h1 class="display-1 mb-3 text-blue">{{ $item->grang_titre }}
+                        </h1>
+                        <p class="lead px-xxl-10 text-white">{{ $item->libelet }}
+                        </p>
+                    </div>
+                @endforeach
+            @endif
             <!-- /column -->
         </div>
         <!-- /.row -->
@@ -35,10 +44,15 @@
 
 
             <div class="col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
-                @foreach ($infoEvent as $item)
-                    <h2 class="display-3 text-primary  mb-3 px-lg-8">{{ $item->titre1 }}</h2>
-                    <p class="lead  text-center">{{ $item->libelet1 }}</p>
-                @endforeach
+                @if(empty($infoEvent))
+                    <h2 class="display-3 text-primary  mb-3 px-lg-8">Pas de tritre 1</h2>
+                    <p class="lead  text-center">Veuiller remplire les information de la page</p>
+                @else
+                    @foreach ($infoEvent as $item)
+                        <h2 class="display-3 text-primary  mb-3 px-lg-8">{{ $item->titre1 }}</h2>
+                        <p class="lead  text-center">{{ $item->libelet1 }}</p>
+                    @endforeach
+                @endif
                 <a href="#" target="_blank" class="btn btn-lg btn-primary rounded-pill mb-10">En savoir plus</a>
             </div>
 
@@ -81,10 +95,15 @@
     <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
         <div class="row gx-lg-8 gx-xl-12 gy-12 align-items-center">
             <div class="col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
-                @foreach ($infoEvent as $item)
-                    <h2 class="display-3 text-primary mb-3 px-lg-8">{{ $item->titre2 }}</h2>
-                    <p class="lead  text-center">{{ $item->libelet2 }}</p>
-                @endforeach
+                @if(empty($infoEvent))
+                    <h2 class="display-3 text-primary mb-3 px-lg-8">pas de titre 2</h2>
+                    <p class="lead  text-center">veuiller remplire les information de la page</p>
+                @else
+                    @foreach ($infoEvent as $item)
+                        <h2 class="display-3 text-primary mb-3 px-lg-8">{{ $item->titre2 }}</h2>
+                        <p class="lead  text-center">{{ $item->libelet2 }}</p>
+                    @endforeach
+                @endif
                 <a href="#" target="_blank" class="btn btn-lg btn-primary rounded-pill mb-10">En savoir plus</a>
             </div>
             <div class="col-lg-6 position-relative">
@@ -117,10 +136,15 @@
             <!--/column -->
             <div class="col-lg-6">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 390.3" data-inject-url="/assets/img/icons/lineal/handshake.svg" class="svg-inject icon-svg icon-svg-md mb-4"><path class="lineal-stroke" d="M508.4 133.5L378.5 3.7c-4.9-4.9-12.8-4.9-17.6 0l-73.1 73.1-14.4-14.4c-4.9-4.9-12.8-4.9-17.6 0l-22.9 22.9-81.8-81.6c-4.9-4.9-12.8-4.9-17.6 0L3.7 133.5c-4.9 4.9-4.9 12.8 0 17.6L85.6 233c4.9 4.9 12.8 4.9 17.6 0l52.1-52.1 26.5 26.5c.3.3.6.6 1 .9 5 4 12.2 3.7 16.7-.9L256 151l120.7 120.6-13 13-103.6-103.4c-4.9-4.9-12.8-4.9-17.6 0-.3.3-.6.6-.9 1-4 5-3.7 12.2.9 16.7l123.8 123.8-13 13-123.8-123.9c-5-4.7-12.9-4.6-17.6.4-4.6 4.8-4.6 12.4 0 17.2L315.3 333l-13 13-7.7-7.7-95.9-95.8c-4.5-4.5-11.7-4.9-16.7-.9-.4.3-.7.5-1 .9-1.2 1.2-2.1 2.6-2.7 4.1-.3.7-.5 1.5-.7 2.3-.1.4-.1.8-.2 1.2-.4 3.7 1 7.4 3.6 10l43.5 43.5 43.5 43.5-13 13-115-115c-4.9-4.9-12.8-4.9-17.6 0-4.9 4.9-4.9 12.8 0 17.6l123.8 123.9c4.9 4.9 12.8 4.9 17.6 0l21.9-21.9 7.7 7.7c4.8 4.9 12.7 4.9 17.6 0l21.9-21.9 11.5 11.5c4.9 4.9 12.8 4.9 17.6 0l30.7-30.7c4.9-4.9 4.9-12.8 0-17.6l-11.5-11.5 21.9-21.9c4.9-4.9 4.9-12.8 0-17.6L264.8 124.5c-4.9-4.9-12.8-4.9-17.6 0l-56.6 56.6-9.2-9.2 83.1-83.1 14.4 14.4 3.1 3.2.4.4 126.3 126.3c4.9 4.9 12.8 4.9 17.6 0l81.9-81.9c5-4.9 5-12.8.2-17.7z"></path><path class="lineal-fill" d="M30.106 142.324L142.323 30.107 206.6 94.382 94.382 206.6zm275.29-47.939l64.276-64.276 112.216 112.217-64.275 64.276z"></path></svg>
-                @foreach ($lastEvents as $lastEvent)
-                    <h3 class="display-5 mb-5">{{ $lastEvent->titres }}</h3>
-                    <p class="mb-7">{{ $lastEvent->libelet1a }}</p>
-                @endforeach
+                @if(empty($lastEvents))
+                    <h3 class="display-5 mb-5">Pas de titre</h3>
+                    <p class="mb-7">Vous dever remplire les information de la page</p>
+                @else
+                    @foreach ($lastEvents as $lastEvent)
+                        <h3 class="display-5 mb-5">{{ $lastEvent->titres }}</h3>
+                        <p class="mb-7">{{ $lastEvent->libelet1a }}</p>
+                    @endforeach
+                @endif
                 <div class="row counter-wrapper gy-6">
                     <div class="col-md-4">
                         <h3 class="counter text-primary" style="visibility: visible;">500</h3>
@@ -151,9 +175,13 @@
         <div class="row ">
             <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto ">
                 <h2 class="fs-15 text-uppercase text-primary text-center ">Nos Evénements</h2>
-                @foreach ($infoEvent as $item)
-                    <h3 class="display-4 mb-6 text-center ">{{ $item->titre3 }}</h3>
-                @endforeach
+                @if(empty($infoEvent))
+                    <h3 class="display-4 mb-6 text-center ">pas de titre 3</h3>
+                @else
+                    @foreach ($infoEvent as $item)
+                        <h3 class="display-4 mb-6 text-center ">{{ $item->titre3 }}</h3>
+                    @endforeach
+                @endif
             </div>
             <!-- /column -->
         </div>
@@ -163,49 +191,55 @@
             <div class="swiper-container dots-closer blog grid-view mb-6 swiper-container-2 " data-margin="0 " data-dots="true " data-items-xl="3 " data-items-md="2 " data-items-xs="1 ">
                 <div class="swiper swiper-initialized swiper-horizontal swiper-pointer-events ">
                     <div class="swiper-wrapper " id="swiper-wrapper-c2549ac53cc1635b " aria-live="off " style="cursor: grab; transform: translate3d(0px, 0px, 0px); ">
-                        @foreach ($npEvents as $npEvent)
-                            <div class="swiper-slide swiper-slide-active " role="group " aria-label="1 / 4 " style="width: 465px; ">
-                                <div class="item-inner ">
-                                    <article>
-                                        <div class="card ">
-                                            <figure class="card-img-top overlay overlay-1 hover-scale ">
-                                                <a href="{{ route('detail-evenement',$npEvent->id) }}"> <img src="/app/evenement/{{ $npEvent->image_principal }}" alt=" "><span class="bg "></span></a>
-                                                <figcaption>
-                                                    <h5 class="from-top mb-0">Lire plus</h5>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="card-body ">
-                                                <div class="post-header ">
-                                                    <div class="post-category text-line ">
-                                                        <a href="{{ route('detail-evenement', $npEvent->id) }}" class="hover " rel="category ">Evénement non Participatif</a>
+                        @if(empty($npEvents))
+                            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+                                <h4 class="display-4 mb-6 text-center ">aucun evenement enregistrer</h4>
+                            </div>   
+                        @else
+                            @foreach ($npEvents as $npEvent)
+                                <div class="swiper-slide swiper-slide-active " role="group " aria-label="1 / 4 " style="width: 465px; ">
+                                    <div class="item-inner ">
+                                        <article>
+                                            <div class="card ">
+                                                <figure class="card-img-top overlay overlay-1 hover-scale ">
+                                                    <a href="{{ route('detail-evenement',$npEvent->id) }}"> <img src="/app/evenement/{{ $npEvent->image_principal }}" alt=" "><span class="bg "></span></a>
+                                                    <figcaption>
+                                                        <h5 class="from-top mb-0">Lire plus</h5>
+                                                    </figcaption>
+                                                </figure>
+                                                <div class="card-body ">
+                                                    <div class="post-header ">
+                                                        <div class="post-category text-line ">
+                                                            <a href="{{ route('detail-evenement', $npEvent->id) }}" class="hover " rel="category ">Evénement non Participatif</a>
+                                                        </div>
+                                                        <!-- /.post-category -->
+                                                        <h2 class="post-title h3 mt-1 mb-3 "><a class="link-dark " href="{{ route('detail-evenement',$npEvent->id) }}">{{ $npEvent->titres }}</a></h2>
                                                     </div>
-                                                    <!-- /.post-category -->
-                                                    <h2 class="post-title h3 mt-1 mb-3 "><a class="link-dark " href="{{ route('detail-evenement',$npEvent->id) }}">{{ $npEvent->titres }}</a></h2>
+                                                    <!-- /.post-header -->
+                                                    <div class="post-content ">
+                                                        <p>{{ $npEvent->libelet1a }}</p>
+                                                    </div>
+                                                    <!-- /.post-content -->
                                                 </div>
-                                                <!-- /.post-header -->
-                                                <div class="post-content ">
-                                                    <p>{{ $npEvent->libelet1a }}</p>
+                                                <!--/.card-body -->
+                                                <div class="card-footer ">
+                                                    <ul class="post-meta d-flex mb-0 ">
+                                                        <li class="post-date "><i class="uil uil-calendar-alt "></i><span>14 Apr 2021</span></li>
+                                                        <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>4</a></li>
+                                                        <li class="post-likes ms-auto "><a href="# "><i class="uil uil-heart-alt "></i>5</a></li>
+                                                    </ul>
+                                                    <!-- /.post-meta -->
                                                 </div>
-                                                <!-- /.post-content -->
+                                                <!-- /.card-footer -->
                                             </div>
-                                            <!--/.card-body -->
-                                            <div class="card-footer ">
-                                                <ul class="post-meta d-flex mb-0 ">
-                                                    <li class="post-date "><i class="uil uil-calendar-alt "></i><span>14 Apr 2021</span></li>
-                                                    <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>4</a></li>
-                                                    <li class="post-likes ms-auto "><a href="# "><i class="uil uil-heart-alt "></i>5</a></li>
-                                                </ul>
-                                                <!-- /.post-meta -->
-                                            </div>
-                                            <!-- /.card-footer -->
-                                        </div>
-                                        <!-- /.card -->
-                                    </article>
-                                    <!-- /article -->
+                                            <!-- /.card -->
+                                        </article>
+                                        <!-- /article -->
+                                    </div>
+                                    <!-- /.item-inner -->
                                 </div>
-                                <!-- /.item-inner -->
-                            </div>
-                        @endforeach
+                            @endforeach
+                        @endif
                         <!--/.swiper-slide -->
                     </div>
                     <!--/.swiper-wrapper -->

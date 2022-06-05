@@ -28,7 +28,7 @@ class Login extends Component
     public function login()
     {
         $credentials = $this->validate();
-        if (auth()->attempt(['email' => $this->email, 'password' => $this->password], $this->remember_me)) {
+        if (auth()->attempt(['email' => $this->email, 'password' => $this->password], ['type' => 'admin'], $this->remember_me)) {
             $user = User::where(["email" => $this->email])->first();
             auth()->login($user, $this->remember_me);
             return redirect()->intended('/dashboard');

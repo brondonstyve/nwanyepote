@@ -29,11 +29,11 @@ class Apropos extends Component
 
     public function render()
     {
-        $this->data = ApropoBaties::all();
-        $this->data2 = Caracteristiques::all();
-        $this->data3 = Objectifs::all();
-        $this->data4 = Partenaires::all();
-        $this->data5 = InfoPageApropos::all();
+        $this->data = apropoBaties::all();
+        $this->data2 = caracteristiques::all();
+        $this->data3 = objectifs::all();
+        $this->data4 = partenaires::all();
+        $this->data5 = infoPageApropos::all();
         return view('livewire.apropos');
     }
 
@@ -57,7 +57,7 @@ class Apropos extends Component
             $file = $file . '->' . $name;
         }
 
-        $respons = ApropoBaties::create([
+        $respons = apropoBaties::create([
             'titreab' => $validatedDate['titreab'],
             'text1ab' => $validatedDate['text1ab'],
             'text2ab' => $validatedDate['text2ab'],
@@ -84,7 +84,7 @@ class Apropos extends Component
         ]);
 
 
-        $respons = Caracteristiques::create([
+        $respons = caracteristiques::create([
             'titreC' => $this->titreC,
             'caract_num' => $validatedDate['caract_num'],
             'caract_intitule' => $validatedDate['caract_intitule'],
@@ -120,7 +120,7 @@ class Apropos extends Component
         }
 
 
-        $respons = Objectifs::create([
+        $respons = objectifs::create([
             'titreOb' => $this->titreOb,
             'objectif_num' => $validatedDate['objectif_num'],
             'objectif_intitule' => $validatedDate['objectif_intitule'],
@@ -153,7 +153,7 @@ class Apropos extends Component
         $img->save($path . $name);
         //dd($this->lireplusab);
 
-        $respons = Partenaires::create([
+        $respons = partenaires::create([
             'logo' => $name,
             'nom_part' => $validatedDate['nom_part'],
             'services' => $validatedDate['services'],
@@ -192,7 +192,7 @@ class Apropos extends Component
         $img->save($path . $name);
         //dd($this->lireplusab);
 
-        $respons = InfoPageApropos::create([
+        $respons = infoPageApropos::create([
             'imageIf' => $name,
             'grand_titre' => $validatedDate['grand_titre'],
             'titre1' => $validatedDate['titre1'],
@@ -212,7 +212,7 @@ class Apropos extends Component
 
     public function edit($id)
     {
-        $apoposEdit = ApropoBaties::where('id', $id)->first();
+        $apoposEdit = apropoBaties::where('id', $id)->first();
         $this->select_id = $id;
         $this->titreab = $apoposEdit->titreab;
         $this->text1ab = $apoposEdit->text1ab;
@@ -223,7 +223,7 @@ class Apropos extends Component
 
     public function edit2($id)
     {
-        $caractEdit = Caracteristiques::where('id', $id)->first();
+        $caractEdit = caracteristiques::where('id', $id)->first();
         $this->select_id = $id;
         $this->titreC = $caractEdit->titreC;
         $this->caract_num = $caractEdit->caract_num;
@@ -233,7 +233,7 @@ class Apropos extends Component
 
     public function edit3($id)
     {
-        $objectifEdit = Objectifs::where('id', $id)->first();
+        $objectifEdit = objectifs::where('id', $id)->first();
         $this->select_id = $id;
         $this->titreOb = $objectifEdit->titreOb;
         $this->objectif_num = $objectifEdit->objectif_num;
@@ -243,7 +243,7 @@ class Apropos extends Component
 
     public function edit4($id)
     {
-        $partenaireEdit = Partenaires::where('id', $id)->first();
+        $partenaireEdit = partenaires::where('id', $id)->first();
         $this->select_id = $id;
         //$this->logo = $partenaireEdit->logo;
         $this->nom_part = $partenaireEdit->nom_part;
@@ -258,7 +258,7 @@ class Apropos extends Component
 
     public function edit5($id)
     {
-        $infoApEdit = InfoPageApropos::where('id', $id)->first();
+        $infoApEdit = infoPageApropos::where('id', $id)->first();
         $this->select_id = $id;
         //$this->imageIf = $infoApEdit->imageIf;
         $this->grand_titre = $infoApEdit->grand_titre;
@@ -280,7 +280,7 @@ class Apropos extends Component
 
             $imageab = $this->imageab;
             if (empty($imageab)) {
-                $apropobId = ApropoBaties::find($this->select_id);
+                $apropobId = apropoBaties::find($this->select_id);
                 $apropobId->update([
                     'titreab' => $this->titreab,
                     'text1ab' => $this->text1ab,
@@ -299,7 +299,7 @@ class Apropos extends Component
                     $file = $file . '->' . $name;
                 }
 
-                $apropobId = ApropoBaties::find($this->select_id);
+                $apropobId = apropoBaties::find($this->select_id);
                 $apropobId->update([
                     'titreab' => $this->titreab,
                     'text1ab' => $this->text1ab,
@@ -328,7 +328,7 @@ class Apropos extends Component
 
         if ($this->select_id) {
 
-            $carcatId = Caracteristiques::find($this->select_id);
+            $carcatId = caracteristiques::find($this->select_id);
             $carcatId->update([
                 'titreC' => $this->titreC,
                 'caract_num' => $this->caract_num,
@@ -364,7 +364,7 @@ class Apropos extends Component
                 $name = '';
             }
 
-            $carcatId = Objectifs::find($this->select_id);
+            $carcatId = objectifs::find($this->select_id);
             $carcatId->update([
                 'titreOb' => $this->titreOb,
                 'objectif_num' => $this->objectif_num,
@@ -390,7 +390,7 @@ class Apropos extends Component
         if ($this->select_id) {
             $image = $this->logo;
             if (empty($image)) {
-                $partenairId = Partenaires::find($this->select_id);
+                $partenairId = partenaires::find($this->select_id);
                 $partenairId->update([
                     'nom_part' => $this->nom_part,
                     'services' => $this->services,
@@ -402,7 +402,7 @@ class Apropos extends Component
                 $path = public_path() . "/app/apropos/";
                 $img->save($path . $name);
 
-                $partenairId = Partenaires::find($this->select_id);
+                $partenairId = partenaires::find($this->select_id);
                 $partenairId->update([
                     'logo' => $name,
                     'nom_part' => $this->nom_part,
@@ -438,7 +438,7 @@ class Apropos extends Component
 
             if (empty($image)) {
 
-                $carcatId = InfoPageApropos::find($this->select_id);
+                $carcatId = infoPageApropos::find($this->select_id);
                 $carcatId->update([
                     'grand_titre' => $this->grand_titre,
                     'titre1' => $this->titre1,
@@ -451,7 +451,7 @@ class Apropos extends Component
                 $path = public_path() . "/app/apropos/";
                 $img->save($path . $name);
 
-                $carcatId = InfoPageApropos::find($this->select_id);
+                $carcatId = infoPageApropos::find($this->select_id);
                 $carcatId->update([
                     'imageIf' => $name,
                     'grand_titre' => $this->grand_titre,
@@ -472,7 +472,7 @@ class Apropos extends Component
     public function destroy($id)
     {
         if ($id) {
-            $record = ApropoBaties::where('id', $id);
+            $record = apropoBaties::where('id', $id);
             $record->delete();
             session()->flash('message', 'le bloc a propos a ete supprimer avec succes.');
         } else {
@@ -483,7 +483,7 @@ class Apropos extends Component
     public function destroy2($id)
     {
         if ($id) {
-            $record = Caracteristiques::where('id', $id);
+            $record = caracteristiques::where('id', $id);
             $record->delete();
             session()->flash('message', 'la caracteristique a ete supprimer avec succes.');
         } else {
@@ -494,7 +494,7 @@ class Apropos extends Component
     public function destroy3($id)
     {
         if ($id) {
-            $record = Objectifs::where('id', $id);
+            $record = objectifs::where('id', $id);
             $record->delete();
             session()->flash('message', "l'objectif a ete supprimer avec succes.");
         } else {
@@ -505,7 +505,7 @@ class Apropos extends Component
     public function destroy4($id)
     {
         if ($id) {
-            $record = Partenaires::where('id', $id);
+            $record = partenaires::where('id', $id);
             $record->delete();
             session()->flash('message', "l'objectif a ete supprimer avec succes.");
         } else {
@@ -516,7 +516,7 @@ class Apropos extends Component
     public function destroy5($id)
     {
         if ($id) {
-            $record = InfoPageApropos::where('id', $id);
+            $record = infoPageApropos::where('id', $id);
             $record->delete();
             session()->flash('message', "l'information a ete supprimer avec succes.");
         } else {

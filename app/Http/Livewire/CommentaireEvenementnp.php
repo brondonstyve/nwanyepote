@@ -21,9 +21,9 @@ class CommentaireEvenementnp extends Component
 
     public function render()
     {
-        $this->comentnombers = $this->data2 = CommentaireEventnps::where('event_id', $this->idevent)->count();
-        $this->data2 = CommentaireEventnps::where('event_id', $this->idevent)->get();
-        $this->data = CommentaireEventnps::all();
+        $this->comentnombers = $this->data2 = commentaireEventnps::where('event_id', $this->idevent)->count();
+        $this->data2 = commentaireEventnps::where('event_id', $this->idevent)->get();
+        $this->data = commentaireEventnps::all();
         return view('livewire.commentaire-evenementnp');
     }
 
@@ -36,7 +36,7 @@ class CommentaireEvenementnp extends Component
         ]);
 
         $user = Auth::user();
-        $respons = CommentaireEventnps::create([
+        $respons = commentaireEventnps::create([
             'user_id' => $user->id,
             'event_id' => $this->idevent,
             'email' => $validatedDate['email'],
