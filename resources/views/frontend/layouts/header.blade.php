@@ -108,9 +108,15 @@
                             <span class="badge badge-cart bg-primary">3</span>
                         </a>
                     </li>
-                    <li class="nav-item d-none d-md-block">
-                        <a href="{{route('login')}}" class="btn btn-sm btn-primary rounded">Connexion</a> 
-                    </li>
+                    @if(auth()->user())
+                        <li class="nav-item d-none d-md-block">
+                            <a href="{{route('compte')}}" class="btn btn-sm btn-primary rounded">Mon Compte</a> 
+                        </li>  
+                    @else
+                        <li class="nav-item d-none d-md-block">
+                            <a href="{{route('login')}}" class="btn btn-sm btn-primary rounded">Connexion</a> 
+                        </li>
+                    @endif    
                     <li class="nav-item d-lg-none">
                         <button class="hamburger offcanvas-nav-btn"><span></span></button>
                     </li>

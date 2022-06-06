@@ -114,8 +114,32 @@
                                     <button class="btn btn-primary btn-lg rounded-pill">Selectionner image</button>
                                     <input type="file" wire:model="imageab" multiple/>
                                 </div>
-                                @error('imageab') <span class="text-danger error">{{ $message }}</span>@enderror  
+                                @error('imageab') <span class="text-danger error">{{ $message }}</span>@enderror
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='imageab'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button> 
                             </div>
+                            @if ($imageab)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                @foreach ( $imageab as $image )
+                                                    <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$image->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">modal</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="modal">
@@ -168,7 +192,31 @@
                                     <input type="file" wire:model="imageab" multiple/>
                                 </div>
                                 @error('imageab') <span class="text-danger error">{{ $message }}</span>@enderror
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='imageab'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($imageab)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                @foreach ( $imageab as $image )
+                                                    <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$image->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">modal</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="modal">
@@ -430,7 +478,29 @@
                                     <button class="btn btn-primary btn-lg rounded-pill">Selectionner image</button>
                                     <input type="file" wire:model="imageOb" />
                                 </div>
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='imageOb'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($imageOb)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$imageOb->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -478,7 +548,29 @@
                                     <button class="btn btn-primary btn-lg rounded-pill">Selectionner image</button>
                                     <input type="file" wire:model="imageOb" />
                                 </div>
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='imageOb'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($imageOb)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$imageOb->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
@@ -572,7 +664,29 @@
                                     <input type="file" wire:model="logo" />
                                 </div>
                                 @error('logo') <span class="text-danger error">{{ $message }}</span>@enderror
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='logo'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($logo)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$logo->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Nom de l'entreprise:</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="nom_part">
@@ -655,7 +769,29 @@
                                     <button class="btn btn-primary btn-lg rounded-pill">Selectionner un logo</button>
                                     <input type="file" wire:model="logo" />
                                 </div>
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='logo'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($logo)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$logo->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Nom de l'entreprise:</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="nom_part">
@@ -730,7 +866,11 @@
                                 <div>
                                     <h5 class="mb-0">Information page</h5>
                                 </div>
-                                <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModalMessageIf">+&nbsp; Ajouter Information page</a>
+                                @if(!empty($data5))
+                                    
+                                @else
+                                    <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModalMessageIf">+&nbsp; Ajouter Information page</a>
+                                @endif
                                 </div>
                                 </div>
                                 <div class="card-body px-0 pt-0 pb-2">
@@ -815,7 +955,29 @@
                                     <input type="file" wire:model="imageIf" />
                                 </div>
                                 @error('imageIf') <span class="text-danger error">{{ $message }}</span>@enderror
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='imageIf'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($imageIf)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$imageIf->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Grand titre:</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="grand_titre">
@@ -864,7 +1026,29 @@
                                     <input type="file" wire:model="imageIf" />
                                 </div>
                                 @error('imageIf') <span class="text-danger error">{{ $message }}</span>@enderror
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='imageIf'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($imageIf)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$imageIf->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Grand titre:</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="grand_titre">

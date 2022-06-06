@@ -23,8 +23,8 @@ class Galerie extends Component
 
     public function render()
     {
-        $this->data2 = InfoGaleries::all();
-        $this->data = Galeries::all();
+        $this->data2 = infoGaleries::all();
+        $this->data = galeries::all();
         return view('livewire.galerie');
     }
 
@@ -43,7 +43,7 @@ class Galerie extends Component
         $path = public_path() . "/app/galeries/";
         $img->save($path . $name);
 
-        $respons = Galeries::create([
+        $respons = galeries::create([
             'image' => $name,
             'libelet' => $validatedDate['libelet'],
             'type' => $validatedDate['type'],
@@ -69,7 +69,7 @@ class Galerie extends Component
             'titreb2' => 'required',
         ]);
 
-        $respons = InfoGaleries::create($validatedDate);
+        $respons = infoGaleries::create($validatedDate);
 
         if ($respons) {
             session()->flash('message', 'les information on ete enregistrer avec succes.');
@@ -82,7 +82,7 @@ class Galerie extends Component
 
     public function edit($id)
     {
-        $imageEdit = Galeries::where('id', $id)->first();
+        $imageEdit = galeries::where('id', $id)->first();
         $this->select_id = $id;
         //$this->image = $imageEdit->image;
         $this->libelet = $imageEdit->libelet;
@@ -91,7 +91,7 @@ class Galerie extends Component
 
     public function edit2($id)
     {
-        $infoEdit = InfoGaleries::where('id', $id)->first();
+        $infoEdit = infoGaleries::where('id', $id)->first();
         $this->select_id = $id;
         $this->titre = $infoEdit->titre;
         $this->libelet = $infoEdit->libelet;
@@ -114,7 +114,7 @@ class Galerie extends Component
             $image = $this->image;
 
             if (empty($image)) {
-                $imageId = Galeries::find($this->select_id);
+                $imageId = galeries::find($this->select_id);
                 $imageId->update([
                     'libelet' => $this->libelet,
                     'type' => $this->type,
@@ -126,7 +126,7 @@ class Galerie extends Component
                 $path = public_path() . "/app/galeries/";
                 $img->save($path . $name);
 
-                $imageId = Galeries::find($this->select_id);
+                $imageId = galeries::find($this->select_id);
                 $imageId->update([
                     'image' => $name,
                     'libelet' => $this->libelet,
@@ -154,7 +154,7 @@ class Galerie extends Component
 
         if ($this->select_id) {
 
-            $imageId = InfoGaleries::find($this->select_id);
+            $imageId = infoGaleries::find($this->select_id);
             $imageId->update([
                 'titre' => $this->titre,
                 'libelet' => $this->libelet,
@@ -174,7 +174,7 @@ class Galerie extends Component
     public function destroy($id)
     {
         if ($id) {
-            $record = Galeries::where('id', $id);
+            $record = galeries::where('id', $id);
             $record->delete();
             session()->flash('message', 'limage a ete supprimer avec succes.');
         } else {
@@ -185,7 +185,7 @@ class Galerie extends Component
     public function destroy2($id)
     {
         if ($id) {
-            $record = InfoGaleries::where('id', $id);
+            $record = infoGaleries::where('id', $id);
             $record->delete();
             session()->flash('message', 'les informations on ete supprimer avec succes.');
         } else {

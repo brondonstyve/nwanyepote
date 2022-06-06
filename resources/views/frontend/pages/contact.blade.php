@@ -13,14 +13,23 @@
     <div class="container pt-10 pb-12 pt-md-14 pb-md-16 text-center">
         <div class="row">
             <div class="col-md-7 col-lg-6 col-xl-10 mx-auto">
-                @foreach ($infoContactes as $infoContacte)
+                @if (empty($infoContactes))
                     <h1 class="display-1 mb-3 text-blue">
-                        {{ $infoContacte->titre_page }}
+                        pas de titre
                     </h1>
                     <p class="lead px-lg-5 px-xxl-8">
-                        {{ $infoContacte->libelet_page }}
+                        veuiller enregistrer des information pour la page
                     </p>
-                @endforeach
+                @else
+                    @foreach ($infoContactes as $infoContacte)
+                        <h1 class="display-1 mb-3 text-blue">
+                            {{ $infoContacte->titre_page }}
+                        </h1>
+                        <p class="lead px-lg-5 px-xxl-8">
+                            {{ $infoContacte->libelet_page }}
+                        </p>
+                    @endforeach
+                @endif
             </div>
             <!-- /column -->
         </div>
@@ -44,42 +53,83 @@
                             <!-- /.map -->
                         </div>
                         <!--/column -->
-                        <div class="col-lg-6">
-                            <div class="p-10 p-md-11 p-lg-14">
-                                <div class="d-flex flex-row">
-                                    <div>
-                                        <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-location-pin-alt"></i> </div>
+                        @if(empty($infoplateformes))
+                                <div class="col-lg-6">
+                                    <div class="p-10 p-md-11 p-lg-14">
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-location-pin-alt"></i> </div>
+                                            </div>
+                                             <div class="align-self-start justify-content-start">
+                                                <h5 class="mb-1">Addresse</h5>
+                                                <address>pas d'information, <br class="d-none d-md-block" />pas d'information</address>
+                                            </div>
+                                        </div>
+                                        <!--/div -->
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-phone-volume"></i> </div>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-1">Phone</h5>
+                                                <p>pas d'information <br />pas d'information</p>
+                                            </div>
+                                        </div>
+                                        <!--/div -->
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-envelope"></i> </div>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-1">E-mail</h5>
+                                                <p class="mb-0"><a href="mailto:sandbox@email.com" class="link-body">pas d'information</a></p>
+                                                <p class="mb-0"><a href="mailto:help@sandbox.com" class="link-body">pas d'information</a></p>
+                                            </div>
+                                        </div>
+                                        <!--/div -->
                                     </div>
-                                    <div class="align-self-start justify-content-start">
-                                        <h5 class="mb-1">Addresse</h5>
-                                        <address>Ouest St. 11245 Batie, <br class="d-none d-md-block" />Cameroun, Nwanyepote</address>
-                                    </div>
+                                    <!--/div -->
                                 </div>
-                                <!--/div -->
-                                <div class="d-flex flex-row">
-                                    <div>
-                                        <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-phone-volume"></i> </div>
+                        @else
+                            @foreach ($infoplateformes as $infoplateforme)
+                                <div class="col-lg-6">
+                                    <div class="p-10 p-md-11 p-lg-14">
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-location-pin-alt"></i> </div>
+                                            </div>
+                                            <div class="align-self-start justify-content-start">
+                                                <h5 class="mb-1">Addresse</h5>
+                                                <address>{{ $infoplateforme->adresse1 }}, <br class="d-none d-md-block" />{{ $infoplateforme->adresse2 }}</address>
+                                            </div>
+                                        </div>
+                                        <!--/div -->
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-phone-volume"></i> </div>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-1">Phone</h5>
+                                                <p>{{ $infoplateforme->numero1 }} <br />{{ $infoplateforme->numero2 }}</p>
+                                            </div>
+                                        </div>
+                                        <!--/div -->
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-envelope"></i> </div>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-1">E-mail</h5>
+                                                <p class="mb-0"><a href="mailto:sandbox@email.com" class="link-body">{{ $infoplateforme->email1 }}</a></p>
+                                                <p class="mb-0"><a href="mailto:help@sandbox.com" class="link-body">{{ $infoplateforme->email2 }}</a></p>
+                                            </div>
+                                        </div>
+                                        <!--/div -->
                                     </div>
-                                    <div>
-                                        <h5 class="mb-1">Phone</h5>
-                                        <p>00 697 32 09 74 <br />00 697 32 09 74</p>
-                                    </div>
+                                    <!--/div -->
                                 </div>
-                                <!--/div -->
-                                <div class="d-flex flex-row">
-                                    <div>
-                                        <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-envelope"></i> </div>
-                                    </div>
-                                    <div>
-                                        <h5 class="mb-1">E-mail</h5>
-                                        <p class="mb-0"><a href="mailto:sandbox@email.com" class="link-body">info@Nwanyepote.com</a></p>
-                                        <p class="mb-0"><a href="mailto:help@sandbox.com" class="link-body">contact@Nwanyepote.com</a></p>
-                                    </div>
-                                </div>
-                                <!--/div -->
-                            </div>
-                            <!--/div -->
-                        </div>
+                            @endforeach
+                        @endif
                         <!--/column -->
                     </div>
                     <!--/.row -->
@@ -90,10 +140,15 @@
         </div>
         <!-- /.row -->
         <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-            @foreach ($infoContactes as $infoContacte)
-                <h2 class="display-4 mb-3 text-center">{{ $infoContacte->titre_formulaire }}</h2>
-                <p class="lead text-center mb-10">{{ $infoContacte->libelet_formulaire }}</p>
-            @endforeach
+            @if(empty($infoContactes))
+                <h2 class="display-4 mb-3 text-center">pas de titre</h2>
+                <p class="lead text-center mb-10">veuiller enregistrer les information lier a cette page</p>                
+            @else
+                @foreach ($infoContactes as $infoContacte)
+                    <h2 class="display-4 mb-3 text-center">{{ $infoContacte->titre_formulaire }}</h2>
+                    <p class="lead text-center mb-10">{{ $infoContacte->libelet_formulaire }}</p>
+                @endforeach
+            @endif
         @livewire('contact-message')
         <!-- /.row -->
     </div>

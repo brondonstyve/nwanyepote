@@ -22,7 +22,11 @@
                                 <div>
                                     <h5 class="mb-0">Information de la page</h5>
                                 </div>
-                                <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModalMessage">+&nbsp; Ajouter une information</a>
+                                @if(!empty($data))
+                                    
+                                @else
+                                    <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModalMessage">+&nbsp; Ajouter une information</a>
+                                @endif
                                 </div>
                                 </div>
                                 <div class="card-body px-0 pt-0 pb-2">
@@ -288,18 +292,64 @@
                                 <label for="recipient-name" class="col-form-label"></label>
                                 <div class="parent-div">
                                     <button class="btn btn-primary btn-lg rounded-pill">Selectionner les image de l'evenement</button>
-                                    <input type="file" wire:model="imagenp" multiple />
+                                    <input type="file" wire:model.lazy="imagenp" multiple />
                                 </div>
                                 @error('imagenp') <span class="text-danger error">{{ $message }}</span>@enderror 
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='imagenp'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($imagenp)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                @foreach ( $imagenp as $image )
+                                                    <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$image->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label"></label>
                                 <div class="parent-div">
                                     <button class="btn btn-primary btn-lg rounded-pill">Selectionner l'image principale</button>
                                     <input type="file" wire:model="image_principal" />
                                 </div>
-                                @error('image_principal') <span class="text-danger error">{{ $message }}</span>@enderror 
+                                @error('image_principal') <span class="text-danger error">{{ $message }}</span>@enderror
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='image_principal'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button> 
                             </div>
+                            @if ($image_principal)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$image_principal->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Titres:</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="titres">
@@ -395,8 +445,32 @@
                                     <button class="btn btn-primary btn-lg rounded-pill">Selectionner les image</button>
                                     <input type="file" wire:model="imagenp" multiple />
                                 </div>
-                                @error('imagenp') <span class="text-danger error">{{ $message }}</span>@enderror 
+                                @error('imagenp') <span class="text-danger error">{{ $message }}</span>@enderror
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='imagenp'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button> 
                             </div>
+                            @if ($imagenp)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                @foreach ( $imagenp as $image )
+                                                    <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$image->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label"></label>
                                 <div class="parent-div">
@@ -404,7 +478,29 @@
                                     <input type="file" wire:model="image_principal" />
                                 </div>
                                 @error('image_principal') <span class="text-danger error">{{ $message }}</span>@enderror 
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='image_principal'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($image_principal)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$image_principal->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Titres:</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="titres">

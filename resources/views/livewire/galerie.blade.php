@@ -95,8 +95,29 @@
                                     <input type="file" wire:model="image" />
                                 </div>
                                 @error('image') <span class="text-danger error">{{ $message }}</span>@enderror
-                               
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='image'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($image)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$image->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Libelet:</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="libelet">
@@ -130,6 +151,13 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                             </button>
+
+                            <!--<button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='image'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                            </button>-->
                         </div>
                         <div class="modal-body">
                             <form>
@@ -137,11 +165,32 @@
                                 <label for="recipient-name" class="col-form-label"></label>
                                 <div class="parent-div">
                                     <button class="btn btn-primary btn-lg rounded-pill">Selectionner image</button>
-                                    <input type="file" wire:model="image" />
+                                    <input type="file" wire:model.lezy="image" />
                                 </div>
                                 @error('image') <span class="text-danger error">{{ $message }}</span>@enderror
-                               
+                                <button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
+                                    wire:target='image'>
+                                    <span class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    Patientez le chargement de(s) image(s)...
+                                </button>
                             </div>
+                            @if ($image)
+                            <div class="card-body p-3">
+                                <div class="row">
+                                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                        <div class="card card-blog card-plain">
+                                            <div class="position-relative">
+                                                <a class="d-block shadow-xl border-radius-xl">
+                                                    <img src="{{$image->temporaryUrl()}}" alt="img-blur-shadow"
+                                                        class="img-fluid shadow border-radius-xl">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Libelet:</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="libelet">
@@ -175,7 +224,11 @@
                                 <div>
                                     <h5 class="mb-0">Information image</h5>
                                 </div>
-                                <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModalMessageI">+&nbsp; Ajouter une information</a>
+                                @if(!empty($data2))
+                                    
+                                @else
+                                    <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModalMessageI">+&nbsp; Ajouter une information</a>
+                                @endif
                                 </div>
                                 </div>
                                 <div class="card-body px-0 pt-0 pb-2">
