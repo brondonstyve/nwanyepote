@@ -8,7 +8,7 @@
                     @if (sizeOf($this->client)!=0)
                     <div class="d-flex flex-row justify-content-between">
                         <div>
-                            <h5 class="mb-0">Liste des visiteurs ayant téléchargés la brochure</h5>
+                            <h5 class="mb-0">Liste des clients</h5>
                         </div>
                         
                     </div>
@@ -20,7 +20,7 @@
                         <h5 class="mb-0">
                             <div class="text-center">
                                 <div>
-                                    <h5 class="mb-0">Aucun visiteur n'as téléchargé de brochure pour le moment.</h5>
+                                    <h5 class="mb-0">Aucun client pour le moment.</h5>
                                 </div>
                                 
                             </div>

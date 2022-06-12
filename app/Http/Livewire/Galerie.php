@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\galeries;
+use App\Models\infoGaleries;
 use Livewire\WithFileUploads;
 use Livewire\Component;
-use App\models\galeries;
-use App\Models\infoGaleries;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image as ImageIntervention;
 

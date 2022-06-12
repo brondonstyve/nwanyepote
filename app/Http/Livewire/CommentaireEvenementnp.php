@@ -2,10 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\commentaireEventnps;
 use Illuminate\Support\Facades\Auth;
-use App\models\user;
-use App\models\npEvenements;
-use App\models\commentaireEventnps;
 use Livewire\Component;
 
 class CommentaireEvenementnp extends Component

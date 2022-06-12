@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\infoEvenements;
+use App\Models\npEvenements;
 use Livewire\WithFileUploads;
-use App\models\infoEvenements;
-use App\models\npEvenements;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image as ImageIntervention;

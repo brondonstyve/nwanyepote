@@ -4,6 +4,7 @@ use App\Http\Controllers\frontController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\stripeController;
 use App\Http\Livewire\AdminCollection;
+use App\Http\Livewire\AdminCommandeBoutique;
 use App\Http\Livewire\AdminEvenementParticipatif;
 use App\Http\Livewire\Apropos;
 use App\Http\Livewire\AdminPageAccueil;
@@ -149,6 +150,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin-page-faq', AdminPageFaq::class)->name('admin-page-faq');
     Route::get('/boutique-collection', AdminCollection::class)->name('boutique-collection');
     Route::get('/boutique-produit', AdminProduit::class)->name('boutique-produit');
+    Route::get('/boutique-commande-admin', AdminCommandeBoutique::class)->name('boutique-commande-admin');
     Route::get('/admin-evenement-participatif', AdminEvenementParticipatif::class)->name('admin-evenement-participatif');
     Route::get('/admin-participant/{id}', AdminParticipant::class)->name('admin-participant');
 });

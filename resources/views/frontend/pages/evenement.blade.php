@@ -49,13 +49,16 @@
                 @if(empty($infoEvent))
                     <h2 class="display-3 text-primary  mb-3 px-lg-8">Evénement participatif le plus récent.</h2>
                     <p class="lead  text-center">Nos talents locaux présentent en live des oeuvres réalisées par eux même pendant des célébrations auxquelles ils prennent part.</p>
+               <a href="{{route('detail-evenement-participatif',$evenementParticipatifRecent->id)}}" class="btn btn-lg btn-primary rounded-pill mb-10">En savoir plus</a>
+
                 @else
                     @foreach ($infoEvent as $item)
                         <h2 class="display-3 text-primary  mb-3 px-lg-8">{{ $item->titre1 }}</h2>
                         <p class="lead  text-center">{{ $item->libelet1 }}</p>
                     @endforeach
-                @endif
                <a href="{{route('detail-evenement-participatif',$evenementParticipatifRecent->id)}}" class="btn btn-lg btn-primary rounded-pill mb-10">En savoir plus</a>
+
+                @endif
 
 
             </div>
@@ -219,7 +222,7 @@
                                         <article>
                                             <div class="card ">
                                                 <figure class="card-img-top overlay overlay-1 hover-scale ">
-                                                    <a href="{{ route('detail-evenement',$npEvent->id) }}"> <img src="/app/evenement/{{ $npEvent->image_principal }}" alt=" "><span class="bg "></span></a>
+                                                    <a href="{{ route('detail-evenement',$npEvent->id) }}"> <img src="{{asset('/app/evenement/'.$npEvent->image_principal)}}" alt=" "><span class="bg "></span></a>
                                                     <figcaption>
                                                         <h5 class="from-top mb-0">Lire plus</h5>
                                                     </figcaption>

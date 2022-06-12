@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\apropoBaties;
+use App\Models\caracteristiques;
+use App\Models\infoPageApropos;
+use App\Models\objectifs;
+use App\Models\partenaires;
 use Livewire\WithFileUploads;
 use Livewire\Component;
-use App\models\apropoBaties;
-use App\models\caracteristiques;
-use App\models\objectifs;
-use App\models\infoPageApropos;
-use App\models\partenaires;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image as ImageIntervention;
 

@@ -2,32 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\models\infoEvenements;
-use App\models\contacteInfo;
-use App\models\infocontactes;
-use App\models\galeries;
-use App\Models\infoGaleries;
-use App\models\apropoBaties;
-use App\models\caracteristiques;
-use App\models\objectifs;
-use App\models\infoPageApropos;
-use App\models\partenaires;
-use App\models\npEvenements;
-use App\models\commentaireEventnps;
 use App\Models\accueil;
+use App\Models\apropoBaties;
 use App\Models\article;
+use App\Models\caracteristiques;
 use App\Models\commentaireArticle;
 use App\Models\commentaireEvenementParticipatif;
+use App\Models\commentaireEventnps;
 use App\Models\commentaireSite;
+use App\Models\contacteInfo;
 use App\Models\contenueressource;
 use App\Models\culture;
 use App\Models\evenementparticipatif;
 use App\Models\faq;
+use App\Models\galeries;
+use App\Models\infocontactes;
+use App\Models\infoEvenements;
+use App\Models\infoGaleries;
+use App\Models\infoPageApropos;
+use App\Models\npEvenements;
+use App\Models\objectifs;
 use App\Models\pageArticle;
 use App\Models\pageCulture;
 use App\Models\pageFaq;
 use App\Models\pageSport;
 use App\Models\pageTourisme;
+use App\Models\partenaires;
 use App\Models\participant;
 use App\Models\reponseCommentaireArticle;
 use App\Models\reponseCommentaireEvenementParticipatif;
@@ -36,9 +36,6 @@ use App\Models\sport;
 use App\Models\Tourisme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Arr;
-use Stripe\PaymentIntent;
-use Stripe\Stripe;
 
 class frontController extends Controller
 {

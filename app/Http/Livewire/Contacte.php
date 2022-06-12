@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\contacteInfo;
+use App\Models\contacteMessage;
+use App\Models\infocontactes;
 use Livewire\Component;
-use App\models\contacteMessage;
-use App\models\contacteInfo;
-use App\models\infocontactes;
 
 
 class Contacte extends Component

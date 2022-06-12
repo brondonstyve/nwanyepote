@@ -96,7 +96,7 @@
                                 @if ($type=='pp')
                                 <div class="alert alert-primary alert-icon mb-6" role="alert">
                                     <i class="uil uil-exclamation-circle"></i>
-                                    <p>Vous procéderez au paiement par carte de crédit.</p>
+                                    <p>Vous procéderez au paiement par votre compte Paypal.</p>
                                 </div>
                             @endif
                             </div>
@@ -108,7 +108,7 @@
                                 @if ($type=='cc')
                                 <div class="alert alert-primary alert-icon mb-6" role="alert">
                                     <i class="uil uil-exclamation-circle"></i>
-                                    <p>Vous procéderez au paiement par votre compte Paypal.</p>
+                                    <p>Vous procéderez au paiement par carte de crédit.</p>
                                 </div>
                         @endif
                             </div>
