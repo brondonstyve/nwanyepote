@@ -57,6 +57,11 @@
                                     @foreach ($detailEvents as $detailEvent)
                                         <div class="post-content mb-5">
                                             <h2 class="h1 mb-4">{{ $detailEvent->titres1 }}</h2>
+                                            @if ($detailEvent->video1)
+                                                <p>Video relative à l'article</p>
+                                                <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="{{$detailEvent->video1}}"></div>
+                                            @endif 
+                                            <p class="pb-14 pb-md-7"></p>
                                             <p>{{ $detailEvent->libelet1a }}</p>
                                             <p>{{ $detailEvent->libelet1b }}</p>
                                             <div class="row g-6 mt-3 mb-10">
@@ -74,13 +79,138 @@
                                             </div>
                                             <!-- /.row -->
                                             <p>{{ $detailEvent->libelet1c }}</p>
-                                            <blockquote class="fs-lg my-8">
-                                                <p>{{ $detailEvent->personne_importantes }}</p>
-                                                <footer class="blockquote-footer">Very important person</footer>
-                                            </blockquote>
-                                            <h3 class="h2 mb-4">{{ $detailEvent->titres2 }}</h3>
+                                        </div>
+                                    @endforeach
+                                    
+                                    <!-- /.post-footer -->
+                                </article>
+                                <!-- /.post -->
+                            </div>
+                            <div class="classic-view">
+                                <article class="post">
+                                    @foreach ($detailEvents as $detailEvent)
+                                        <div class="post-content mb-5">
+                                            <h2 class="h1 mb-4">{{ $detailEvent->titres2 }}</h2>
+                                            @if ($detailEvent->video2)
+                                                <p>Video relative à l'article</p>
+                                                <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="{{$detailEvent->$video2}}"></div>
+                                            @endif 
                                             <p>{{ $detailEvent->libelet2a }}</p>
-                                            <p>{{ $detailEvent->tlibelet2b }}</p>
+                                            <p>{{ $detailEvent->libelet2b }}</p>
+                                            <div class="row g-6 mt-3 mb-10">
+                                                <!--/column -->
+                                                @foreach(explode('->',$detailEvent->imagenp2) as $item)
+                                                    @if($item)
+                                                        <div class="col-md-6">
+                                                            <figure class="hover-scale rounded cursor-dark">
+                                                                <a href="/app/evenement/{{ $item }}" data-glightbox data-gallery="post"> <img src="/app/evenement/{{ $item }}" alt="" /></a>
+                                                            </figure>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                                <!--/column -->
+                                            </div>
+                                            <!-- /.row -->
+                                            <p>{{ $detailEvent->libelet2c }}</p>
+                                        </div>
+                                    @endforeach
+                                    
+                                    <!-- /.post-footer -->
+                                </article>
+                                <!-- /.post -->
+                            </div>
+                            <div class="classic-view">
+                                <article class="post">
+                                    @foreach ($detailEvents as $detailEvent)
+                                        <div class="post-content mb-5">
+                                            <h2 class="h1 mb-4">{{ $detailEvent->titres3 }}</h2>
+                                            @if ($detailEvent->video3)
+                                                <p>Video relative à l'article</p>
+                                                <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="{{$detailEvent->video3}}"></div>
+                                            @endif 
+                                            <p>{{ $detailEvent->libelet3a }}</p>
+                                            <p>{{ $detailEvent->libelet3b }}</p>
+                                            <div class="row g-6 mt-3 mb-10">
+                                                <!--/column -->
+                                                @foreach(explode('->',$detailEvent->imagenp3) as $item)
+                                                    @if($item)
+                                                        <div class="col-md-6">
+                                                            <figure class="hover-scale rounded cursor-dark">
+                                                                <a href="/app/evenement/{{ $item }}" data-glightbox data-gallery="post"> <img src="/app/evenement/{{ $item }}" alt="" /></a>
+                                                            </figure>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                                <!--/column -->
+                                            </div>
+                                            <!-- /.row -->
+                                            <p>{{ $detailEvent->libelet3c }}</p>
+                                        </div>
+                                    @endforeach
+                                    
+                                    <!-- /.post-footer -->
+                                </article>
+                                <!-- /.post -->
+                            </div>
+                            <div class="classic-view">
+                                <article class="post">
+                                    @foreach ($detailEvents as $detailEvent)
+                                        <div class="post-content mb-5">
+                                            <h2 class="h1 mb-4">{{ $detailEvent->titres4 }}</h2>
+                                            @if ($detailEvent->video4)
+                                                <p>Video relative à l'article</p>
+                                                <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="{{$detailEvent->video4}}"></div>
+                                            @endif 
+                                            <p>{{ $detailEvent->libelet4a }}</p>
+                                            <p>{{ $detailEvent->libelet4b }}</p>
+                                            <div class="row g-6 mt-3 mb-10">
+                                                <!--/column -->
+                                                @foreach(explode('->',$detailEvent->imagenp4) as $item)
+                                                    @if($item)
+                                                        <div class="col-md-6">
+                                                            <figure class="hover-scale rounded cursor-dark">
+                                                                <a href="/app/evenement/{{ $item }}" data-glightbox data-gallery="post"> <img src="/app/evenement/{{ $item }}" alt="" /></a>
+                                                            </figure>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                                <!--/column -->
+                                            </div>
+                                            <!-- /.row -->
+                                            <p>{{ $detailEvent->libelet4c }}</p>
+                                        </div>
+                                    @endforeach
+                                    
+                                    <!-- /.post-footer -->
+                                </article>
+                                <!-- /.post -->
+                            </div>
+                            <div class="classic-view">
+                                <article class="post">
+                                    @foreach ($detailEvents as $detailEvent)
+                                        <div class="post-content mb-5">
+                                            <h2 class="h1 mb-4">{{ $detailEvent->titres5 }}</h2>
+                                            @if ($detailEvent->video5)
+                                                <p>Video relative à l'article</p>
+                                                <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="{{$detailEvent->video5}}"></div>
+                                            @endif      
+                                            <p>{{ $detailEvent->libelet5a }}</p>
+                                            <p>{{ $detailEvent->libelet5b }}</p>
+                                            <div class="row g-6 mt-3 mb-10">
+                                                <!--/column -->
+                                                @foreach(explode('->',$detailEvent->imagenp5) as $item)
+                                                    @if($item)
+                                                        <div class="col-md-6">
+                                                            <figure class="hover-scale rounded cursor-dark">
+                                                                <a href="/app/evenement/{{ $item }}" data-glightbox data-gallery="post"> <img src="/app/evenement/{{ $item }}" alt="" /></a>
+                                                            </figure>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                                <!--/column -->
+                                            </div>
+                                            <!-- /.row -->
+                                            <p>{{ $detailEvent->libelet5c }}</p>
                                         </div>
                                     @endforeach
                                     

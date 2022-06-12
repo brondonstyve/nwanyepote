@@ -55,7 +55,7 @@
                     @else
                         @foreach($this->galeries as $img)
                             <div class="project item col-md-6 col-xl-4" style="position: absolute; left: 0%; top: 0px;">
-                                <figure class="rounded mb-6"><img src="app/galeries/{{$img->image}}" srcset="app/galeries/{{$img->image}} 2x" alt="">
+                                <figure class="rounded mb-6"><img src="app/galeries/{{$img->image}}" srcset="app/galeries/{{$img->image}} 2x" style="width: 100%; heigth: 100%" alt="">
                                     <a class="item-link" href="app/galeries/{{$img->image}}" data-glightbox="" data-gallery="projects-group"><i class="uil uil-focus-add"></i></a>
                                 </figure>
                                 <div class="project-details d-flex justify-content-center flex-column">

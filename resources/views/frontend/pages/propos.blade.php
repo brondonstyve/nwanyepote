@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-xl-6 mx-auto">
                     @if(empty($informations))
-                        <h1 class="display-1 mb-4 text-blue">Pas de titre</h1>
+                        <h1 class="display-1 mb-4 text-blue">A Propos de nous!</h1>
                     @else
                         @foreach ($informations as $information)
                             <h1 class="display-1 mb-4 text-blue">{{ $information->grand_titre }}</h1>
@@ -29,7 +29,7 @@
         </div>
         <!-- /.container -->
         @if(empty($informations))
-            <h1 class="display-1 mb-4 text-blue">Pas de 'image enregistrer une image</h1>
+            <figure class="position-absoute" style="bottom: 0; left: 0; z-index: 2;"><img src="assets/img/photos/photo shop 1.jpg" alt="" /></figure>
         @else
             @foreach ($informations as $information)
                 <figure class="position-absoute" style="bottom: 0; left: 0; z-index: 2;"><img src="app/apropos/{{$information->imageIf}}" alt="" /></figure>
@@ -42,11 +42,11 @@
             <div class="row mb-5">
                 <div class="col-md-10 col-xl-8 col-xxl-7 mx-auto text-center">
                     @if(empty($informations))
-                        <h2 class="display-4 mb-4 px-lg-14">Pas de titre</h2>
+                        <h2 class="display-4 mb-4 px-lg-14">A Propos de Batie</h2>
                     @else
                         @foreach ($informations as $information)
                             <h2 class="display-4 mb-4 px-lg-14">{{ $information->titre1 }}</h2>
-                        @endforeach
+                        @endforeach 
                     @endif    
                 </div>
                 <!-- /column -->
@@ -54,14 +54,26 @@
             <!--/.row -->
             @if(empty($apropobs))
                 <div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
-                    <div class="col-lg-6 position-relative order-lg-2">
-                        <div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
-                        <div class="overlap-grid overlap-grid-2">
-                            <h2 class="display-4 mb-3">pas d'information enregistrer des information a propos de batier</h2>
+                        <div class="col-lg-6 position-relative order-lg-2">
+                            <div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem"></div>
+                            <div class="overlap-grid overlap-grid-2">
+                                    <div class="item">
+                                        <figure class="rounded shadow"><img src="assets/img/photos/7.jpg" srcset="assets/img/photos/7.jpg 2x" alt=""></figure>
+                                    </div>
+                                <div class="item">
+                                    <figure class="rounded shadow"><img src="assets/img/photos/11.jpg" srcset="assets/img/photos/11.jpg 2x" alt=""></figure>
+                                </div>
+                            </div>
                         </div>
+                        <!--/column -->
+                        <div class="col-lg-6">
+                            <img src="./assets/img/icons/lineal/earth.svg" class="svg-inject icon-svg icon-svg-md mb-4" alt="" />
+                            <h2 class="display-4 mb-3">Historique</h2>
+                            <p class="lead fs-lg text-justify">Notre projet permetra d'avoir des information correcte et fiable a propo du peuple Batie.</p>
+                            <p class="text-justify mb-6">Le peuple batie a une culture diversifier et cette culture serat mis en avant par notre plateforme a traver leur presentations sur la plate forme et aussi la vente de certain article et objet culturel sur notre plateforme.</p>  <!--/.row -->
+                        </div>
+                        <!--/column -->
                     </div>
-                    <!--/.modal -->
-                </div>
             @else
                 @foreach ($apropobs as $apropob)
                     <div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
@@ -140,7 +152,7 @@
                 <div class="col-md-10 col-xl-8 col-xxl-7 mx-auto text-center">
                     <img src="./assets/img/icons/lineal/list.svg" class="svg-inject icon-svg icon-svg-md mb-4" alt="" />
                     @if(empty($informations))
-                        <h2 class="display-4 mb-4 px-lg-14">pas de titre</h2>
+                        <h2 class="display-4 mb-4 px-lg-14">Caracteristique et Objectif.</h2>
                     @else
                         @foreach ($informations as $information)
                             <h2 class="display-4 mb-4 px-lg-14">{{$information->titre2}}</h2>
@@ -154,16 +166,35 @@
                 <div class="col-lg-6 order-lg-2">
                     @if(empty($caracteristiques))
                         <div class="card me-lg-6">
-                                <div class="card-body p-6">
+                            <div class="card-body p-6">
                                     <div class="d-flex flex-row">
                                         <div>
-                                            <h4 class="mb-1">pas de characteristique veuiller enregistrer des characteristiques</h4>
+                                            <span class="icon btn btn-circle btn-lg btn-soft-primary disabled me-4"><span
+                                                    class="number">01</span></span>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-1">Fiabiliter des informations</h4>
                                             <p class="mb-0"></p>
                                         </div>
                                     </div>
-                                </div>
-                                <!--/.card-body -->
                             </div>
+                                    <!--/.card-body -->
+                        </div>
+                        <div class="card ms-lg-13 mt-6">
+                                    <div class="card-body p-6">
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <span class="icon btn btn-circle btn-lg btn-soft-primary disabled me-4"><span
+                                                    class="number">02</span></span>
+                                            </div>
+                                            <div>
+                                                <h4 class="mb-1">Connexion des ressortissants</h4>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/.card-body -->
+                        </div>
                     @else
                         @foreach ($caracteristiques as $caracteristique)
                             @if($caracteristique->caract_num == 1)
@@ -224,7 +255,9 @@
                 <!--/column -->
                 <div class="col-lg-6">
                     @if(empty($caracteristiques))
-                        <h2 class="display-6 mb-3">pas de detatil characteristique</h2>
+                        <h2 class="display-6 mb-3">Quel son nos caracteristique ?</h2>
+                        <p class="mb-6 text-justify">Notre projet permetra d'avoir des information correcte et fiable a propo du peuple Batie.</p>
+                        <p class="mb-6 text-justify">Le peuble Batie est retrouver partous dans le monde et l'interconnexion entre les ressortisants etranger et locale est tres importante. Cette inter connexion serat fais a traver les evenemet participatif du peuple sur notre plateforme.</p>
                     @else
                         @foreach ($caracteristiques as $caracteristique)
                         <h2 class="display-6 mb-3">{{ $caracteristique->titreC }}</h2>
@@ -243,7 +276,7 @@
         <div class="container pt-16 pb-14 pb-md-0">
             @if(empty($objectifs))
                 <div class="row gx-lg-8 gx-xl-0 align-items-center">
-                    <h2 class="display-6 mb-3">pas de titre objectif</h2>
+                    <h2 class="display-6 mb-3">Quel son nos objectif ?</h2>
                     <div class="col-md-5 col-lg-5 col-xl-4 offset-xl-1 d-none d-md-flex position-relative align-self-end">
                         <div class="shape rounded-circle bg-pale-primary rellax w-21 h-21 d-md-none d-lg-block" data-rellax-speed="1" style="top: 7rem; left: 1rem"></div>
                         <figure><img src="./assets/img/photos/pco2.png" srcset="./assets/img/photos/pco2.png 2x" alt="">
@@ -252,7 +285,9 @@
                     <!--/column -->
                     <div class="col-md-7 col-lg-6 col-xl-6 col-xxl-5 offset-xl-1">
                         <div class="dots-start dots-closer mt-md-10 mb-md-15" data-margin="30" data-dots="true">
-                                <h3 class="h1 post-title mb-3">pas dobjectif veuiller enregistrer des objectif</h3>
+                            <div class="post-category mb-3 text-blue">01</div>
+                            <h3 class="h1 post-title mb-3">Objectif social</h3>
+                            <p class="text-justify">a presentation de la culture et du savoir faire du peuple batie permetra au artisan et au commersan de croitre leur vente et favorisera le devellopement des activites de la communot</p>
                             <!-- /.swiper -->
                         </div>
                         <!-- /.swiper-container -->
@@ -266,8 +301,10 @@
                     @endforeach
                     <div class="col-md-5 col-lg-5 col-xl-4 offset-xl-1 d-none d-md-flex position-relative align-self-end">
                         <div class="shape rounded-circle bg-pale-primary rellax w-21 h-21 d-md-none d-lg-block" data-rellax-speed="1" style="top: 7rem; left: 1rem"></div>
-                        <figure><img src="./assets/img/photos/pco2.png" srcset="app/apropos/{{$objectif->imageOb}} 2x" alt="">
-                        </figure>
+                        @foreach ($objectifs as $objectif)
+                            <figure><img src="app/apropos/{{$objectif->imageOb}}"  alt="">
+                            </figure>
+                        @endforeach
                     </div>
                     <!--/column -->
                     <div class="col-md-7 col-lg-6 col-xl-6 col-xxl-5 offset-xl-1">
@@ -296,7 +333,7 @@
                 <div class="col-md-10 col-xl-9 col-xxl-7 mx-auto text-center">
                     <img src="./assets/img/icons/lineal/team.svg" class="svg-inject icon-svg icon-svg-md mb-4" alt="" />
                     @if(empty($informations))
-                        <h2 class="display-4 mb-3 px-lg-14">pas de titre</h2>
+                        <h2 class="display-4 mb-3 px-lg-14">Nos partenaires.</h2>
                     @else
                         @foreach ($informations as $information)
                             <h2 class="display-4 mb-3 px-lg-14">{{ $information->titre3 }}</h2>

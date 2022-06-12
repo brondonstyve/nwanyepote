@@ -224,7 +224,7 @@
                                                 <!--/.card-body -->
                                                 <div class="card-footer ">
                                                     <ul class="post-meta d-flex mb-0 ">
-                                                        <li class="post-date "><i class="uil uil-calendar-alt "></i><span>14 Apr 2021</span></li>
+                                                        <li class="post-date "><i class="uil uil-calendar-alt "></i><span>{{ $npEvent->created_at->format('d') }} {{ $npEvent->created_at->format('M') }} {{ $npEvent->created_at->format('Y') }}</span></li>
                                                         <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>4</a></li>
                                                         <li class="post-likes ms-auto "><a href="# "><i class="uil uil-heart-alt "></i>5</a></li>
                                                     </ul>
