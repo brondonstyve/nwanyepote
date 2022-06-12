@@ -79,3 +79,20 @@
     </div>
     <!-- /.container -->
 </footer>
+
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+
+
+<script>
+    window.addEventListener('alert', event => { 
+			if (event.detail.type=='existe') {
+                $('.msg-panier').replaceWith('<p class="msg-panier mb-6">Ce produit est déjà present dans votre panier!<br> Consulter votre panier <a href="{{ route("panier") }}">ici</a>.</p>');
+                $('.notificateur').click();
+            }
+
+            if (event.detail.type=='success') {
+                $('.msg-panier').replaceWith('<p class="msg-panier mb-6">Votre produit '+event.detail.message+' a été ajouté au panier avec succés!<br> Consulter votre panier <a href="{{ route("panier") }}">ici</a>.</p>');
+                $('.notificateur').click();
+            }
+		});
+</script>

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/plugins.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="preload" href="{{asset('assets/css/fonts/thicccboi.css')}}" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" type="text/css" href="{{asset("vendor/cookie-consent/css/cookie-consent.css")}}">
     @yield('css_js_header')
     @livewireStyles
 </head>
@@ -34,6 +35,7 @@
         </div>
         <script src="{{asset('assets/js/plugins.js')}}"></script>
         <script src="{{asset('assets/js/theme.js')}}"></script>
+        
 </body>
     @yield('js_footer')
     @livewireScripts

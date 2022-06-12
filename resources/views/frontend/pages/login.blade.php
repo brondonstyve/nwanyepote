@@ -34,7 +34,12 @@
                                     </div>
                                     <!--/column -->
                                     <div class="col-lg-6">
-                                        <div class="p-10 p-md-11 p-lg-13">
+                                        @if (session()->has('error_connexion'))
+                                            <div class="alert alert-danger text-center">
+                                                <span class="text-danger">{!! session('error_connexion') !!}</span>
+                                            </div>
+                                        @endif
+                                        <div class="p-10 p-md-11 p-lg-13 text-center">
                                             <p class="lead mb-6 text-start">Entrer votre email et mot de passe pour vous connecter.</p>
                                             <form class="text-start mb-3">
                                                 <div class="form-floating mb-4">
@@ -79,6 +84,7 @@
                                 <a href="{{route('reset-password-front')}}" class="btn btn-primary rounded-pill btn-login w-100 mb-2">Envoyer</a>
                             </form>
                             <!-- /form -->
+                            
                         </div>
                         <!--/.modal-content -->
                     </div>

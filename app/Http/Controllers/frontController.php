@@ -5,21 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\accueil;
 use App\Models\article;
 use App\Models\commentaireArticle;
+use App\Models\commentaireEvenementParticipatif;
 use App\Models\commentaireSite;
 use App\Models\contenueressource;
 use App\Models\culture;
+use App\Models\evenementparticipatif;
 use App\Models\faq;
 use App\Models\pageArticle;
 use App\Models\pageCulture;
 use App\Models\pageFaq;
 use App\Models\pageSport;
 use App\Models\pageTourisme;
+use App\Models\participant;
 use App\Models\reponseCommentaireArticle;
+use App\Models\reponseCommentaireEvenementParticipatif;
 use App\Models\ressource;
 use App\Models\sport;
 use App\Models\Tourisme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
+use Stripe\PaymentIntent;
+use Stripe\Stripe;
 
 class frontController extends Controller
 {
@@ -52,11 +59,49 @@ class frontController extends Controller
     }
 
     public function evenement(){
-        return view('frontend.pages.evenement');
+        $evenementParticipatif=evenementparticipatif::orderBy('created_at','desc')
+        ->paginate(9);
+
+        if (sizeOf($evenementParticipatif)>=0) {
+
+            $evenementParticipatifRecent=evenementparticipatif::find($evenementParticipatif[0]->id);
+
+            $participant=participant::join('users','users.id','participants.user')
+        ->where([
+            ['participants.evenement',$evenementParticipatif[0]->id],
+        ])
+        ->orderBy('participants.voie','desc')
+        ->limit(3)
+        ->get();
+
+        $total=DB::table('participants')
+        ->whereEvenement($evenementParticipatif[0]->id)
+        ->select(DB::raw('Sum(voie) as voie'))
+        ->get('voie')[0]->voie;
+
+        if ($total==0) {
+            $total=1;
+        }
+
+        return view('frontend.pages.evenement',compact('evenementParticipatif','participant','total','evenementParticipatifRecent'));
+        }else{
+        return view('frontend.pages.evenement',compact('evenementParticipatif'));
+        }
+        
+        
     }
 
     public function detailEvenement(){
         return view('frontend.pages.detailEvenement');
+    }
+
+    public function detailEvenementParticipatif(request $request){
+        $evenement=evenementparticipatif::find($request->id);
+        $suivant=evenementparticipatif::find(($request->id+1));
+        $precedent=evenementparticipatif::find(($request->id-1));
+        $nbComment=commentaireEvenementParticipatif::whereEvenement($request->id)->count()+reponseCommentaireEvenementParticipatif::whereEvenement($request->id)->count();
+        
+        return view('frontend.pages.detailEvenementParticipatif',compact('evenement','suivant','precedent','nbComment'));
     }
 
     public function article(){
@@ -69,7 +114,7 @@ class frontController extends Controller
         $article=article::find($request->id);
         $suivant=article::find(($request->id+1));
         $precedent=article::find(($request->id-1));
-        $nbComment=commentaireArticle::count()+reponseCommentaireArticle::count();
+        $nbComment=commentaireArticle::whereArticle($request->id)->count()+reponseCommentaireArticle::whereArticle($request->id)->count();
         $aimer=DB::table('articles')
         ->limit(3)
         ->orderBy('created_at','desc')
@@ -105,7 +150,13 @@ class frontController extends Controller
         return view('frontend.pages.panier');
     }
 
+    public function detailProduit(request $request){
+        $idProduct=$request->id;
+        return view('frontend.pages.detailProduit',compact('idProduct'));
+    }
+
     public function caisse(){
+
         return view('frontend.pages.caisse');
     }
 
@@ -129,4 +180,28 @@ class frontController extends Controller
         return view('frontend.pages.politique');
     }
     
+    public function commande(){
+
+        $commande=DB::table('commandes')
+        ->join('produits','produits.id','commandes.produit')
+        ->whereCompte(auth()->user()->id)
+        ->select('commandes.montant','commandes.codeCom','commandes.created_at','produits.libelle','commandes.adresse','commandes.status','commandes.montant_total','commandes.quantite')
+        ->orderBy('commandes.created_at','desc')
+        ->get();
+
+        return view('frontend.pages.commande',compact('commande'));
+    }
+
+    public function participer(request $request){
+        $code=$request->id;
+        return view('frontend.pages.participer',compact('code'));
+    }
+
+    public function participant(request $request){
+        $code=$request->id;
+
+        return view('frontend.pages.participant',compact('code'));
+    }
+
+   
 }

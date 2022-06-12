@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\frontController;
+use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\stripeController;
+use App\Http\Livewire\AdminCollection;
+use App\Http\Livewire\AdminEvenementParticipatif;
 use App\Http\Livewire\AdminPageAccueil;
 use App\Http\Livewire\AdminPageArticle;
 use App\Http\Livewire\AdminPageCulture;
@@ -8,6 +12,8 @@ use App\Http\Livewire\AdminPageFaq;
 use App\Http\Livewire\AdminPageRessource;
 use App\Http\Livewire\AdminPageSport;
 use App\Http\Livewire\AdminPageTourisme;
+use App\Http\Livewire\AdminParticipant;
+use App\Http\Livewire\AdminProduit;
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Auth\ResetPassword;
@@ -37,7 +43,11 @@ use Illuminate\Support\Facades\Route;
  Ici on ne retrouve que les routes liées au frontend
 */
 
-// Simple page
+
+Route::group([
+    'middleware' => ['cookie-consent']
+], function(){
+    // Simple page
 Route::get('/', [frontController::class, 'index'])->name("index");
 Route::get('/A-Propos', [frontController::class, 'propos'])->name("apropos");
 Route::get('/sport', [frontController::class, 'sport'])->name("sport");
@@ -53,6 +63,9 @@ Route::get('/politique', [frontController::class, 'politique'])->name("politique
 //événement
 Route::get('/evenement', [frontController::class, 'evenement'])->name("evenement");
 Route::get('/detail-evenement', [frontController::class, 'detailEvenement'])->name("detail-evenement");
+Route::get('/detail-evenement-participatif/{id}', [frontController::class, 'detailEvenementParticipatif'])->name("detail-evenement-participatif");
+Route::get('/participant/{id}',[frontController::class,'participant'])->name("participant");
+
 
 //article
 Route::get('/article', [frontController::class, 'article'])->name("article");
@@ -61,8 +74,7 @@ Route::get('/detailArticle/{id}', [frontController::class, 'detailArticle'])->na
 //Boutique
 Route::get('/boutique', [frontController::class, 'boutique'])->name("boutique");
 Route::get('/mon-panier', [frontController::class, 'panier'])->name("panier");
-Route::get('/detail-produit', [frontController::class, 'detailProduit'])->name("detail-produit");
-Route::get('/caisse', [frontController::class, 'caisse'])->name("caisse");
+Route::get('/detail-produit/{id}', [frontController::class, 'detailProduit'])->name("detail-produit");
 
 //compte
 Route::get('/mon-compte', [frontController::class, 'compte'])->name("compte");
@@ -85,7 +97,36 @@ Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-passwo
  
 Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
 
-//route pour utilisateurs connectés
+
+
+
+});
+
+
+
+//route pour utilisateurs connectés pour les pages simple
+Route::middleware('auth2')->group(function () {
+    Route::get('/caisse', [frontController::class, 'caisse'])->name("caisse");
+
+    //paypall route
+    Route::get('/paywithpaypal', [PaypalController::class, 'payWithPaypal'])->name("paywithpaypal");
+    Route::get('/paypal', [PaypalController::class, 'getPaymentStatus'])->name("status");
+    Route::get('/paypal-response/{code}', [PaypalController::class, 'getResponse'])->name("paypalResponse");
+    Route::get('/commande', [frontController::class, 'commande'])->name("commande");
+
+    //stripe
+    Route::get('stripe', [StripeController::class, 'stripe'])->name('stripe.intent');
+    Route::post('payment', [StripeController::class, 'stripePost'])->name('stripe.pay');
+    Route::get('/reponse-de-paiement-stripe', [stripeController::class, 'reponseStripe']);
+
+    //Evenement
+    Route::get('/participer/{id}',[frontController::class,'participer'])->name("participer");
+
+    
+});
+
+
+//route pour utilisateurs connectés pour les pages admin
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/static-sign-in', StaticSignIn::class)->name('sign-in');
@@ -98,7 +139,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin-page-tourisme', AdminPageTourisme::class)->name('admin-page-tourisme');
     Route::get('/admin-page-sport', AdminPageSport::class)->name('admin-page-sport');
     Route::get('/admin-page-faq', AdminPageFaq::class)->name('admin-page-faq');
+    Route::get('/boutique-collection', AdminCollection::class)->name('boutique-collection');
+    Route::get('/boutique-produit', AdminProduit::class)->name('boutique-produit');
+    Route::get('/admin-evenement-participatif', AdminEvenementParticipatif::class)->name('admin-evenement-participatif');
+    Route::get('/admin-participant/{id}', AdminParticipant::class)->name('admin-participant');
 });
+
+
+
 
 
 
