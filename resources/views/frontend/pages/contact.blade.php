@@ -15,10 +15,10 @@
             <div class="col-md-7 col-lg-6 col-xl-10 mx-auto">
                 @if (empty($infoContactes))
                     <h1 class="display-1 mb-3 text-blue">
-                        pas de titre
+                        Contactez-nous
                     </h1>
                     <p class="lead px-lg-5 px-xxl-8">
-                        veuiller enregistrer des information pour la page
+                        Pour toute information supplémentaires veuillez vous referer à ce contenu pour nous joindre d'une manière où d'une autre.
                     </p>
                 @else
                     @foreach ($infoContactes as $infoContacte)
@@ -141,8 +141,8 @@
         <!-- /.row -->
         <div class="col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
             @if(empty($infoContactes))
-                <h2 class="display-4 mb-3 text-center">pas de titre</h2>
-                <p class="lead text-center mb-10">veuiller enregistrer les information lier a cette page</p>                
+                <h2 class="display-4 mb-3 text-center">Laisser nous un message</h2>
+                <p class="lead text-center mb-10">Ecrivez nous ici et nous vous reviendrons le plus tôt possible.</p>                
             @else
                 @foreach ($infoContactes as $infoContacte)
                     <h2 class="display-4 mb-3 text-center">{{ $infoContacte->titre_formulaire }}</h2>

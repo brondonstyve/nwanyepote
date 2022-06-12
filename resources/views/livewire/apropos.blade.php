@@ -866,7 +866,7 @@
                                 <div>
                                     <h5 class="mb-0">Information page</h5>
                                 </div>
-                                @if(!empty($data5))
+                                @if(sizeof($data5) != 0)
                                     
                                 @else
                                     <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModalMessageIf">+&nbsp; Ajouter Information page</a>
