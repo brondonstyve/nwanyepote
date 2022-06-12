@@ -20,7 +20,15 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'email_verified_at',
         'password',
+        'type',
+        'phone',
+        'location',
+        'about',
+        'profile',
+
+
     ];
 
     /**
@@ -41,4 +49,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function commentairenp()
+    {
+        return $this->hasMany(App\Model\CommentaireEventnps::class, 'foreign_key', 'local_key');
+    }
 }

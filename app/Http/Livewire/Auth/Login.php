@@ -16,23 +16,24 @@ class Login extends Component
         'password' => 'required',
     ];
 
-    public function mount() {
-        
-        if(auth()->user()){
+    public function mount()
+    {
+
+        if (auth()->user()) {
             redirect('/dashboard');
         }
         //$this->fill(['email' => 'admin@Nwanyepote.com', 'password' => 'secret']);
     }
 
-    public function login() {
+    public function login()
+    {
         $credentials = $this->validate();
-        if(auth()->attempt(['email' => $this->email, 'password' => $this->password], $this->remember_me)) {
+        if (auth()->attempt(['email' => $this->email, 'password' => $this->password], ['type' => 'admin'], $this->remember_me)) {
             $user = User::where(["email" => $this->email])->first();
             auth()->login($user, $this->remember_me);
-            return redirect()->intended('/dashboard');        
-        }
-        else{
-            return $this->addError('email', trans('Nom d\'utilisateur ou mot de passe incorrect.')); 
+            return redirect()->intended('/dashboard');
+        } else {
+            return $this->addError('email', trans('Nom d\'utilisateur ou mot de passe incorrect.'));
         }
     }
 

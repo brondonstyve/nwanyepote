@@ -2,6 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\models\infoEvenements;
+use App\models\contacteInfo;
+use App\models\infocontactes;
+use App\models\galeries;
+use App\Models\infoGaleries;
+use App\models\apropoBaties;
+use App\models\caracteristiques;
+use App\models\objectifs;
+use App\models\infoPageApropos;
+use App\models\partenaires;
+use App\models\npEvenements;
+use App\models\commentaireEventnps;
 use App\Models\accueil;
 use App\Models\article;
 use App\Models\commentaireArticle;
@@ -30,35 +42,50 @@ use Stripe\Stripe;
 
 class frontController extends Controller
 {
-    public function index(){
-        $infosPage=accueil::first();
-        $commentaire=commentaireSite::get();
-        return view('frontend.pages.index',compact('infosPage','commentaire'));
+    public function index()
+    {
+        $infosPage = accueil::first();
+        $commentaire = commentaireSite::get();
+        return view('frontend.pages.index', compact('infosPage', 'commentaire'));
     }
 
-    public function propos(){
-        return view('frontend.pages.propos');
+    public function propos()
+    {
+        $partenaires = partenaires::all();
+        $objectifs = objectifs::all();
+        $caracteristiques = caracteristiques::all();
+        $informations = infoPageApropos::all();
+        $apropobs = apropoBaties::all();
+        return view('frontend.pages.propos', compact('partenaires', 'objectifs', 'caracteristiques', 'informations', 'apropobs'));
     }
 
-    public function sport(){
-        $infosPage=pageSport::first();
-        $contenuSport=sport::paginate(6);
-        return view('frontend.pages.sport',compact('infosPage','contenuSport'));
+    public function sport()
+    {
+        $infosPage = pageSport::first();
+        $contenuSport = sport::paginate(6);
+        return view('frontend.pages.sport', compact('infosPage', 'contenuSport'));
     }
 
-    public function tourisme(){
-        $infosPage=pageTourisme::first();
-        $contenuTourisme=Tourisme::paginate(6);
-        return view('frontend.pages.tourisme',compact('infosPage','contenuTourisme'));
+    public function tourisme()
+    {
+        $infosPage = pageTourisme::first();
+        $contenuTourisme = Tourisme::paginate(6);
+        return view('frontend.pages.tourisme', compact('infosPage', 'contenuTourisme'));
     }
 
-    public function culture(){
-        $infosPage=pageCulture::first();
-        $contenuCulture=culture::paginate(6);
-        return view('frontend.pages.culture',compact('infosPage','contenuCulture'));
+    public function culture()
+    {
+        $infosPage = pageCulture::first();
+        $contenuCulture = culture::paginate(6);
+        return view('frontend.pages.culture', compact('infosPage', 'contenuCulture'));
     }
 
     public function evenement(){
+        $lastid = npEvenements::latest('id')->first();
+        $infoEvent = infoEvenements::all();
+        $lastEvents = npEvenements::where('id', $lastid->id)->get();
+        $npEvents = npEvenements::all();
+  
         $evenementParticipatif=evenementparticipatif::orderBy('created_at','desc')
         ->paginate(9);
 
@@ -83,17 +110,21 @@ class frontController extends Controller
             $total=1;
         }
 
-        return view('frontend.pages.evenement',compact('evenementParticipatif','participant','total','evenementParticipatifRecent'));
+        return view('frontend.pages.evenement',compact('evenementParticipatif','participant','total','evenementParticipatifRecent','infoEvent', 'lastEvents', 'npEvents'));
         }else{
-        return view('frontend.pages.evenement',compact('evenementParticipatif'));
+        return view('frontend.pages.evenement',compact('evenementParticipatif','infoEvent', 'lastEvents', 'npEvents'));
         }
         
-        
+
     }
 
-    public function detailEvenement(){
-        return view('frontend.pages.detailEvenement');
+    public function detailEvenement($id)
+    {
+        $nombcoment = commentaireEventnps::where('event_id', $id)->count();
+        $detailEvents = npEvenements::where('id', $id)->get();
+        return view('frontend.pages.detailEvenement', compact('detailEvents', 'nombcoment'));
     }
+
 
     public function detailEvenementParticipatif(request $request){
         $evenement=evenementparticipatif::find($request->id);
@@ -120,33 +151,44 @@ class frontController extends Controller
         ->orderBy('created_at','desc')
         ->get();
         return view('frontend.pages.detailArticle',compact('infosPage','article','suivant','precedent','aimer','nbComment'));
+
     }
 
-    public function contact(){
-        return view('frontend.pages.contact');
+    public function contact()
+    {
+        $infoplateformes = infocontactes::all();
+        $infoContactes = contacteInfo::all();
+        return view('frontend.pages.contact', compact('infoContactes', 'infoplateformes'));
     }
 
-    public function ressource(){
-        $infosPage=ressource::first();
-        $ressources=contenueressource::get();
-        return view('frontend.pages.ressource',compact('infosPage','ressources'));
+    public function ressource()
+    {
+        $infosPage = ressource::first();
+        $ressources = contenueressource::get();
+        return view('frontend.pages.ressource', compact('infosPage', 'ressources'));
     }
 
-    public function galerie(){
-        return view('frontend.pages.galerie');
+    public function galerie()
+    {
+        $galeries = galeries::all()->take(3);
+        $infoGaleries = infoGaleries::all();
+        return view('frontend.pages.galerie', compact('infoGaleries', 'galeries'));
     }
 
-    public function faq(){
-        $infosPage=pageFaq::first();
-        $faq=faq::get();
-        return view('frontend.pages.faq',compact('infosPage','faq'));
+    public function faq()
+    {
+        $infosPage = pageFaq::first();
+        $faq = faq::get();
+        return view('frontend.pages.faq', compact('infosPage', 'faq'));
     }
 
-    public function boutique(){
+    public function boutique()
+    {
         return view('frontend.pages.boutique');
     }
 
-    public function panier(){
+    public function panier()
+    {
         return view('frontend.pages.panier');
     }
 
@@ -160,23 +202,28 @@ class frontController extends Controller
         return view('frontend.pages.caisse');
     }
 
-    public function compte(){
+    public function compte()
+    {
         return view('frontend.pages.compte');
     }
 
-    public function login(){
+    public function login()
+    {
         return view('frontend.pages.login');
     }
 
-    public function signin(){
+    public function signin()
+    {
         return view('frontend.pages.signin');
     }
 
-    public function resetPassword(){
+    public function resetPassword()
+    {
         return view('frontend.pages.resetPassword');
     }
 
-    public function politique(){
+    public function politique()
+    {
         return view('frontend.pages.politique');
     }
     
@@ -203,5 +250,4 @@ class frontController extends Controller
         return view('frontend.pages.participant',compact('code'));
     }
 
-   
 }
