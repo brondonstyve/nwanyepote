@@ -24,6 +24,7 @@
                 <!-- /.container -->
             </section>
             <!-- /section -->
+            
             @livewire('login-user')
             <div class="modal fade" id="modal-signin" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -40,6 +41,7 @@
                                 <a href="{{route('reset-password-front')}}" class="btn btn-primary rounded-pill btn-login w-100 mb-2">Envoyer</a>
                             </form>
                             <!-- /form -->
+                            
                         </div>
                         <!--/.modal-content -->
                     </div>

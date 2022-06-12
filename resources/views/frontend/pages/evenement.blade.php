@@ -43,48 +43,65 @@
         <div class="row gy-10 gy-sm-13 gx-lg-3 align-items-center">
 
 
+            @if ($evenementParticipatifRecent)
+                
             <div class="col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
                 @if(empty($infoEvent))
-                    <h2 class="display-3 text-primary  mb-3 px-lg-8">Pas de tritre 1</h2>
-                    <p class="lead  text-center">Veuiller remplire les information de la page</p>
+                    <h2 class="display-3 text-primary  mb-3 px-lg-8">Evénement participatif le plus récent.</h2>
+                    <p class="lead  text-center">Nos talents locaux présentent en live des oeuvres réalisées par eux même pendant des célébrations auxquelles ils prennent part.</p>
                 @else
                     @foreach ($infoEvent as $item)
                         <h2 class="display-3 text-primary  mb-3 px-lg-8">{{ $item->titre1 }}</h2>
                         <p class="lead  text-center">{{ $item->libelet1 }}</p>
                     @endforeach
                 @endif
-                <a href="#" target="_blank" class="btn btn-lg btn-primary rounded-pill mb-10">En savoir plus</a>
+               <a href="{{route('detail-evenement-participatif',$evenementParticipatifRecent->id)}}" class="btn btn-lg btn-primary rounded-pill mb-10">En savoir plus</a>
+
+
             </div>
 
 
             <div class="col-md-8 col-lg-6 position-relative">
-                <a href="https://www.youtube.com/watch?v=0yMbMs_iG8g" class="btn btn-circle btn-primary btn-play ripple mx-auto mb-5 position-absolute" style="top:50%; left: 50%; transform: translate(-50%,-50%); z-index:3;" data-glightbox=""><i class="icn-caret-right"></i></a>
+
+                @if ($evenementParticipatifRecent->type=='image')
+                <figure class="rounded"><img src="{{asset('app/evenementparticipatif/'.$evenementParticipatifRecent->image)}}" alt="" style="min-height: 300px;max-height: 500px"></figure>
+                    
+                @else
+                @foreach ($participant as $key=>$item)
+                <a href="{{$item->video}}" class="btn btn-circle btn-primary btn-play ripple mx-auto mb-5 position-absolute" style="top:50%; left: 50%; transform: translate(-50%,-50%); z-index:3;" data-glightbox=""><i class="icn-caret-right"></i></a>
+                @break
+                @endforeach
                 <div class="shape rounded bg-soft-primary rellax d-md-block" data-rellax-speed="0" style="bottom: -1.8rem; right: -1.5rem; width: 85%; height: 90%; transform: translate3d(0px, 0px, 0px);"></div>
-                <figure class="rounded"><img src="assets/img/photos/7.jpg" srcset="../../assets/img/photos/7.jpg 2x" alt=""></figure>
-            </div>
+                <figure class="rounded"><img src="{{asset('assets/img/logo.jpg')}}" alt="" style="min-height: 300px;max-height: 500px"></figure>
+            
+                @endif
+                </div>
             <div class="col-lg-5 col-xl-4 offset-lg-1">
-                <h3 class="display-4 mb-3">Journée musicale Batié 2016</h3>
-                <p class="lead fs-lg mb-6">Parainé par le chez du village, cette journée permet à nos jeunes...</p>
+                <h3 class="display-4 mb-3">{{$evenementParticipatifRecent->titre}}</h3>
+                <p class="lead fs-lg mb-6 text-justify">{{substr($evenementParticipatifRecent->article1,0,200)}}[...]</p>
                 <p class="lead fs-lg mb-6">Participants</p>
                 <ul class="progress-list">
+
+                    @if (sizeOf($participant)==0)
+                        <li>
+                            <p>Aucun participant</p>
+                        </li>
+                    @else
+                    @foreach ($participant as $key=>$item)
                     <li>
-                        <p>Franck (<span>Vainqueur</span>)</p>
-                        <div class="progressbar line primary" data-value="100"></div>
+                        <p>{{$item->name}} @if($key==0 && $item->voie!=0) (<span>Vainqueur</span>) @endif</p>
+                        <div class="progressbar line primary" data-value="{{($item->voie/$total)*100}}"></div>
                     </li>
-                    <li>
-                        <p>Paulin</p>
-                        <div class="progressbar line primary" data-value="80"></div>
-                    </li>
-                    <li>
-                        <p>Indilla</p>
-                        <div class="progressbar line primary" data-value="85"></div>
-                    </li>
-                    <li>
+                    @endforeach
+                    @endif
                 </ul>
                 <!-- /.progress-list -->
             </div>
 
             <!--/column -->
+            
+            @endif
+            
         </div>
         <!--/.row -->
     </div>
@@ -176,7 +193,7 @@
             <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto ">
                 <h2 class="fs-15 text-uppercase text-primary text-center ">Nos Evénements</h2>
                 @if(empty($infoEvent))
-                    <h3 class="display-4 mb-6 text-center ">pas de titre 3</h3>
+                    <h3 class="display-4 mb-6 text-center ">EVENEMENT NON PARTICIPATIF.</h3>
                 @else
                     @foreach ($infoEvent as $item)
                         <h3 class="display-4 mb-6 text-center ">{{ $item->titre3 }}</h3>
@@ -236,24 +253,25 @@
                                         </article>
                                         <!-- /article -->
                                     </div>
+
                                     <!-- /.item-inner -->
                                 </div>
                             @endforeach
                         @endif
                         <!--/.swiper-slide -->
                     </div>
-                    <!--/.swiper-wrapper -->
-                    <span class="swiper-notification " aria-live="assertive " aria-atomic="true "></span></div>
-                <!-- /.swiper -->
-                <div class="swiper-controls ">
-                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal "><span class="swiper-pagination-bullet swiper-pagination-bullet-active " tabindex="0 " role="button
-                        " aria-label="Go to slide 1 " aria-current="true "></span><span class="swiper-pagination-bullet " tabindex="0 " role="button " aria-label="Go to slide 2 "></span><span class="swiper-pagination-bullet " tabindex="0 " role="button
-                        " aria-label="Go to slide 3 "></span></div>
-                </div>
             </div>
             <!-- /.swiper-container -->
         </div>
         <!-- /.position-relative -->
+
+
+        <div class="row ">
+            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto ">
+                <h6 class=" mb-6 text-center ">EVENEMENT PARTICIPATIF.</h6>
+            </div>
+            <!-- /column -->
+        </div>
 
         <!-- /.row -->
         <div class="position-relative ">
@@ -263,37 +281,40 @@
                     <div class="swiper-wrapper " id="swiper-wrapper-c2549ac53cc1635b " aria-live="off " style="cursor: grab; transform: translate3d(0px, 0px, 0px); ">
 
                         <!--/.swiper-slide -->
+
+                        @foreach ($evenementParticipatif as $item)
                         <div class="swiper-slide " style="width: 465px; " role="group " aria-label="3 / 4 ">
                             <div class="item-inner ">
                                 <article>
                                     <div class="card ">
-                                        <figure class="card-img-top overlay overlay-1 hover-scale ">
-                                            <a href="detaiEventParticipatif.html"> <img src="./assets/img/photos/Istock_Photodocument-352-84-1080-720-20210906154513.jpg" alt=" "><span class="bg "></span></a>
+                                        <figure class="card-img-top overlay overlay-1 hover-scale"  style="min-height: 350px;max-height: 350px">
+                                            <a href="{{route('detail-evenement-participatif',$item->id)}}"> <img src="{{asset('app/evenementparticipatif/'.$item->image)}}" alt=" "><span class="bg "></span></a>
                                             <figcaption>
                                                 <h5 class="from-top mb-0">Lire plus</h5>
                                             </figcaption>
                                         </figure>
-                                        <div class="card-body ">
+                                        <div class="card-body " style="min-height: 250px;max-height: 250px">
                                             <div class="post-header ">
                                                 <div class="post-category text-line ">
-                                                    <a href="detaiEventParticipatif.html" class="hover " rel="category ">Evénement Participatif</a>
+                                                    <a href="{{route('detail-evenement-participatif',$item->id)}}" class="hover " rel="category ">Evénement Participatif</a>
                                                 </div>
                                                 <!-- /.post-category -->
-                                                <h2 class="post-title h3 mt-1 mb-3 "><a class="link-dark " href="detaiEventParticipatif.html">Fête culturelle de 2021</a></h2>
+                                                <h2 class="post-title h3 mt-1 mb-3 "><a class="link-dark " href="{{route('detail-evenement-participatif',$item->id)}}">{{$item->titre}}</a></h2>
                                             </div>
                                             <!-- /.post-header -->
-                                            <div class="post-content ">
-                                                <p>Parainé par le chez du village, cette journée permet à nos jeunes de se divertir tout en nous montrant...</p>
+                                            <div class="post-content text-justify">
+                                                <p>{!!substr($item->article1,0,150)!!} [...]</p>
                                             </div>
                                             <!-- /.post-content -->
                                         </div>
                                         <!--/.card-body -->
                                         <div class="card-footer ">
                                             <ul class="post-meta d-flex mb-0 ">
-                                                <li class="post-date "><i class="uil uil-calendar-alt "></i><span>26 Feb 2021</span></li>
-                                                <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>6</a></li>
+                                                <li class="post-date "><i class="uil uil-calendar-alt "></i><span>{{$item->created_at}}</span></li>
+                                                <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>xx</a></li>
                                                 <li class="post-likes ms-auto ">
-                                                    <button style="background-color: #3f78e0;" class="text-white">Participer</button>
+                                                    <a href="{{route('participer',$item->id)}}"><button style="background-color: #3f78e0;" class="text-white">Participer</button></a>
+                                                    
                                                 </li>
                                             </ul>
                                             <!-- /.post-meta -->
@@ -306,43 +327,15 @@
                             </div>
                             <!-- /.item-inner -->
                         </div>
+                        @endforeach
+                        
+  
                     </div>
-                    <!--/.swiper-wrapper -->
-                    <span class="swiper-notification " aria-live="assertive " aria-atomic="true "></span></div>
-                <!-- /.swiper -->
-                <div class="swiper-controls ">
-                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal "><span class="swiper-pagination-bullet swiper-pagination-bullet-active " tabindex="0 " role="button
-                        " aria-label="Go to slide 1 " aria-current="true "></span><span class="swiper-pagination-bullet " tabindex="0 " role="button " aria-label="Go to slide 2 "></span><span class="swiper-pagination-bullet " tabindex="0 " role="button
-                        " aria-label="Go to slide 3 "></span></div>
-                </div>
             </div>
             <!-- /.swiper-container -->
         </div>
         <nav class="d-flex" aria-label="pagination">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Précédent">
-                        <span aria-hidden="true"><i class="uil uil-arrow-left"></i></span>
-                    </a>
-                </li>
-                <li class="page-item active">
-                    <a class="page-link" href="#">1
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">2
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#">3
-                    </a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Suivant">
-                        <span aria-hidden="true"><i class="uil uil-arrow-right"></i></span>
-                    </a>
-                </li>
-            </ul>
+            {{$evenementParticipatif->links()}}
             <!-- /.pagination -->
         </nav>
         <!-- /.position-relative -->

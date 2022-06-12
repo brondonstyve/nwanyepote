@@ -37,7 +37,7 @@
                    
                    @foreach ($contenuSport as $i=>$item)
                    <div class="project grid grid-view">
-                    <div class="row g-6 isotope">
+                    <div class="row g-6 ">
                         <div class="item col-md-6">
                             <div class="project-details d-flex justify-content-center flex-column">
                                 <div class="post-header">
@@ -62,15 +62,17 @@
                             <!-- /.project-details -->
                         </div>
                         <!-- /.item -->
-                        @foreach (array_reverse(explode('<-->',$item->image)) as $item)
+                        
+                            @foreach (array_reverse(explode('<-->',$item->image)) as $item)
                             @if ($item)
-                            <div class="item col-md-6">
+                            <div class="item col-md-5">
                                 <figure class="itooltip itooltip-light hover-scale rounded" title=''>
                                     <a href="{{asset('app/sport/'.$item)}}" data-glightbox="title: Cursus Inceptos Sit" data-gallery="project-1"> <img src="{{asset('app/sport/'.$item)}}" alt="" /></a>
                                 </figure>
                             </div>
                             @endif
                         @endforeach
+                       
                         
                         <!-- /.item -->
                         
