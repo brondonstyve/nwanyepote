@@ -57,6 +57,40 @@ class Evenement extends Component
     public $data, $data2;
     public function mount()
     {
+        $this->video1 = "";
+        //$this->image_principal,
+        $this->titres = "";
+        $this->titres1 = "";
+        $this->libelet1a = "";
+        $this->libelet1b = "";
+        $this->libelet1c = "";
+        $this->directeur_publication = "";
+        $this->apropoDP = "";
+        //$this->imagedp,
+        //$this->imagenp2 = "";
+        $this->video2 = "";
+        $this->titres2 = "";
+        $this->libelet2a = "";
+        $this->libelet2b = "";
+        $this->libelet2c = "";
+        //$this->imagenp3 = "";
+        $this->video3 = "";
+        $this->titres3 = "";
+        $this->libelet3a = "";
+        $this->libelet3b = "";
+        $this->libelet3c = "";
+        //$this->imagenp4 = "";
+        $this->video4 = "";
+        $this->titres4 = "";
+        $this->libelet4a = "";
+        $this->libelet4b = "";
+        $this->libelet4c = "";
+        //$this->imagenp5 = "";
+        $this->video5 = "";
+        $this->titres5 = "";
+        $this->libelet5a = "";
+        $this->libelet5b = "";
+        $this->libelet5c = "";
     }
 
     public function render()
@@ -118,56 +152,83 @@ class Evenement extends Component
         $image5 = $this->imagenp5;
         $file5 = '';
 
-        foreach ($image as $key => $value) {
-            $img = ImageIntervention::make($image[$key])->encode('jpg');
-            $name = Str::random() . time() . '.jpg';
-            $path = public_path() . "/app/evenement/";
-            $img->save($path . $name);
-            $file = $file . '->' . $name;
+        if (empty($image)) {
+            $file = "";
+        } else {
+            foreach ($image as $key => $value) {
+                $img = ImageIntervention::make($image[$key])->encode('jpg');
+                $name = Str::random() . time() . '.jpg';
+                $path = public_path() . "/app/evenement/";
+                $img->save($path . $name);
+                $file = $file . '->' . $name;
+            }
         }
 
-        foreach ($image2 as $key => $value) {
-            $imgB = ImageIntervention::make($image2[$key])->encode('jpg');
-            $nameB = Str::random() . time() . '.jpg';
-            $path = public_path() . "/app/evenement/";
-            $imgB->save($path . $nameB);
-            $file2 = $file2 . '->' . $nameB;
+        if (empty($image2)) {
+            $file2 = "";
+        } else {
+            foreach ($image2 as $key => $value) {
+                $imgB = ImageIntervention::make($image2[$key])->encode('jpg');
+                $nameB = Str::random() . time() . '.jpg';
+                $path = public_path() . "/app/evenement/";
+                $imgB->save($path . $nameB);
+                $file2 = $file2 . '->' . $nameB;
+            }
         }
 
-        foreach ($image3 as $key => $value) {
-            $imgC = ImageIntervention::make($image3[$key])->encode('jpg');
-            $nameC = Str::random() . time() . '.jpg';
-            $path = public_path() . "/app/evenement/";
-            $imgC->save($path . $nameC);
-            $file3 = $file3 . '->' . $nameC;
+        if (empty($image3)) {
+            $file3 = "";
+        } else {
+            foreach ($image3 as $key => $value) {
+                $imgC = ImageIntervention::make($image3[$key])->encode('jpg');
+                $nameC = Str::random() . time() . '.jpg';
+                $path = public_path() . "/app/evenement/";
+                $imgC->save($path . $nameC);
+                $file3 = $file3 . '->' . $nameC;
+            }
         }
 
-        foreach ($image4 as $key => $value) {
-            $imgD = ImageIntervention::make($image4[$key])->encode('jpg');
-            $nameD = Str::random() . time() . '.jpg';
-            $path = public_path() . "/app/evenement/";
-            $imgD->save($path . $nameD);
-            $file4 = $file4 . '->' . $nameD;
+        if (empty($image4)) {
+            $file4 = "";
+        } else {
+            foreach ($image4 as $key => $value) {
+                $imgD = ImageIntervention::make($image4[$key])->encode('jpg');
+                $nameD = Str::random() . time() . '.jpg';
+                $path = public_path() . "/app/evenement/";
+                $imgD->save($path . $nameD);
+                $file4 = $file4 . '->' . $nameD;
+            }
         }
 
-        foreach ($image5 as $key => $value) {
-            $imgE = ImageIntervention::make($image5[$key])->encode('jpg');
-            $nameE = Str::random() . time() . '.jpg';
-            $path = public_path() . "/app/evenement/";
-            $imgE->save($path . $nameE);
-            $file5 = $file5 . '->' . $nameE;
+        if (empty($image5)) {
+            $file5 = "";
+        } else {
+            foreach ($image5 as $key => $value) {
+                $imgE = ImageIntervention::make($image5[$key])->encode('jpg');
+                $nameE = Str::random() . time() . '.jpg';
+                $path = public_path() . "/app/evenement/";
+                $imgE->save($path . $nameE);
+                $file5 = $file5 . '->' . $nameE;
+            }
         }
 
-        $img1 = ImageIntervention::make($imagep)->encode('jpg');
-        $name1 = Str::random() . time() . '.jpg';
-        $path = public_path() . "/app/evenement/";
-        $img1->save($path . $name1);
+        if (empty($imagep)) {
+            $name1 = "";
+        } else {
+            $img1 = ImageIntervention::make($imagep)->encode('jpg');
+            $name1 = Str::random() . time() . '.jpg';
+            $path = public_path() . "/app/evenement/";
+            $img1->save($path . $name1);
+        }
 
-
-        $img2 = ImageIntervention::make($imagedpu)->encode('jpg');
-        $name2 = Str::random() . time() . '.jpg';
-        $path = public_path() . "/app/evenement/";
-        $img2->save($path . $name2);
+        if (empty($imagedpu)) {
+            $name2 = "";
+        } else {
+            $img2 = ImageIntervention::make($imagedpu)->encode('jpg');
+            $name2 = Str::random() . time() . '.jpg';
+            $path = public_path() . "/app/evenement/";
+            $img2->save($path . $name2);
+        }
 
         $respons = npEvenements::create([
             'imagenp' => $file,
@@ -210,6 +271,8 @@ class Evenement extends Component
             'libelet5b' => $this->libelet5b,
             'libelet5c' => $this->libelet5c,
         ]);
+
+        $this->mount();
 
         if ($respons) {
             session()->flash('message', " l'information a ete enregistrer avec succes.");

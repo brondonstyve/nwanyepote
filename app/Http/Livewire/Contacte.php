@@ -17,6 +17,20 @@ class Contacte extends Component
 
     public function mount()
     {
+        $this->adresse1 = "";
+        $this->adresse2 = "";
+        $this->numero1 = "";
+        $this->numero2 = "";
+        $this->email1 = "";
+        $this->email2 = "";
+        $this->youtube = "";
+        $this->facebook = "";
+        $this->twiter = "";
+        $this->instagramme = "";
+        $this->titre_page = "";
+        $this->libelet_page = "";
+        $this->titre_formulaire = "";
+        $this->libelet_formulaire = "";
     }
 
     public function render()
@@ -37,7 +51,7 @@ class Contacte extends Component
         ]);
 
         $respons = contacteInfo::create($validatedDate);
-
+        $this->mount();
         if ($respons) {
             session()->flash('message', 'Vos information on ete envoyer avec succes.');
         } else {
@@ -68,7 +82,7 @@ class Contacte extends Component
             'twiter' => $this->twiter,
             'instagramme' => $this->instagramme,
         ]);
-
+        $this->mount();
         if ($respons) {
             session()->flash('message', 'Vos information on ete enregistrer avec succes.');
         } else {

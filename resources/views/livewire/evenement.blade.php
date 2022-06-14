@@ -275,7 +275,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form id="myForm">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label"></label>
                                 <div class="parent-div">
@@ -355,17 +355,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Libelet 1a</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1a" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1a" rows="7" maxlength="200"></textarea>
                                 @error('libelet1a') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Libelet 1b</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1b" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1b" rows="7" maxlength="200"></textarea>
                                 @error('libelet1b') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Libelet 1c</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1c" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1c" rows="7" maxlength="200"></textarea>
                                 @error('libelet1c') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
@@ -375,7 +375,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">A propos du DP</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="apropoDP" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="apropoDP" rows="7" maxlength="200"></textarea>
                                 @error('apropoDP') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
@@ -456,17 +456,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 2a</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2a" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2a" rows="7" maxlength="200"></textarea>
                                     @error('libelet2a') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 2b</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2b" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2b" rows="7" maxlength="200"></textarea>
                                     @error('libelet2b') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 2c</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2c" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2c" rows="7" maxlength="200"></textarea>
                                     @error('libelet2c') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
 
@@ -519,17 +519,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 3a</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3a" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3a" rows="7" maxlength="200"></textarea>
                                     @error('libelet3a') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 3b</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3b" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3b" rows="7" maxlength="200"></textarea>
                                     @error('libelet3b') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 3c</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3c" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3c" rows="7" maxlength="200"></textarea>
                                     @error('libelet3c') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
 
@@ -582,17 +582,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 4a</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4a" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4a" rows="7" maxlength="200"></textarea>
                                     @error('libelet4a') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 4b</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4b" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4b" rows="7" maxlength="200"></textarea>
                                     @error('libelet4b') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 4c</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4c" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4c" rows="7" maxlength="200"></textarea>
                                     @error('libelet4c') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
 
@@ -645,17 +645,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 5a</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5a" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5a" rows="7" maxlength="200"></textarea>
                                     @error('libelet5a') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 5b</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5b" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5b" rows="7" maxlength="200"></textarea>
                                     @error('libelet5b') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 5c</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5c" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5c" rows="7" maxlength="200"></textarea>
                                     @error('libelet5c') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
 
@@ -760,17 +760,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Libelet 1a</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1a" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1a" rows="7"></textarea>
                                 @error('libelet1a') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Libelet 1b</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1b" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1b" rows="7"></textarea>
                                 @error('libelet1b') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Libelet 1c</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1c" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet1c" rows="7"></textarea>
                                 @error('libelet1c') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
@@ -780,7 +780,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">A propos du DP</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="apropoDP" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="apropoDP" rows="7" maxlength="200"></textarea>
                                 @error('apropoDP') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
@@ -861,17 +861,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 2a</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2a" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2a" rows="7" maxlength="200"></textarea>
                                     @error('libelet2a') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 2b</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2b" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2b" rows="7" maxlength="200"></textarea>
                                     @error('libelet2b') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 2c</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2c" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet2c" rows="7" maxlength="200"></textarea>
                                     @error('libelet2c') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
 
@@ -924,17 +924,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 3a</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3a" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3a" rows="7" maxlength="200"></textarea>
                                     @error('libelet3a') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 3b</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3b" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3b" rows="7" maxlength="200"></textarea>
                                     @error('libelet3b') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 3c</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3c" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet3c" rows="7"></textarea>
                                     @error('libelet3c') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
 
@@ -987,17 +987,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 4a</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4a" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4a" rows="7" maxlength="200"></textarea>
                                     @error('libelet4a') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 4b</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4b" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4b" rows="7" maxlength="200"></textarea>
                                     @error('libelet4b') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 4c</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4c" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet4c" rows="7" maxlength="200"></textarea>
                                     @error('libelet4c') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
 
@@ -1050,17 +1050,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 5a</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5a" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5a" rows="7" maxlength="200"></textarea>
                                     @error('libelet5a') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 5b</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5b" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5b" rows="7" maxlength="200"></textarea>
                                     @error('libelet5b') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Libelet 5c</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5c" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="libelet5c" rows="7" maxlength="200"></textarea>
                                     @error('libelet5c') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
 
@@ -1078,4 +1078,7 @@
     </div>
 </main>
 @livewireScripts
+<script>
+    
+</script>
 

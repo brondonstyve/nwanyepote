@@ -6,6 +6,8 @@ use App\Models\accueil;
 use App\Models\apropoBaties;
 use App\Models\article;
 use App\Models\caracteristiques;
+
+use App\Models\commande;
 use App\Models\commentaireArticle;
 use App\Models\commentaireEvenementParticipatif;
 use App\Models\commentaireEventnps;
@@ -34,6 +36,7 @@ use App\Models\reponseCommentaireEvenementParticipatif;
 use App\Models\ressource;
 use App\Models\sport;
 use App\Models\Tourisme;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -77,78 +80,89 @@ class frontController extends Controller
         return view('frontend.pages.culture', compact('infosPage', 'contenuCulture'));
     }
 
-    public function evenement(){
+    public function evenement()
+    {
         $lastid = npEvenements::latest('id')->first();
+        $nombcoment = commentaireEventnps::where('event_id', $lastid->id)->count();
+        //debut last event time
+        $diffyear = Carbon::createFromDate($lastid->created_at)->age;
+        $date = Carbon::parse($lastid->created_at);
+        $todayDate = Carbon::now();
+        $diffd = $date->diffInDays($todayDate);
+        $diffm = $date->diffInMonths($todayDate);
+        //end last event time
         $infoEvent = infoEvenements::all();
         $lastEvents = npEvenements::where('id', $lastid->id)->get();
         $npEvents = npEvenements::all();
-  
-        $evenementParticipatif=evenementparticipatif::orderBy('created_at','desc')
-        ->paginate(9);
+        $evenementParticipatifRecent = null;
 
-        if (sizeOf($evenementParticipatif)>=0) {
+        $evenementParticipatif = evenementparticipatif::orderBy('created_at', 'desc')
+            ->paginate(9);
 
-            $evenementParticipatifRecent=evenementparticipatif::find($evenementParticipatif[0]->id);
+        if (sizeOf($evenementParticipatif) > 0) {
 
-            $participant=participant::join('users','users.id','participants.user')
-        ->where([
-            ['participants.evenement',$evenementParticipatif[0]->id],
-        ])
-        ->orderBy('participants.voie','desc')
-        ->limit(3)
-        ->get();
+            $evenementParticipatifRecent = evenementparticipatif::find($evenementParticipatif[0]->id);
 
-        $total=DB::table('participants')
-        ->whereEvenement($evenementParticipatif[0]->id)
-        ->select(DB::raw('Sum(voie) as voie'))
-        ->get('voie')[0]->voie;
+            $participant = participant::join('users', 'users.id', 'participants.user')
+                ->where([
+                    ['participants.evenement', $evenementParticipatif[0]->id],
+                ])
+                ->orderBy('participants.voie', 'desc')
+                ->limit(3)
+                ->get();
 
-        if ($total==0) {
-            $total=1;
+            $total = DB::table('participants')
+                ->whereEvenement($evenementParticipatif[0]->id)
+                ->select(DB::raw('Sum(voie) as voie'))
+                ->get('voie')[0]->voie;
+
+            if ($total == 0) {
+                $total = 1;
+            }
+
+            return view('frontend.pages.evenement', compact('evenementParticipatif', 'participant', 'total', 'evenementParticipatifRecent', 'infoEvent', 'lastEvents', 'npEvents', 'diffyear', 'diffm', 'diffd', 'nombcoment'));
+        } else {
+            return view('frontend.pages.evenement', compact('evenementParticipatif', 'infoEvent', 'lastEvents', 'npEvents', 'evenementParticipatifRecent', 'diffyear', 'diffm', 'diffd', 'nombcoment'));
         }
-
-        return view('frontend.pages.evenement',compact('evenementParticipatif','participant','total','evenementParticipatifRecent','infoEvent', 'lastEvents', 'npEvents'));
-        }else{
-        return view('frontend.pages.evenement',compact('evenementParticipatif','infoEvent', 'lastEvents', 'npEvents'));
-        }
-        
-
     }
 
     public function detailEvenement($id)
     {
         $nombcoment = commentaireEventnps::where('event_id', $id)->count();
         $detailEvents = npEvenements::where('id', $id)->get();
-        return view('frontend.pages.detailEvenement', compact('detailEvents', 'nombcoment'));
+        $npEvents = npEvenements::all();
+        return view('frontend.pages.detailEvenement', compact('detailEvents', 'nombcoment', 'npEvents'));
     }
 
 
-    public function detailEvenementParticipatif(request $request){
-        $evenement=evenementparticipatif::find($request->id);
-        $suivant=evenementparticipatif::find(($request->id+1));
-        $precedent=evenementparticipatif::find(($request->id-1));
-        $nbComment=commentaireEvenementParticipatif::whereEvenement($request->id)->count()+reponseCommentaireEvenementParticipatif::whereEvenement($request->id)->count();
-        
-        return view('frontend.pages.detailEvenementParticipatif',compact('evenement','suivant','precedent','nbComment'));
+    public function detailEvenementParticipatif(request $request)
+    {
+        $evenement = evenementparticipatif::find($request->id);
+        $suivant = evenementparticipatif::find(($request->id + 1));
+        $precedent = evenementparticipatif::find(($request->id - 1));
+        $nbComment = commentaireEvenementParticipatif::whereEvenement($request->id)->count() + reponseCommentaireEvenementParticipatif::whereEvenement($request->id)->count();
+
+        return view('frontend.pages.detailEvenementParticipatif', compact('evenement', 'suivant', 'precedent', 'nbComment'));
     }
 
-    public function article(){
-        $infosPage=pageArticle::first();
-        return view('frontend.pages.article',compact('infosPage'));
+    public function article()
+    {
+        $infosPage = pageArticle::first();
+        return view('frontend.pages.article', compact('infosPage'));
     }
 
-    public function detailArticle(Request $request){
-        $infosPage=pageArticle::first();
-        $article=article::find($request->id);
-        $suivant=article::find(($request->id+1));
-        $precedent=article::find(($request->id-1));
-        $nbComment=commentaireArticle::whereArticle($request->id)->count()+reponseCommentaireArticle::whereArticle($request->id)->count();
-        $aimer=DB::table('articles')
-        ->limit(3)
-        ->orderBy('created_at','desc')
-        ->get();
-        return view('frontend.pages.detailArticle',compact('infosPage','article','suivant','precedent','aimer','nbComment'));
-
+    public function detailArticle(Request $request)
+    {
+        $infosPage = pageArticle::first();
+        $article = article::find($request->id);
+        $suivant = article::find(($request->id + 1));
+        $precedent = article::find(($request->id - 1));
+        $nbComment = commentaireArticle::whereArticle($request->id)->count() + reponseCommentaireArticle::whereArticle($request->id)->count();
+        $aimer = DB::table('articles')
+            ->limit(3)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return view('frontend.pages.detailArticle', compact('infosPage', 'article', 'suivant', 'precedent', 'aimer', 'nbComment'));
     }
 
     public function contact()
@@ -157,6 +171,7 @@ class frontController extends Controller
         $infoContactes = contacteInfo::all();
         return view('frontend.pages.contact', compact('infoContactes', 'infoplateformes'));
     }
+
 
     public function ressource()
     {
@@ -189,19 +204,30 @@ class frontController extends Controller
         return view('frontend.pages.panier');
     }
 
-    public function detailProduit(request $request){
-        $idProduct=$request->id;
-        return view('frontend.pages.detailProduit',compact('idProduct'));
+    public function detailProduit(request $request)
+    {
+        $idProduct = $request->id;
+        return view('frontend.pages.detailProduit', compact('idProduct'));
     }
 
-    public function caisse(){
+    public function caisse()
+    {
 
         return view('frontend.pages.caisse');
     }
 
     public function compte()
     {
-        return view('frontend.pages.compte');
+        //where('user', auth()->user()->id);
+        //$nomb_event = participant::with('evenementparticipatif')->where('evenementparticipatif.statut', true)->where('user', 'evenementparticipatif.id')->where('user', auth()->user()->id)->count();
+        $nomb_event = participant::join('evenementparticipatifs', 'evenementparticipatifs.id', '=', 'participants.evenement')
+            ->where('participants.user', auth()->user()->id)
+            ->where('evenementparticipatifs.statut', true)
+            ->count();
+        $nomb_participation = participant::where('user', auth()->user()->id)->count();
+        $nomb_commande = commande::where('compte', auth()->user()->id)->where('status', false)->count();
+        $com_livrer = commande::where('compte', auth()->user()->id)->where('status', true)->count();
+        return view('frontend.pages.compte', compact('nomb_participation', 'nomb_event', 'nomb_commande', 'com_livrer'));
     }
 
     public function login()
@@ -223,28 +249,30 @@ class frontController extends Controller
     {
         return view('frontend.pages.politique');
     }
-    
-    public function commande(){
 
-        $commande=DB::table('commandes')
-        ->join('produits','produits.id','commandes.produit')
-        ->whereCompte(auth()->user()->id)
-        ->select('commandes.montant','commandes.codeCom','commandes.created_at','produits.libelle','commandes.adresse','commandes.status','commandes.montant_total','commandes.quantite')
-        ->orderBy('commandes.created_at','desc')
-        ->get();
+    public function commande()
+    {
 
-        return view('frontend.pages.commande',compact('commande'));
+        $commande = DB::table('commandes')
+            ->join('produits', 'produits.id', 'commandes.produit')
+            ->whereCompte(auth()->user()->id)
+            ->select('commandes.montant', 'commandes.codeCom', 'commandes.created_at', 'produits.libelle', 'commandes.adresse', 'commandes.status', 'commandes.montant_total', 'commandes.quantite')
+            ->orderBy('commandes.created_at', 'desc')
+            ->get();
+
+        return view('frontend.pages.commande', compact('commande'));
     }
 
-    public function participer(request $request){
-        $code=$request->id;
-        return view('frontend.pages.participer',compact('code'));
+    public function participer(request $request)
+    {
+        $code = $request->id;
+        return view('frontend.pages.participer', compact('code'));
     }
 
-    public function participant(request $request){
-        $code=$request->id;
+    public function participant(request $request)
+    {
+        $code = $request->id;
 
-        return view('frontend.pages.participant',compact('code'));
+        return view('frontend.pages.participant', compact('code'));
     }
-
 }

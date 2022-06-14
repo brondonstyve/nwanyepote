@@ -25,6 +25,32 @@ class Apropos extends Component
     public $data, $data2, $data3, $data4;
     public function mount()
     {
+        $this->grand_titre = "";
+        $this->titre1 = "";
+        $this->titre2 = "";
+        $this->titre3 = "";
+        $this->nom_part = "";
+        $this->services = "";
+        $this->social_media1 = "";
+        $this->social_media2 = "";
+        $this->social_media3 = "";
+        $this->link1 = "";
+        $this->link2 = "";
+        $this->link3 = "";
+        $this->titreOb = "";
+        $this->objectif_num = "";
+        $this->objectif_intitule = "";
+        $this->objectif_libelet = "";
+        $this->titreC = "";
+        $this->caract_num = "";
+        $this->caract_intitule = "";
+        $this->caract_libelet = "";
+        $this->titreab = "";
+        $this->text1ab = "";
+        $this->text2ab = "";
+        $this->imageab = "";
+        $this->lireplusab = "";
+        $this->modal = "";
     }
 
     public function render()
@@ -44,7 +70,7 @@ class Apropos extends Component
             'text1ab' => 'required',
             'text2ab' => 'required',
             'imageab.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'modal' => 'required',
+            //'modal' => 'required',
         ]);
 
         $imageab = $validatedDate['imageab'];
@@ -63,9 +89,9 @@ class Apropos extends Component
             'text2ab' => $validatedDate['text2ab'],
             'imageab' => $file,
             'lireplusab' => $this->lireplusab,
-            'modal' => $validatedDate['modal'],
+            'modal' => $this->modal,
         ]);
-
+        $this->mount();
         if ($respons) {
             session()->flash('message', 'le bloc a propos a ete enregistrer avec succes.');
         } else {
@@ -90,6 +116,7 @@ class Apropos extends Component
             'caract_intitule' => $validatedDate['caract_intitule'],
             'caract_libelet' => $validatedDate['caract_libelet'],
         ]);
+        $this->mount();
 
         if ($respons) {
             session()->flash('message', 'la carcateristique a ete enregistrer avec succes.');
@@ -127,7 +154,7 @@ class Apropos extends Component
             'objectif_libelet' => $validatedDate['objectif_libelet'],
             'imageOb' => $name,
         ]);
-
+        $this->mount();
         if ($respons) {
             session()->flash('message', " l'objectif a ete enregistrer avec succes.");
         } else {
@@ -164,7 +191,7 @@ class Apropos extends Component
             'link2' => $this->link2,
             'link3' => $this->link3,
         ]);
-
+        $this->mount();
         if ($respons) {
             session()->flash('message', 'Le partenaire a ete enregistrer avec succes.');
         } else {
@@ -199,7 +226,7 @@ class Apropos extends Component
             'titre2' => $validatedDate['titre2'],
             'titre3' => $validatedDate['titre3'],
         ]);
-
+        $this->mount();
         if ($respons) {
             session()->flash('message', "l'information a ete enregistrer avec succes.");
         } else {
@@ -273,7 +300,7 @@ class Apropos extends Component
             'titreab' => 'required',
             'text1ab' => 'required',
             'text2ab' => 'required',
-            'modal' => 'required',
+            //'modal' => 'required',
         ]);
 
         if ($this->select_id) {
@@ -288,7 +315,7 @@ class Apropos extends Component
                     'lireplusab' => $this->lireplusab,
                     'modal' => $this->modal,
                 ]);
-                dd(explode('->', $apropobId->imageab));
+                //dd(explode('->', $apropobId->imageab));
             } else {
                 $file = '';
                 foreach ($imageab as $key => $value) {

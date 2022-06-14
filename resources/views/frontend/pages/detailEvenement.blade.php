@@ -230,7 +230,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-3 mt-md-0 ms-auto">
-                                    <a href="#" class="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-start mb-0"><i class="uil uil-file-alt"></i> Tous les articles</a>
+                                    <a href="{{route('evenement')}}" class="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-start mb-0"><i class="uil uil-file-alt"></i> Tous les articles</a>
                                 </div>
                             </div>
                             <!-- /.author-info -->
@@ -251,32 +251,34 @@
                                 <div class="swiper swiper-initialized swiper-horizontal swiper-pointer-events">
                                     <div class="swiper-wrapper" id="swiper-wrapper-da917bc125d97111" aria-live="off" style="cursor: grab; transform: translate3d(0px, 0px, 0px);">
                                         <!--/.swiper-slide -->
-                                        <div class="swiper-slide" role="group" aria-label="4 / 4" style="width: 343.5px; margin-right: 30px;">
-                                            <article>
-                                                <figure class="overlay overlay-1 hover-scale rounded mb-5">
-                                                    <a href="#"> <img src="assets/img/photos/african-2771095_1920 (copie).jpg" alt=""><span class="bg"></span></a>
-                                                    <figcaption>
-                                                        <h5 class="from-top mb-0">Lire Plus</h5>
-                                                    </figcaption>
-                                                </figure>
-                                                <div class="post-header">
-                                                    <div class="post-category text-line">
-                                                        <a href="#" class="hover" rel="category">Business Tips</a>
+                                        @foreach ($npEvents as $even)
+                                            <div class="swiper-slide" role="group" aria-label="4 / 4" style="width: 343.5px; margin-right: 30px;">
+                                                <article>
+                                                    <figure class="overlay overlay-1 hover-scale rounded mb-5">
+                                                        <a href="{{ route('detail-evenement', $even->id) }}"> <img src="{{asset('/app/evenement/'.$even->image_principal)}}" alt=""><span class="bg"></span></a>
+                                                        <figcaption>
+                                                            <h5 class="from-top mb-0">Lire Plus</h5>
+                                                        </figcaption>
+                                                    </figure>
+                                                    <div class="post-header">
+                                                        <div class="post-category text-line">
+                                                            <a href="{{ route('detail-evenement', $even->id) }}" class="hover" rel="category">Evenements non participatif</a>
+                                                        </div>
+                                                        <!-- /.post-category -->
+                                                        <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="blog.html">{{ $even->titres }}</a></h2>
                                                     </div>
-                                                    <!-- /.post-category -->
-                                                    <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="blog.html">Morbi leo risus porta eget</a></h2>
-                                                </div>
-                                                <div class="post-footer">
-                                                    <ul class="post-meta mb-0">
-                                                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>7 Jan 2021</span></li>
-                                                        <li class="post-comments"><a href="#"><i class="uil uil-comment"></i>2</a></li>
-                                                    </ul>
-                                                    <!-- /.post-meta -->
-                                                </div>
-                                                <!-- /.post-footer -->
-                                            </article>
-                                            <!-- /article -->
-                                        </div>
+                                                    <div class="post-footer">
+                                                        <ul class="post-meta mb-0">
+                                                            <li class="post-date"><i class="uil uil-calendar-alt"></i><span>{{ $even->created_at->format('d') }} {{ $even->created_at->format('M') }} {{ $even->created_at->format('Y') }}</span></li>
+                                                            <li class="post-comments"><a href="#"><i class="uil uil-comment"></i></a></li>
+                                                        </ul>
+                                                        <!-- /.post-meta -->
+                                                    </div>
+                                                    <!-- /.post-footer -->
+                                                </article>
+                                                <!-- /article -->
+                                            </div>
+                                        @endforeach
                                         <!--/.swiper-slide -->
                                     </div>
                                     <!--/.swiper-wrapper -->

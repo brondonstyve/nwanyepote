@@ -360,9 +360,13 @@
                                 <input type="text" wire:model="twiter" class="form-control"  id="recipient-name">
                             </div>
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Instagramme :</label>
+                                <label for="recipient-name" class="col-form-label">Lien google map :</label>
                                 <input type="text" wire:model="instagramme" class="form-control"  id="recipient-name">
                             </div>
+                            <!--<div class="form-group">
+                                <label for="exampleFormControlTextarea1">Lien google map</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="instagramme" rows="7"></textarea>
+                            </div>-->
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -426,9 +430,13 @@
                                 <input type="text" wire:model="twiter" class="form-control"  id="recipient-name">
                             </div>
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Instagramme :</label>
+                                <label for="recipient-name" class="col-form-label">Lien google map :</label>
                                 <input type="text" wire:model="instagramme" class="form-control"  id="recipient-name">
                             </div>
+                            <!--<div class="form-group">
+                                <label for="exampleFormControlTextarea1">Lien google map</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="instagramme" rows="7"></textarea>
+                            </div>-->
                             </form>
                         </div>
                         <div class="modal-footer">

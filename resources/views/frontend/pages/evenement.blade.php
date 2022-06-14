@@ -38,6 +38,7 @@
 
 
 
+@if ($evenementParticipatifRecent)
 <section id="snippet-7" class="wrapper bg-light wrapper-border">
     <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
         <div class="row gy-10 gy-sm-13 gx-lg-3 align-items-center">
@@ -109,6 +110,7 @@
         <!--/.row -->
     </div>
 </section>
+@endif
 
 
 <section id="snippet-2" class="wrapper bg-light wrapper-border">
@@ -116,19 +118,33 @@
         <div class="row gx-lg-8 gx-xl-12 gy-12 align-items-center">
             <div class="col-md-10 col-lg-9 col-xl-8 col-xxl-7 mx-auto text-center">
                 @if(empty($infoEvent))
-                    <h2 class="display-3 text-primary mb-3 px-lg-8">pas de titre 2</h2>
-                    <p class="lead  text-center">veuiller remplire les information de la page</p>
+                    <h2 class="display-3 text-primary mb-3 px-lg-8">Evénement non participatif le plus récent.</h2>
+                    <p class="lead  text-center">Des cérémonies traditionnelles, des presentations culturelles, des salons d'oeuvres d'arts et bien d'autres.</p>
                 @else
                     @foreach ($infoEvent as $item)
                         <h2 class="display-3 text-primary mb-3 px-lg-8">{{ $item->titre2 }}</h2>
                         <p class="lead  text-center">{{ $item->libelet2 }}</p>
                     @endforeach
                 @endif
-                <a href="#" target="_blank" class="btn btn-lg btn-primary rounded-pill mb-10">En savoir plus</a>
+                @if(empty($lastEvents))
+                    <a href="#" target="_blank" class="btn btn-lg btn-primary rounded-pill mb-10">En savoir plus</a>
+                @else
+                    @foreach ($lastEvents as $lastEvent)
+                        <a href="{{ route('detail-evenement', $lastEvent->id) }}" target="_blank" class="btn btn-lg btn-primary rounded-pill mb-10">En savoir plus</a>
+                    @endforeach
+                @endif
             </div>
             <div class="col-lg-6 position-relative">
                 <div class="btn btn-circle btn-primary disabled position-absolute counter-wrapper flex-column d-none d-md-flex" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 170px; height: 170px;">
-                    <h3 class="text-white mb-1 mt-n2"><span class="counter counter-lg" style="visibility: visible;">2 Ans</span></h3>
+                    @if(empty($diffd))
+                    <h3 class="text-white mb-1 mt-n2"><span class="counter counter-lg" style="visibility: visible;">New</span></h3>
+                    @elseif ($diffd >= 365)
+                    <h3 class="text-white mb-1 mt-n2"><span class="counter counter-lg" style="visibility: visible;">{{ $diffyear }} Ans</span></h3>
+                    @elseif ($diffd > 31)
+                    <h3 class="text-white mb-1 mt-n2"><span class="counter counter-lg" style="visibility: visible;">{{ $diffm }} Mois</span></h3>
+                    @elseif ($diffd < 31)
+                    <h3 class="text-white mb-1 mt-n2"><span class="counter counter-lg" style="visibility: visible;">{{ $diffd }} Jour</span></h3>
+                    @endif
                     <p>Environ</p>
                 </div>
                 <div class="row gx-md-5 gy-5 align-items-center">
@@ -172,8 +188,8 @@
                     </div>
                     <!--/column -->
                     <div class="col-md-4">
-                        <h3 class="counter text-primary" style="visibility: visible;">200</h3>
-                        <p>Mains levées</p>
+                        <h3 class="counter text-primary" style="visibility: visible;">{{ $nombcoment }}</h3>
+                        <p>commentaires</p>
                     </div>
                     <!--/column -->
                     <div class="col-md-4">
@@ -245,8 +261,7 @@
                                                 <div class="card-footer ">
                                                     <ul class="post-meta d-flex mb-0 ">
                                                         <li class="post-date "><i class="uil uil-calendar-alt "></i><span>{{ $npEvent->created_at->format('d') }} {{ $npEvent->created_at->format('M') }} {{ $npEvent->created_at->format('Y') }}</span></li>
-                                                        <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>4</a></li>
-                                                        <li class="post-likes ms-auto "><a href="# "><i class="uil uil-heart-alt "></i>5</a></li>
+                                                        <li class="post-comments "><a href="# "><i class="uil uil-comment "></i></a></li>
                                                     </ul>
                                                     <!-- /.post-meta -->
                                                 </div>

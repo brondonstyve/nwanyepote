@@ -143,7 +143,7 @@
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">modal</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="modal">
-                                @error('modal') <span class="text-danger error">{{ $message }}</span>@enderror
+                               
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -220,7 +220,7 @@
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">modal</label>
                                 <input type="text" class="form-control"  id="recipient-name" wire:model="modal">
-                                @error('modal') <span class="text-danger error">{{ $message }}</span>@enderror
+                               
                             </div>
                         </div>
                         <div class="modal-footer">
