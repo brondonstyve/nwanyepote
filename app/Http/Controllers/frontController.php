@@ -94,11 +94,10 @@ class frontController extends Controller
         $infoEvent = infoEvenements::all();
         $lastEvents = npEvenements::where('id', $lastid->id)->get();
         $npEvents = npEvenements::all();
-        $evenementParticipatifRecent = null;
-
-        $evenementParticipatif = evenementparticipatif::orderBy('created_at', 'desc')
-            ->paginate(9);
-
+        $evenementParticipatifRecent=null;
+  
+        $evenementParticipatif=evenementparticipatif::orderBy('created_at','desc')
+        ->paginate(9);
         if (sizeOf($evenementParticipatif) > 0) {
 
             $evenementParticipatifRecent = evenementparticipatif::find($evenementParticipatif[0]->id);
@@ -119,6 +118,10 @@ class frontController extends Controller
             if ($total == 0) {
                 $total = 1;
             }
+        return view('frontend.pages.evenement',compact('evenementParticipatif','participant','total','evenementParticipatifRecent','infoEvent', 'lastEvents', 'npEvents'));
+        }else{
+        return view('frontend.pages.evenement',compact('evenementParticipatif','infoEvent', 'lastEvents', 'npEvents','evenementParticipatifRecent'));
+        }
 
             return view('frontend.pages.evenement', compact('evenementParticipatif', 'participant', 'total', 'evenementParticipatifRecent', 'infoEvent', 'lastEvents', 'npEvents', 'diffyear', 'diffm', 'diffd', 'nombcoment'));
         } else {

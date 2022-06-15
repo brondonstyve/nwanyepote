@@ -36,8 +36,6 @@
 </section>
 
 
-
-
 @if ($evenementParticipatifRecent)
 <section id="snippet-7" class="wrapper bg-light wrapper-border">
     <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
@@ -67,7 +65,7 @@
 
             <div class="col-md-8 col-lg-6 position-relative">
 
-                @if ($evenementParticipatifRecent->type=='image')
+                @if ($evenementParticipatifRecent->type=='Image')
                 <figure class="rounded"><img src="{{asset('app/evenementparticipatif/'.$evenementParticipatifRecent->image)}}" alt="" style="min-height: 300px;max-height: 500px"></figure>
                     
                 @else
@@ -284,6 +282,8 @@
         <!-- /.position-relative -->
 
 
+        @if (sizeOf($evenementParticipatif) > 0)
+            
         <div class="row ">
             <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto ">
                 <h6 class=" mb-6 text-center ">EVENEMENT PARTICIPATIF.</h6>
@@ -328,12 +328,19 @@
                                         <!--/.card-body -->
                                         <div class="card-footer ">
                                             <ul class="post-meta d-flex mb-0 ">
-                                                <li class="post-date "><i class="uil uil-calendar-alt "></i><span>{{$item->created_at}}</span></li>
+                                                <li class="post-date "><i class="uil uil-calendar-alt "></i><span>{{$item->created_at->format('d-M-Y    H:i')}}
+                                                </span></li>
                                                 <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>xx</a></li>
+                                                @if ($item->statut)
                                                 <li class="post-likes ms-auto ">
                                                     <a href="{{route('participer',$item->id)}}"><button style="background-color: #3f78e0;" class="text-white">Participer</button></a>
-                                                    
                                                 </li>
+                                                @else
+                                                <li class="post-likes ms-auto ">
+                                                    <button style="background-color: #3f78e0;" class="text-white">Cloturé</button>
+                                                </li>
+                                                @endif
+                                                
                                             </ul>
                                             <!-- /.post-meta -->
                                         </div>
@@ -358,6 +365,7 @@
         </nav>
         <!-- /.position-relative -->
     </div>
+        @endif
 </section>
 @endsection
         

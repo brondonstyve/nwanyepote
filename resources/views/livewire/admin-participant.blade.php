@@ -66,7 +66,7 @@
                                             <p class="text-xs font-weight-bold mb-0">{{$key+1}}</p>
                                         </td>
                                         <td>
-                                            @if ($this->evenement->type=='image')
+                                            @if ($this->evenement->type=='Image')
                                             <div>
                                                 <img src="{{asset("app/participant/$item->image")}}" class="avatar avatar-sm me-3">
                                             </div>
@@ -173,7 +173,7 @@
                                             <p class="text-xs font-weight-bold mb-0">{{$key+1}}</p>
                                         </td>
                                         <td>
-                                            @if ($this->evenement->type=='image')
+                                            @if ($this->evenement->type=='Image')
                                             <div>
                                                 <img src="{{asset("app/participant/$item->image")}}" class="avatar avatar-sm me-3">
                                             </div>

@@ -32,6 +32,9 @@ class ParticipantUnique extends Component
         ->where([
             ['participants.id',$this->code]
         ])
+        ->select('evenementparticipatifs.type','participants.evenement','participants.user','participants.created_at','users.name','evenementparticipatifs.auteur',
+        'participants.voie','participants.ville','participants.pays','participants.adresse','participants.video','participants.image','participants.apropos','participants.naissance',
+        'users.phone','users.email')
         ->first());
     }
 

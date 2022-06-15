@@ -19,12 +19,17 @@
                         </h1>
                         <ul class="post-meta mb-5">
                             <li class="post-date"><i
-                                    class="uil uil-calendar-alt"></i><span>{{$this->participant->created_at}}</span></li>
+                                    class="uil uil-calendar-alt"></i><span>{{$this->participant->created_at->format('d-M-Y  H:i')}}</span></li>
                             <li class="post-author"><a href="#"><i class="uil uil-user"></i><span>Par
                                         {{$this->participant->auteur}}</span></a></li>
                             <li class="post-comments"><a href="#"><i class="uil uil-comment"></i>{{$this->participant->voie}}
                                     <span>Voie(s)</span></a></li>
                         </ul>
+                        @if (!$this->evenement->statut)
+                        <h1 class="display-1 mb-4  text-danger" style="text-transform: uppercase">
+                          éVéNEMENT CLOTURé
+                        </h1>
+                        @endif
                         <!-- /.post-meta -->
                     </div>
                     <!-- /.post-header -->
@@ -106,8 +111,8 @@
         </div>
         
             <figure class="rounded">
-                <h3>Elément de participation : @if($this->participant->type=='image') Visuel @else Vidéo @endif </h3>
-                @if ($this->participant->type=='image')
+                <h3>Elément de participation : @if($this->participant->type=='Image') Visuel @else Vidéo @endif </h3>
+                @if ($this->participant->type=='Image')
                 <img src="{{asset('app/participant/'.$this->participant->image)}}" srcset="./assets/img/photos/about7@2x.jpg 2x" alt="" />
                     
                 @else
@@ -125,9 +130,11 @@
               <p class="lead fs-25 lh-sm mb-7 px-md-10 px-lg-0 text-justify">{{$this->participant->apropos}}</p>
               <div class="d-flex justify-content-center justify-content-lg-start">
                 <span><a href="{{route('evenement')}}" class="btn btn-lg btn-primary rounded-pill me-2">Retour aux événements</a></span>
-                @if (!auth()->guest())
-                <span><a href="#!" data-bs-toggle="modal" data-bs-target="#modal-01" class="btn btn-lg btn-outline-primary rounded-pill" wire:click='preparerVote({{$this->participant->user}},"{{$this->participant->name}}")'>Voter pour moi</a></span>
+
+                @if (!$this->evenement->statut)
+                    <span><a href="#!" class="btn btn-lg btn-outline-primary rounded-pill disabled">Evénement cloturé</a></span>
                 @else
+                @if (!auth()->guest())
                 @if ($this->asTuVoter)
                 <span><a href="#!" class="btn btn-lg btn-outline-primary rounded-pill disabled">Déjà Voté</a></span>
                     
@@ -135,7 +142,12 @@
                 <span><a href="#!" data-bs-toggle="modal" data-bs-target="#modal-01" class="btn btn-lg btn-outline-primary rounded-pill" wire:click='preparerVote({{$this->participant->user}},"{{$this->participant->name}}")'>Voter pour moi</a></span>
                     
                 @endif
+                @else
+                <span><a href="#!" data-bs-toggle="modal" data-bs-target="#modal-01" class="btn btn-lg btn-outline-primary rounded-pill" wire:click='preparerVote({{$this->participant->user}},"{{$this->participant->name}}")'>Voter pour moi</a></span>
+                
                 @endif
+                @endif
+                
                 
               </div>
             </div>

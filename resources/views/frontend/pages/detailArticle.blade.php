@@ -22,7 +22,7 @@
                     <h1 class="display-1 mb-4 text-blue">{{$article->titre}}</h1>
 
                     <ul class="post-meta text-white">
-                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>{{$article->created_at}}</span></li>
+                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>{{$article->created_at->format('d-M-Y    H:i')}}</span></li>
                         <li class="post-author"><i class="uil uil-user"></i><a href="#" class="text-reset"><span>{{$article->auteur}}</span></a></li>
                         <li class="post-comments"><i class="uil uil-comment"></i><a href="#" class="text-reset">{{$nbComment}}<span> Commentaires</span></a></li>
                         <li class="post-likes"><i class="uil uil-heart-alt"></i><a href="#" class="text-reset">3<span> J'aime</span></a></li>
