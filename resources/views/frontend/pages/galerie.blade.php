@@ -81,7 +81,7 @@
                         @foreach ($galeries as $galerie)
                             <div class="item col-md-6" style="position: absolute; left: 50%; top: 0px;">
                                 <figure class="lift rounded mb-6">
-                                    <div style="width: 100%; heigth: 100%">
+                                    <div>
                                         <a href="#"> <img src="app/galeries/{{$galerie->image}}" srcset="app/galeries/{{$galerie->image}} 2x" alt="img"></a>
                                     </div>
                                 </figure>

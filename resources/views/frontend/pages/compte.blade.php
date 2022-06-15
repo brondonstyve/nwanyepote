@@ -38,7 +38,7 @@
                         <h3 class="counter counter-lg text-primary">{{ $com_livrer }}</h3>
                         <p>Commande livrer</p>
                     </div>
-                    <!--/column -->
+                    <!--/column --> 
                 </div>
                 <!--/.row -->
             </div>

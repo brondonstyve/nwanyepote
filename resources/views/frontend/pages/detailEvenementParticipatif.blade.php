@@ -40,6 +40,9 @@
                         <h1 class="display-1 mb-4  text-success" style="text-transform: uppercase">
                             éVéNEMENT EN COURS
                           </h1>
+
+                          <a href="{{route('participer',$evenement->id)}}"><button class="btn btn-sm btn-primary rounded-pill btn-icon btn-icon-start mb-0 ">Participer à cette événement</button></a>
+
                         @endif
                     <!-- /.post-meta -->
                 </div>

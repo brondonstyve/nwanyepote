@@ -1,5 +1,5 @@
 <footer class="bg-dark text-inverse">
-    <div style="background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.55)), url('./assets/img/photos/t1.jpg'); visibility: visible; opacity: 1;">
+    <div style="background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.55)), url('{{asset("/assets/img/photos/t1.jpg")}}'); visibility: visible; opacity: 1;">
         <div class="container pt-17 pt-md-19 pb-13 pb-md-15">
             <div class="row gy-6 gy-lg-0">
                 <div class="col-md-4 col-lg-3">

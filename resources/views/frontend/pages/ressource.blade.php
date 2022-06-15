@@ -41,7 +41,7 @@
     <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
         <div class="row gx-lg-8 gx-xl-12 gy-10">
             <div class="col-lg-6">
-                <figure><img class="w-auto" src="{{asset('assets/img/photos/i5.png')}}" srcset="{{asset('assets/img/photos/i5.png')}}" alt=""></figure>
+                <figure><img class="w-auto" src="{{asset('app/ressources/'.$infosPage->image1)}}" srcset="{{asset('app/ressources/'.$infosPage->image1)}}" alt=""></figure>
             </div>
             <!--/column -->
             <div class="col-lg-6">

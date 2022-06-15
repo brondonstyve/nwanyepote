@@ -46,7 +46,19 @@ class frontController extends Controller
     {
         $infosPage = accueil::first();
         $commentaire = commentaireSite::get();
-        return view('frontend.pages.index', compact('infosPage', 'commentaire'));
+        $evenementParticipatif=evenementparticipatif::orderBy('created_at','desc')
+        ->limit(3)
+        ->get();
+
+        $evenementNonParticipatif=npEvenements::orderBy('created_at','desc')
+        ->limit(3)
+        ->get();
+
+        $article=article::orderBy('created_at','desc')
+        ->limit(3)
+        ->get();
+
+        return view('frontend.pages.index', compact('infosPage', 'commentaire','evenementParticipatif','evenementNonParticipatif','article'));
     }
 
     public function propos()

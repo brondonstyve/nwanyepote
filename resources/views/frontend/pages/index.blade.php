@@ -270,6 +270,20 @@
     </section>
     <!-- /section -->
 
+    @if (sizeOf($evenementParticipatif)==0 && sizeOf($evenementNonParticipatif)==0)
+    <section id="snippet-3 " class="wrapper bg-light wrapper-border" style="margin-top: -10%;">
+        <div class="container pt-15 pt-md-17 pb-13 pb-md-15 ">
+            <div class="row ">
+                <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto ">
+                    <h2 class="fs-15 text-uppercase text-primary text-center ">Nos Evénements</h2>
+                    <h3 class="display-4 mb-6 text-center ">Aucun événement enregistré pour le moment.</h3>
+                </div>
+                <!-- /column -->
+            </div> 
+        </div>
+    </section> 
+
+    @else
     <section id="snippet-3 " class="wrapper bg-light wrapper-border" style="margin-top: -10%;">
         <div class="container pt-15 pt-md-17 pb-13 pb-md-15 ">
             <div class="row ">
@@ -286,41 +300,47 @@
                 <!-- /column -->
             </div>
             <!-- /.row -->
+            
             <div class="position-relative ">
                 <div class="shape bg-dot primary rellax w-17 h-20 " data-rellax-speed="1 " style="top: 0px; left: -1.7rem; transform: translate3d(0px, 10px, 0px); "></div>
                 <div class="swiper-container dots-closer blog grid-view mb-6 swiper-container-2 " data-margin="0 " data-dots="true " data-items-xl="3 " data-items-md="2 " data-items-xs="1 ">
                     <div class="swiper swiper-initialized swiper-horizontal swiper-pointer-events ">
                         <div class="swiper-wrapper " id="swiper-wrapper-c2549ac53cc1635b " aria-live="off " style="cursor: grab; transform: translate3d(0px, 0px, 0px); ">
-                            <div class="swiper-slide swiper-slide-active " role="group " aria-label="1 / 4 " style="width: 465px; ">
+    
+                            <!--/.swiper-slide -->
+    
+                            @foreach ($evenementNonParticipatif as $key=>$item)
+                            <div class="swiper-slide " style="width: 465px; " role="group " aria-label="3 / 4 ">
                                 <div class="item-inner ">
                                     <article>
                                         <div class="card ">
-                                            <figure class="card-img-top overlay overlay-1 hover-scale ">
-                                                <a href="detaiEventNonParticipatif.html"> <img src="{{asset('assets/img/photos/Istock_PhotoNdop-tissu-traditionnel-Royal-Bamiléké-1-e1595963834804.jpg')}}" alt=" "><span class="bg "></span></a>
+                                            <figure class="card-img-top overlay overlay-1 hover-scale"  style="min-height: 350px;max-height: 350px">
+                                                <a href="{{route('detail-evenement',$item->id)}}"> <img src="{{asset('app/evenement/'.$item->image_principal)}}" alt=" "><span class="bg "></span></a>
                                                 <figcaption>
                                                     <h5 class="from-top mb-0">Lire plus</h5>
                                                 </figcaption>
                                             </figure>
-                                            <div class="card-body ">
+                                            <div class="card-body " style="min-height: 250px;max-height: 250px">
                                                 <div class="post-header ">
                                                     <div class="post-category text-line ">
-                                                        <a href="detaiEventNonParticipatif.html" class="hover " rel="category ">Evénement non Participatif</a>
+                                                        <a href="{{route('detail-evenement',$item->id)}}" class="hover " rel="category ">Evénement Non Participatif</a>
                                                     </div>
                                                     <!-- /.post-category -->
-                                                    <h2 class="post-title h3 mt-1 mb-3 "><a class="link-dark " href="detaiEventNonParticipatif.html">Fête culturelle de 2016</a></h2>
+                                                    <h2 class="post-title h3 mt-1 mb-3 "><a class="link-dark " href="{{route('detail-evenement',$item->id)}}">{{$item->titres}}</a></h2>
                                                 </div>
                                                 <!-- /.post-header -->
-                                                <div class="post-content ">
-                                                    <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis tempus vestibulum cras imperdiet nun eu dolor.</p>
+                                                <div class="post-content text-justify">
+                                                    <p>{!!substr($item->libelet1a,0,150)!!} [...]</p>
                                                 </div>
                                                 <!-- /.post-content -->
                                             </div>
                                             <!--/.card-body -->
                                             <div class="card-footer ">
                                                 <ul class="post-meta d-flex mb-0 ">
-                                                    <li class="post-date "><i class="uil uil-calendar-alt "></i><span>14 Apr 2021</span></li>
-                                                    <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>4</a></li>
-                                                    <li class="post-likes ms-auto "><a href="# "><i class="uil uil-heart-alt "></i>5</a></li>
+                                                    <li class="post-date "><i class="uil uil-calendar-alt "></i><span>{{$item->created_at->format('d-M-Y    H:i')}}
+                                                    </span></li>
+                                                    <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>xx</a></li>
+                                                    {{$key}}
                                                 </ul>
                                                 <!-- /.post-meta -->
                                             </div>
@@ -332,107 +352,82 @@
                                 </div>
                                 <!-- /.item-inner -->
                             </div>
-                            <!--/.swiper-slide -->
-                            <div class="swiper-slide swiper-slide-active " role="group " aria-label="1 / 4 " style="width: 465px; ">
-                                <div class="item-inner ">
-                                    <article>
-                                        <div class="card ">
-                                            <figure class="card-img-top overlay overlay-1 hover-scale ">
-                                                <a href="detaiEventNonParticipatif.html"> <img src="{{asset('assets/img/photos/Istock_PhotoNdop-tissu-traditionnel-Royal-Bamiléké-1-e1595963834804.jpg')}}" alt=" "><span class="bg "></span></a>
-                                                <figcaption>
-                                                    <h5 class="from-top mb-0">Lire plus</h5>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="card-body ">
-                                                <div class="post-header ">
-                                                    <div class="post-category text-line ">
-                                                        <a href="detaiEventNonParticipatif.html" class="hover " rel="category ">Evénement non Participatif</a>
-                                                    </div>
-                                                    <!-- /.post-category -->
-                                                    <h2 class="post-title h3 mt-1 mb-3 "><a class="link-dark " href="detaiEventNonParticipatif.html">Fête culturelle de 2016</a></h2>
-                                                </div>
-                                                <!-- /.post-header -->
-                                                <div class="post-content ">
-                                                    <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis tempus vestibulum cras imperdiet nun eu dolor.</p>
-                                                </div>
-                                                <!-- /.post-content -->
-                                            </div>
-                                            <!--/.card-body -->
-                                            <div class="card-footer ">
-                                                <ul class="post-meta d-flex mb-0 ">
-                                                    <li class="post-date "><i class="uil uil-calendar-alt "></i><span>14 Apr 2021</span></li>
-                                                    <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>4</a></li>
-                                                    <li class="post-likes ms-auto "><a href="# "><i class="uil uil-heart-alt "></i>5</a></li>
-                                                </ul>
-                                                <!-- /.post-meta -->
-                                            </div>
-                                            <!-- /.card-footer -->
-                                        </div>
-                                        <!-- /.card -->
-                                    </article>
-                                    <!-- /article -->
-                                </div>
-                                <!-- /.item-inner -->
-                            </div>
-                            <!--/.swiper-slide -->
-                            <div class="swiper-slide swiper-slide-active " role="group " aria-label="1 / 4 " style="width: 465px; ">
-                                <div class="item-inner ">
-                                    <article>
-                                        <div class="card ">
-                                            <figure class="card-img-top overlay overlay-1 hover-scale ">
-                                                <a href="detaiEventNonParticipatif.html"> <img src="{{asset('assets/img/photos/Istock_PhotoNdop-tissu-traditionnel-Royal-Bamiléké-1-e1595963834804.jpg')}}" alt=" "><span class="bg "></span></a>
-                                                <figcaption>
-                                                    <h5 class="from-top mb-0">Lire plus</h5>
-                                                </figcaption>
-                                            </figure>
-                                            <div class="card-body ">
-                                                <div class="post-header ">
-                                                    <div class="post-category text-line ">
-                                                        <a href="detaiEventNonParticipatif.html" class="hover " rel="category ">Evénement non Participatif</a>
-                                                    </div>
-                                                    <!-- /.post-category -->
-                                                    <h2 class="post-title h3 mt-1 mb-3 "><a class="link-dark " href="detaiEventNonParticipatif.html">Fête culturelle de 2016</a></h2>
-                                                </div>
-                                                <!-- /.post-header -->
-                                                <div class="post-content ">
-                                                    <p>Mauris convallis non ligula non interdum. Gravida vulputate convallis tempus vestibulum cras imperdiet nun eu dolor.</p>
-                                                </div>
-                                                <!-- /.post-content -->
-                                            </div>
-                                            <!--/.card-body -->
-                                            <div class="card-footer ">
-                                                <ul class="post-meta d-flex mb-0 ">
-                                                    <li class="post-date "><i class="uil uil-calendar-alt "></i><span>14 Apr 2021</span></li>
-                                                    <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>4</a></li>
-                                                    <li class="post-likes ms-auto "><a href="# "><i class="uil uil-heart-alt "></i>5</a></li>
-                                                </ul>
-                                                <!-- /.post-meta -->
-                                            </div>
-                                            <!-- /.card-footer -->
-                                        </div>
-                                        <!-- /.card -->
-                                    </article>
-                                    <!-- /article -->
-                                </div>
-                                <!-- /.item-inner -->
-                            </div>
-                            <!--/.swiper-slide -->
+                            @if (sizeOf($evenementParticipatif)>=1 && $key==1)
+                                @break
+                            @endif
+                            @endforeach
 
+                            @foreach ($evenementParticipatif as $keys=>$item)
+                            @if (sizeOf($evenementNonParticipatif)<2 && $key==1)
+                                @break
+                            @endif
+                            <div class="swiper-slide " style="width: 465px; " role="group " aria-label="3 / 4 ">
+                                <div class="item-inner ">
+                                    <article>
+                                        <div class="card ">
+                                            <figure class="card-img-top overlay overlay-1 hover-scale"  style="min-height: 350px;max-height: 350px">
+                                                <a href="{{route('detail-evenement-participatif',$item->id)}}"> <img src="{{asset('app/evenementparticipatif/'.$item->image)}}" alt=" "><span class="bg "></span></a>
+                                                <figcaption>
+                                                    <h5 class="from-top mb-0">Lire plus</h5>
+                                                </figcaption>
+                                            </figure>
+                                            <div class="card-body " style="min-height: 250px;max-height: 250px">
+                                                <div class="post-header ">
+                                                    <div class="post-category text-line ">
+                                                        <a href="{{route('detail-evenement-participatif',$item->id)}}" class="hover " rel="category ">Evénement Participatif</a>
+                                                    </div>
+                                                    <!-- /.post-category -->
+                                                    <h2 class="post-title h3 mt-1 mb-3 "><a class="link-dark " href="{{route('detail-evenement-participatif',$item->id)}}">{{$item->titre}}</a></h2>
+                                                </div>
+                                                <!-- /.post-header -->
+                                                <div class="post-content text-justify">
+                                                    <p>{!!substr($item->article1,0,150)!!} [...]</p>
+                                                </div>
+                                                <!-- /.post-content -->
+                                            </div>
+                                            <!--/.card-body -->
+                                            <div class="card-footer ">
+                                                <ul class="post-meta d-flex mb-0 ">
+                                                    <li class="post-date "><i class="uil uil-calendar-alt "></i><span>{{$item->created_at->format('d-M-Y    H:i')}}
+                                                    </span></li>
+                                                    <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>xx</a></li>
+                                                    @if ($item->statut)
+                                                    <li class="post-likes ms-auto ">
+                                                        <a href="{{route('participer',$item->id)}}"><button style="background-color: #3f78e0;" class="text-white">Participer</button></a>
+                                                    </li>
+                                                    @else
+                                                    <li class="post-likes ms-auto ">
+                                                        <button style="background-color: #3f78e0;" class="text-white">Cloturé</button>
+                                                    </li>
+                                                    @endif
+                                                    
+                                                </ul>
+                                                <!-- /.post-meta -->
+                                            </div>
+                                            <!-- /.card-footer -->
+                                        </div>
+                                        <!-- /.card -->
+                                    </article>
+                                    <!-- /article -->
+                                </div>
+                                <!-- /.item-inner -->
+                            </div>
+                            @endforeach
                         </div>
-                    </div>
-                    <!-- /.swiper-container -->
-                    @if ($infosPage)
-                    <a href="{{$infosPage->lien_bouton5}}" class="btn btn-blue rounded mb-0 text-nowrap" style="float: right;">{{$infosPage->texte_bouton5}}</a>
-
-                    @else
-                    <a href="#" class="btn btn-blue rounded mb-0 text-nowrap" style="float: right;">Voir Plus</a>
-                    
-                    @endif
-
                 </div>
-                <!-- /.position-relative -->
+                <!-- /.swiper-container -->
             </div>
+            @if ($infosPage)
+                            <a href="{{$infosPage->lien_bouton5}}" class="btn btn-blue rounded mb-0 text-nowrap" style="float: right;">{{$infosPage->texte_bouton5}}</a>
+                                
+                            @else
+                            <a href="#" class="btn btn-blue rounded mb-0 text-nowrap" style="float: right;">Voir Plus</a>
+                                
+                            @endif
+            <!-- /.position-relative -->
+        </div>
     </section>
+    @endif
 
 
     @if ($infosPage)
@@ -463,7 +458,21 @@
         <!-- /.container -->
     </section>
     <!-- /section -->
-    <section class="wrapper bg-light angled upper-end">
+
+    @if (sizeOf($article)==0)
+    <section id="snippet-3 " class="wrapper bg-light wrapper-border" style="">
+        <div class="container pt-15 pt-md-17 pb-13 pb-md-15 ">
+            <div class="row ">
+                <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto ">
+                    <h2 class="fs-15 text-uppercase text-primary text-center ">Nos Articles</h2>
+                    <h3 class="display-4 mb-6 text-center ">Aucun Article enregistré pour le moment.</h3>
+                </div>
+                <!-- /column -->
+            </div> 
+        </div>
+    </section>
+    @else
+    <section class="wrapper bg-light">
         <div class="container py-14 py-md-16">
             <div class="row">
                 <div class="col-lg-9 col-xl-8 col-xxl-7">
@@ -478,99 +487,49 @@
                 </div>
                 <!-- /column -->
             </div>
-            <!-- /.row -->
-            <div class="swiper-container blog grid-view mb-10" data-margin="30" data-dots="true" data-items-xl="3" data-items-md="2" data-items-xs="1">
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <article>
-                                <figure class="overlay overlay-1 hover-scale rounded mb-6">
-                                    <a href="#"> <img src="{{asset('assets/img/photos/Istock_PhotoCol_Batié (1).jpg')}}" alt="" /></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Lire plus</h5>
-                                    </figcaption>
-                                </figure>
-                                <div class="post-header">
-                                    <h2 class="post-title h3 mb-3"><a class="link-dark" href="article.html">C'est quoi le col Batie</a></h2>
-                                </div>
-                                <!-- /.post-header -->
-                                <div class="post-footer">
-                                    <ul class="post-meta">
-                                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>14 Apr 2021</span></li>
-                                        <li class="post-comments"><a href="#"><i class="uil uil-file-alt fs-15"></i>Tourisme</a></li>
-                                    </ul>
-                                    <!-- /.post-meta -->
-                                </div>
-                                <!-- /.post-footer -->
-                            </article>
-                            <!-- /article -->
-                        </div>
-                        <!--/.swiper-slide -->
-                        <div class="swiper-slide">
-                            <article>
-                                <figure class="overlay overlay-1 hover-scale rounded mb-6">
-                                    <a href="#"> <img src="{{asset('assets/img/photos/drums-5949725.jpg')}}" alt="" /></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Lire plus</h5>
-                                    </figcaption>
-                                </figure>
-                                <div class="post-header">
-                                    <h2 class="post-title h3 mb-3"><a class="link-dark" href="article.html">Pourquoi les fêtes culturelles Batié...?</a></h2>
-                                </div>
-                                <!-- /.post-header -->
-                                <div class="post-footer">
-                                    <ul class="post-meta">
-                                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>29 Mar 2021</span></li>
-                                        <li class="post-comments"><a href="#"><i class="uil uil-file-alt fs-15"></i>Tradition</a></li>
-                                    </ul>
-                                    <!-- /.post-meta -->
-                                </div>
-                                <!-- /.post-footer -->
-                            </article>
-                            <!-- /article -->
-                        </div>
-                        <!--/.swiper-slide -->
-                        <div class="swiper-slide">
-                            <article>
-                                <figure class="overlay overlay-1 hover-scale rounded mb-6">
-                                    <a href="#"> <img src="{{asset('assets/img/photos/scarf-2771102_1920.jpg')}}" alt="" /></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Lire plus</h5>
-                                    </figcaption>
-                                </figure>
-                                <div class="post-header">
-                                    <h2 class="post-title h3 mb-3"><a class="link-dark" href="article.html">Batié réalise un nombre important...</a></h2>
-                                </div>
-                                <!-- /.post-header -->
-                                <div class="post-footer">
-                                    <ul class="post-meta">
-                                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>26 Feb 2021</span></li>
-                                        <li class="post-comments"><a href="#"><i class="uil uil-file-alt fs-15"></i>Loisir</a></li>
-                                    </ul>
-                                    <!-- /.post-meta -->
-                                </div>
-                                <!-- /.post-footer -->
-                            </article>
-                            <!-- /article -->
-                        </div>
-                        <!--/.swiper-slide -->
-                    </div>
-                    @if ($infosPage)
-                    <a href="{{$infosPage->lien_bouton7}}" class="btn btn-blue rounded mb-0 text-nowrap" style="float: right;">{{$infosPage->texte_bouton7}}</a>
-                        
-                    @else
-                    <a href="#" class="btn btn-blue rounded mb-0 text-nowrap" style="float: right;">Voir Plus</a>
-                        
-                    @endif
+            <div class="swiper-container blog grid-view mb-6" data-margin="30" data-dots="true" data-items-xl="3" data-items-md="2" data-items-xs="1">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                  @foreach ($article as $item)
+                  <div class="swiper-slide">
+                    <article>
+                      <figure class="overlay overlay-1 hover-scale rounded mb-5"><a href="{{route('detail-article',$item->id)}}"> <img src="{{asset('app/article/'.$item->image)}}" alt="" /></a>
+                        <figcaption>
+                          <h5 class="from-top mb-0">Lire Plus</h5>
+                        </figcaption>
+                      </figure>
+                      <div class="post-header">
+                        <!-- /.post-category -->
+                        <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="{{route('detail-article',$item->id)}}">{{$item->titre}}</a></h2>
+                      </div>
+                      <!-- /.post-header -->
+                      <div class="post-footer">
+                        <ul class="post-meta">
+                          <li class="post-date"><i class="uil uil-calendar-alt"></i><span>{{$item->created_at->format('d-M-Y')}}</span></li>
+                          <li class="post-comments"><a href="#"><i class="uil uil-file-alt fs-15"></i>{{$item->domaine}}</a></li>
+                        </ul>
+                        <!-- /.post-meta -->
+                      </div>
+                      <!-- /.post-footer -->
+                    </article>
+                    <!-- /article -->
+                  </div>      
+                  @endforeach
+                
 
-                    <!-- /.swiper-wrapper -->
-                </div>
-                <!-- /.swiper -->
+              </div>
+              <!--/.swiper-wrapper -->
             </div>
-            <!-- /.swiper-container -->
+            <!-- /.swiper -->
+          </div>
+          <!-- /.swiper-container -->
         </div>
         <!-- /.container -->
     </section>
+    @endif
+      <!-- /section -->
+
+   
     <!-- /section -->
     <section class="wrapper bg-soft-primary">
         <div class="container py-14 pt-md-17 pb-md-21">
