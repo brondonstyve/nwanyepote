@@ -29,7 +29,7 @@
                   <div class="card">
                       <figure class="card-img-top overlay overlay-1 hover-scale" style="max-height: 250px; min-height: 250px">
 
-                      @if ($this->evenement->type=='image')
+                      @if ($this->evenement->type=='Image')
                           <a href="#"> <img src="{{asset("app/participant/$item->image")}}" alt="" /></a>
                           <figcaption>
                             <h5 class="from-top mb-0">Voter</h5>
@@ -47,7 +47,7 @@
                     <div class="card-footer" style="min-height: 300px; max-height: 300px">
                       <div class="post-header">
                         <div class="post-category text-line">
-                          @if ($this->evenement->type=='image')
+                          @if ($this->evenement->type=='Image')
                           <a href="{{route("participant",$item->id)}}" class="hover" rel="category">Avec Image</a>
                           @else
                           <a href="{{route("participant",$item->id)}}" class="hover" rel="category">Avec Vidéo</a>
@@ -73,25 +73,30 @@
                     <div class="card-footer">
                       <ul class="post-meta d-flex mb-0">
                         <li class="post-date">
+                          @if (!$this->evenement->statut)
+                              <span>Evenement Cloturé</span>
+                          @else
                           @if (!auth()->guest())
-                          <a href="#!" 
-                          data-bs-toggle="modal" data-bs-target="#modal-01" wire:click='preparerVote({{$item->user}},"{{$item->name}}")'
-                          class="btn btn-expand btn-soft-primary rounded-pill">
-                          <i class="uil uil-arrow-right"></i>
-                          <span>Voter pour moi</span>
-                      </a>
-                          @else
                           @if ($this->asTuVoter)
-                          <span>Vous avez Déjà voté</span>
-                          @else
-                          <a href="#!" 
+                              <span>Vous avez Déjà voté</span>
+                              @else
+                              <a href="#!" 
+                                  data-bs-toggle="modal" data-bs-target="#modal-01" wire:click='preparerVote({{$item->user}},"{{$item->name}}")'
+                                  class="btn btn-expand btn-soft-primary rounded-pill">
+                                  <i class="uil uil-arrow-right"></i>
+                                  <span>Voter pour moi</span>
+                              </a>
+                              @endif
+                              @else
+                              <a href="#!" 
                               data-bs-toggle="modal" data-bs-target="#modal-01" wire:click='preparerVote({{$item->user}},"{{$item->name}}")'
                               class="btn btn-expand btn-soft-primary rounded-pill">
                               <i class="uil uil-arrow-right"></i>
                               <span>Voter pour moi</span>
                           </a>
+                          @endif    
                           @endif
-                          @endif
+                          
                             
                         </li>
                         <li class="post-likes ms-auto"><a href="#!"><i class="uil uil-heart-alt"></i>{{$item->voie}} Voie(s)</a></li>

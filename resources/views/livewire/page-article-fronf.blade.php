@@ -240,7 +240,7 @@
                                 <div class="post-content">
                                     <h6 class="mb-2"> <a class="link-dark" href="{{route("detail-article",$item->id)}}">{{$item->titre}}</a> </h6>
                                     <ul class="post-meta">
-                                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>{{$item->created_at}}</span></li>
+                                        <li class="post-date"><i class="uil uil-calendar-alt"></i><span>{{ $item->created_at}}</span></li>
                                         <li class="post-comments"><a href="#"><i class="uil uil-comment"></i>{{$key+1+15}}</a></li>
                                     </ul>
                                     <!-- /.post-meta -->

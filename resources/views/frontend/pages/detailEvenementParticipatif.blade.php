@@ -25,12 +25,22 @@
                     </h1>
                     <ul class="post-meta mb-5">
                         <li class="post-date"><i
-                                class="uil uil-calendar-alt"></i><span>{{$evenement->created_at}}</span></li>
+                                class="uil uil-calendar-alt"></i><span>{{$evenement->created_at->format('d-M-Y    H:i')}}</span></li>
                         <li class="post-author"><a href="#"><i class="uil uil-user"></i><span>Par
                                     {{$evenement->auteur}}</span></a></li>
                         <li class="post-comments"><a href="#"><i class="uil uil-comment"></i>{{$nbComment}}
                                 <span>commentaires</span></a></li>
                     </ul>
+
+                        @if (!$evenement->statut)
+                        <h1 class="display-1 mb-4  text-danger" style="text-transform: uppercase">
+                          éVéNEMENT CLOTURé
+                        </h1>
+                        @else
+                        <h1 class="display-1 mb-4  text-success" style="text-transform: uppercase">
+                            éVéNEMENT EN COURS
+                          </h1>
+                        @endif
                     <!-- /.post-meta -->
                 </div>
                 <!-- /.post-header -->
