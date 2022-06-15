@@ -19,6 +19,15 @@ class Galerie extends Component
     public $data2;
     public function mount()
     {
+        $this->titre = "";
+        $this->titreb1 = "";
+        $this->libeletb1 = "";
+        $this->texteb2 = "";
+        $this->titreb2 = "";
+        $this->image = "";
+        $this->libelet = "";
+        $this->type = "";
+        $this->select_id = "";
     }
 
     public function render()
@@ -48,6 +57,7 @@ class Galerie extends Component
             'libelet' => $validatedDate['libelet'],
             'type' => $validatedDate['type'],
         ]);
+        $this->mount();
 
         if ($respons) {
             session()->flash('message', 'limage a ete enregistrer avec succes.');
@@ -70,6 +80,7 @@ class Galerie extends Component
         ]);
 
         $respons = infoGaleries::create($validatedDate);
+        $this->mount();
 
         if ($respons) {
             session()->flash('message', 'les information on ete enregistrer avec succes.');

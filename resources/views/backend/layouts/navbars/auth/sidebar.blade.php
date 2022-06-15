@@ -536,7 +536,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Evenement Non participatif <br> Configurations</span>
+                    <span class="nav-link-text ms-1">Evenement Non participatif <br></span>
                 </a>
             </li>
             

@@ -51,60 +51,56 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'middleware' => ['cookie-consent']
-], function(){
+], function () {
     // Simple page
-Route::get('/', [frontController::class, 'index'])->name("index");
-Route::get('/A-Propos', [frontController::class, 'propos'])->name("apropos");
-Route::get('/sport', [frontController::class, 'sport'])->name("sport");
-Route::get('/tourisme', [frontController::class, 'tourisme'])->name("tourisme");
-Route::get('/culture', [frontController::class, 'culture'])->name("culture");
-Route::get('/contact', [frontController::class, 'contact'])->name("contact");
-Route::get('/ressource', [frontController::class, 'ressource'])->name("ressource");
-Route::get('/galerie', [frontController::class, 'galerie'])->name("galerie");
-Route::get('/faq', [frontController::class, 'faq'])->name("faq");
-Route::get('/politique', [frontController::class, 'politique'])->name("politique");
+    Route::get('/', [frontController::class, 'index'])->name("index");
+    Route::get('/A-Propos', [frontController::class, 'propos'])->name("apropos");
+    Route::get('/sport', [frontController::class, 'sport'])->name("sport");
+    Route::get('/tourisme', [frontController::class, 'tourisme'])->name("tourisme");
+    Route::get('/culture', [frontController::class, 'culture'])->name("culture");
+    Route::get('/contact', [frontController::class, 'contact'])->name("contact");
+    Route::get('/ressource', [frontController::class, 'ressource'])->name("ressource");
+    Route::get('/galerie', [frontController::class, 'galerie'])->name("galerie");
+    Route::get('/faq', [frontController::class, 'faq'])->name("faq");
+    Route::get('/politique', [frontController::class, 'politique'])->name("politique");
 
 
-//événement
-Route::get('/evenement', [frontController::class, 'evenement'])->name("evenement");
-Route::get('/detail-evenement', [frontController::class, 'detailEvenement'])->name("detail-evenement");
-Route::get('/detail-evenement-participatif/{id}', [frontController::class, 'detailEvenementParticipatif'])->name("detail-evenement-participatif");
-Route::get('/participant/{id}',[frontController::class,'participant'])->name("participant");
-Route::get('/detail-evenement/{id}', [frontController::class, 'detailEvenement'])->name("detail-evenement");
+    //événement
+    Route::get('/evenement', [frontController::class, 'evenement'])->name("evenement");
+    Route::get('/detail-evenement', [frontController::class, 'detailEvenement'])->name("detail-evenement");
+    Route::get('/detail-evenement-participatif/{id}', [frontController::class, 'detailEvenementParticipatif'])->name("detail-evenement-participatif");
+    Route::get('/participant/{id}', [frontController::class, 'participant'])->name("participant");
+    Route::get('/detail-evenement/{id}', [frontController::class, 'detailEvenement'])->name("detail-evenement");
 
-//article
-Route::get('/article', [frontController::class, 'article'])->name("article");
-Route::get('/detailArticle/{id}', [frontController::class, 'detailArticle'])->name("detail-article");
+    //article
+    Route::get('/article', [frontController::class, 'article'])->name("article");
+    Route::get('/detailArticle/{id}', [frontController::class, 'detailArticle'])->name("detail-article");
 
-//Boutique
-Route::get('/boutique', [frontController::class, 'boutique'])->name("boutique");
-Route::get('/mon-panier', [frontController::class, 'panier'])->name("panier");
-Route::get('/detail-produit/{id}', [frontController::class, 'detailProduit'])->name("detail-produit");
+    //Boutique
+    Route::get('/boutique', [frontController::class, 'boutique'])->name("boutique");
+    Route::get('/mon-panier', [frontController::class, 'panier'])->name("panier");
+    Route::get('/detail-produit/{id}', [frontController::class, 'detailProduit'])->name("detail-produit");
 
-//compte
-Route::get('/mon-compte', [frontController::class, 'compte'])->name("compte");
-Route::get('/connexion', [frontController::class, 'login'])->name("login");
-Route::get('/creer-compte', [frontController::class, 'signin'])->name("signin");
-Route::get('/changer-son-mot-de-passe', [frontController::class, 'resetPassword'])->name("reset-password-front");
+    //compte
+    Route::get('/mon-compte', [frontController::class, 'compte'])->name("compte");
+    Route::get('/connexion', [frontController::class, 'login'])->name("login");
+    Route::get('/creer-compte', [frontController::class, 'signin'])->name("signin");
+    Route::get('/changer-son-mot-de-passe', [frontController::class, 'resetPassword'])->name("reset-password-front");
 
 
 
-/*
+    /*
 ---------------------
  backend end page 
 ---------------------
  Ici on ne retrouve que les routes liées au backend d'administration 
  */
 
-Route::get('/login-admin', Login::class)->name('login-admin');
+    Route::get('/login-admin', Login::class)->name('login-admin');
 
-Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
+    Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
 
-Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
-
-
-
-
+    Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 });
 
 
@@ -125,9 +121,7 @@ Route::middleware('auth2')->group(function () {
     Route::get('/reponse-de-paiement-stripe', [stripeController::class, 'reponseStripe']);
 
     //Evenement
-    Route::get('/participer/{id}',[frontController::class,'participer'])->name("participer");
-
-    
+    Route::get('/participer/{id}', [frontController::class, 'participer'])->name("participer");
 });
 
 

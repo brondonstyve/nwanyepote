@@ -17,25 +17,25 @@
                 <div class="row align-items-center counter-wrapper gy-6 text-center">
                     <div class="col-md-3">
                         <img src="./assets/img/icons/lineal/check.svg" class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt="" />
-                        <h3 class="counter counter-lg text-primary">18</h3>
+                        <h3 class="counter counter-lg text-primary">{{ $nomb_participation }}</h3>
                         <p>Participation evenement</p>
                     </div>
                     <!--/column -->
                     <div class="col-md-3">
                         <img src="./assets/img/icons/lineal/growth.svg" class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt="" />
-                        <h3 class="counter counter-lg text-primary">12</h3>
+                        <h3 class="counter counter-lg text-primary">{{ $nomb_event }}</h3>
                         <p>Evenement en cour</p>
                     </div>
                     <!--/column -->
                     <div class="col-md-3">
                         <img src="./assets/img/icons/lineal/shopping-cart.svg" class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt="" />
-                        <h3 class="counter counter-lg text-primary">21</h3>
+                        <h3 class="counter counter-lg text-primary">{{ $nomb_commande }}</h3>
                         <p>Commande en cour</p>
                     </div>
                     <!--/column -->
                     <div class="col-md-3">
                         <img src="./assets/img/icons/lineal/user.svg" class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt="" />
-                        <h3 class="counter counter-lg text-primary">23</h3>
+                        <h3 class="counter counter-lg text-primary">{{ $com_livrer }}</h3>
                         <p>Commande livrer</p>
                     </div>
                     <!--/column -->

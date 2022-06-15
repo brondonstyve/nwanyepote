@@ -14,6 +14,10 @@ class CreeComptes extends Component
 
     public function mount()
     {
+        $this->email = "";
+        $this->password = "";
+        $this->confirmPass = "";
+        $this->name = "";
     }
 
     public function render()
@@ -36,30 +40,37 @@ class CreeComptes extends Component
             'confirmPass' => 'required|min:7|same:password',
         ]);
 
-        $otp = $this->generateOTP();
+        $exist_user = User::where('email', $validatedDate['email'])->whereNotNull('email_verified_at')->get();
+        if (sizeof($exist_user) == 0) {
 
-        $respons = User::create([
-            'name' => $validatedDate['name'],
-            'email' => $validatedDate['email'],
-            'password' => bcrypt($validatedDate['password']),
-        ]);
+            $otp = $this->generateOTP();
 
-        Cache::put([$validatedDate['email'] => $otp], now()->addMinutes(15));
+            $respons = User::create([
+                'name' => $validatedDate['name'],
+                'email' => $validatedDate['email'],
+                'password' => bcrypt($validatedDate['password']),
+            ]);
 
-        $target = $validatedDate['email'];
-        $template = 'emails.email_verification';
-        $subject = "verification d'email";
-        $data = array(
-            'otp' => $otp,
-        );
+            Cache::put([$validatedDate['email'] => $otp], now()->addMinutes(15));
 
-        emailNotification($data, $template, $subject, $target);
+            $target = $validatedDate['email'];
+            $template = 'emails.email_verification';
+            $subject = "verification d'email";
+            $data = array(
+                'otp' => $otp,
+            );
 
-        if ($respons) {
-            session()->flash('message', " l'information a ete enregistrer avec succes.");
+            emailNotification($data, $template, $subject, $target);
+            $this->mount();
+            if ($respons) {
+                session()->flash('message', " l'information a ete enregistrer avec succes.");
+            } else {
+                session()->flash("error", "Erreur! l'information n'a pas ete enregistrer");
+            }
         } else {
-            session()->flash("error", "Erreur! l'information n'a pas ete enregistrer");
+            session()->flash("error", "Erreur! cette adresse a deja ete utiliser pour un compte");
         }
+
 
         //$this->resetInputFields();
     }
