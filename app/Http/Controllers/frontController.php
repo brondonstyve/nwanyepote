@@ -118,11 +118,6 @@ class frontController extends Controller
             if ($total == 0) {
                 $total = 1;
             }
-        return view('frontend.pages.evenement',compact('evenementParticipatif','participant','total','evenementParticipatifRecent','infoEvent', 'lastEvents', 'npEvents'));
-        }else{
-        return view('frontend.pages.evenement',compact('evenementParticipatif','infoEvent', 'lastEvents', 'npEvents','evenementParticipatifRecent'));
-        }
-
             return view('frontend.pages.evenement', compact('evenementParticipatif', 'participant', 'total', 'evenementParticipatifRecent', 'infoEvent', 'lastEvents', 'npEvents', 'diffyear', 'diffm', 'diffd', 'nombcoment'));
         } else {
             return view('frontend.pages.evenement', compact('evenementParticipatif', 'infoEvent', 'lastEvents', 'npEvents', 'evenementParticipatifRecent', 'diffyear', 'diffm', 'diffd', 'nombcoment'));
@@ -228,8 +223,8 @@ class frontController extends Controller
             ->where('evenementparticipatifs.statut', true)
             ->count();
         $nomb_participation = participant::where('user', auth()->user()->id)->count();
-        $nomb_commande = commande::where('compte', auth()->user()->id)->where('status', false)->count();
-        $com_livrer = commande::where('compte', auth()->user()->id)->where('status', true)->count();
+        $nomb_commande = commande::where('compte', auth()->user()->id)->where('status', true)->count();
+        $com_livrer = commande::where('compte', auth()->user()->id)->where('status', false)->count();
         return view('frontend.pages.compte', compact('nomb_participation', 'nomb_event', 'nomb_commande', 'com_livrer'));
     }
 
