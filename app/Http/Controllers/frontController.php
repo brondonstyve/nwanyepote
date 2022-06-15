@@ -95,16 +95,27 @@ class frontController extends Controller
     public function evenement()
     {
         $lastid = npEvenements::latest('id')->first();
-        $nombcoment = commentaireEventnps::where('event_id', $lastid->id)->count();
-        //debut last event time
-        $diffyear = Carbon::createFromDate($lastid->created_at)->age;
-        $date = Carbon::parse($lastid->created_at);
-        $todayDate = Carbon::now();
-        $diffd = $date->diffInDays($todayDate);
-        $diffm = $date->diffInMonths($todayDate);
+        if ($lastid) {
+            $nombcoment = commentaireEventnps::where('event_id', $lastid->id)->count();
+            $diffyear = Carbon::createFromDate($lastid->created_at)->age;
+            $date = Carbon::parse($lastid->created_at);
+            $todayDate = Carbon::now();
+            $diffd = $date->diffInDays($todayDate);
+            $diffm = $date->diffInMonths($todayDate);
+            $lastEvents = npEvenements::where('id', $lastid->id)->get();
+
+        } else {
+            $nombcoment =0;
+            $diffyear = 0;
+            $diffd = 0;
+            $diffm = 0;
+            $lastEvents = null;
+
+        }
+        
+        
         //end last event time
         $infoEvent = infoEvenements::all();
-        $lastEvents = npEvenements::where('id', $lastid->id)->get();
         $npEvents = npEvenements::all();
         $evenementParticipatifRecent=null;
   
