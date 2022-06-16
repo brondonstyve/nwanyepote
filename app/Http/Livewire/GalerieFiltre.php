@@ -16,9 +16,7 @@ class GalerieFiltre extends Component
             return  galeries::get();
         } else {
             return  galeries::whereType($this->type)
-            ->get();
-
-
+                ->get();
         }
     }
 

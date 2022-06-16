@@ -27,7 +27,6 @@ class Galerie extends Component
         $this->image = "";
         $this->libelet = "";
         $this->type = "";
-        $this->select_id = "";
     }
 
     public function render()
@@ -130,6 +129,7 @@ class Galerie extends Component
                     'libelet' => $this->libelet,
                     'type' => $this->type,
                 ]);
+                $this->mount();
                 session()->flash('message', 'limage a ete modifier avec succes.');
             } else {
                 $img = ImageIntervention::make($image)->encode('jpg');
@@ -143,6 +143,7 @@ class Galerie extends Component
                     'libelet' => $this->libelet,
                     'type' => $this->type,
                 ]);
+                $this->mount();
                 session()->flash('message', 'limage a ete modifier avec succes.');
             }
         } else {
@@ -174,6 +175,7 @@ class Galerie extends Component
                 'texteb2' => $this->texteb2,
                 'titreb2' => $this->titreb2,
             ]);
+            $this->mount();
             session()->flash('message', 'les information on ete modifier avec succes.');
         } else {
             session()->flash("error", "Erreur! les information n'on pas ete modifier");

@@ -11,7 +11,7 @@ use Livewire\Component;
 class Contacte extends Component
 {
     public $titre_page, $libelet_page, $titre_formulaire, $libelet_formulaire, $select_id;
-    public $adresse1, $adresse2, $numero1, $numero2, $email1, $email2, $youtube, $facebook, $twiter, $instagramme;
+    public $adresse1, $adresse2, $numero1, $numero2, $email1, $email2, $youtube, $facebook, $twiter, $instagramme, $cartegooglemap;
     public $data;
     public $data2, $data3;
 
@@ -27,6 +27,7 @@ class Contacte extends Component
         $this->facebook = "";
         $this->twiter = "";
         $this->instagramme = "";
+        $this->cartegooglemap = "";
         $this->titre_page = "";
         $this->libelet_page = "";
         $this->titre_formulaire = "";
@@ -81,6 +82,7 @@ class Contacte extends Component
             'facebook' => $this->facebook,
             'twiter' => $this->twiter,
             'instagramme' => $this->instagramme,
+            'cartegooglemap' => $this->cartegooglemap,
         ]);
         $this->mount();
         if ($respons) {
@@ -116,6 +118,7 @@ class Contacte extends Component
         $this->facebook = $infocontactEdit->facebook;
         $this->twiter = $infocontactEdit->twiter;
         $this->instagramme = $infocontactEdit->instagramme;
+        $this->cartegooglemap = $infocontactEdit->cartegooglemap;
     }
 
     public function update()
@@ -165,6 +168,7 @@ class Contacte extends Component
                 'facebook' => $this->facebook,
                 'twiter' => $this->twiter,
                 'instagramme' => $this->instagramme,
+                'cartegooglemap' => $this->cartegooglemap,
             ]);
             session()->flash('message', 'Vos information on ete modifier avec succes.');
         } else {

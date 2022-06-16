@@ -181,7 +181,7 @@
                 @endif
                 <div class="row counter-wrapper gy-6">
                     <div class="col-md-4">
-                        <h3 class="counter text-primary" style="visibility: visible;">500</h3>
+                        <h3 class="counter text-primary" style="visibility: visible;">15</h3>
                         <p>Participants environ</p>
                     </div>
                     <!--/column -->
@@ -191,7 +191,7 @@
                     </div>
                     <!--/column -->
                     <div class="col-md-4">
-                        <h3 class="counter text-primary" style="visibility: visible;">152</h3>
+                        <h3 class="counter text-primary" style="visibility: visible;">70</h3>
                         <p>Spectateurs en ligne</p>
                     </div>
                     <!--/column -->
