@@ -29,6 +29,11 @@
                                     Sport
                                 </button>
                         </li>
+                        <li class="list-inline-item me-1 mb-2">
+                                <button class="btn @if($type=='AUTRE') btn-primary @else btn-soft-ash @endif btn-sm rounded" wire:click.prevent="$set('type','AUTRE')">
+                                    Autre
+                                </button>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.container -->
