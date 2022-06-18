@@ -368,13 +368,13 @@
                                 @foreach ($partenaires as $partenaire)
                                     <div class="swiper-slide">
                                         <div class="item-inner">
-                                            <div class="card" style="min-height: 350px;max-height: 35s0px">
-                                                <div class="card-body">
+                                            <div class="card" >
+                                                <div class="card-body" style="min-height: 350px;max-height: 35s0px">
                                                     <figure class="overlay overlay-1 hover-scale rounded mb-5" 
-                                                style="min-height: 100px;max-height: 100px;background-image: url({{asset('app/apropos/'.$partenaire->logo)}});
-                                                background-size: cover;background-position: center;background-repeat: no-repeat;">
+                                                style="min-height: 200px;max-height: 200px;">
+                                                <img src="{{asset('app/apropos/'.$partenaire->logo)}}" alt="">
                                                 </figure>
-                                                <div style="max-height: 70px;min-height: 70px"> 
+                                                <div style="max-height: 100px;min-height: 100px"> 
                                                     <h4 class="mb-1"> {!!substr($partenaire->nom_part,0,30)!!}</h4>
                                                     <div class="meta mb-2">{!!substr($partenaire->services,0,33)!!}</div>
                                                     
