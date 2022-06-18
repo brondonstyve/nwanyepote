@@ -38,14 +38,18 @@
                   </div>
                   @else
                   @foreach ($this->produits as $produit)
-                  <div class="project item col-md-6 col-xl-4">
-                    <figure class="rounded mb-6" style="min-height: 220px ;max-height: 220px">
-                      <img src="{{asset("app/produit/$produit->img_principale")}}" alt="" />
+                  <div class="project item col-md-6 col-xl-4"
+                  >
+                    <figure class="rounded mb-6"
+                    style="min-height: 220px ;max-height: 220px;background-image: url({{asset('/app/produit/'.$produit->img_principale)}});
+                      background-size: cover;background-position: center;background-repeat: no-repeat;"
+                      >
                       <a class="item-like" href="#" data-bs-toggle="white-tooltip" title="Souhait"><i class="uil uil-heart"></i></a>
                       <a class="item-view" href="{{route('detail-produit',encrypt($produit->id))}}" data-bs-toggle="white-tooltip" title="Voir"><i class="uil uil-eye"></i></a>
                       <a href="#!" class="item-cart" wire:click='panier({{$produit->id}})'><i class="uil uil-shopping-bag"></i> Ajouter au panier</a>
                       <span class="avatar bg-pink text-white w-10 h-10 position-absolute text-uppercase fs-13" style="top: 1rem; left: 1rem;"><span>Vente!</span></span>
                     </figure>
+
                     <div class="post-header">
                       <div class="d-flex flex-row align-items-center justify-content-between mb-2">
                         <div class="post-category text-ash mb-0">{{$produit->libelle_collection}}</div>
