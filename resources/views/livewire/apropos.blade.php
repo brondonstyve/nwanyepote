@@ -694,7 +694,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Services:</label>
-                                <input type="text" class="form-control"  id="recipient-name" wire:model="services">
+                                <input type="text" class="form-control" maxlength="32" id="recipient-name" wire:model="services">
                                 @error('services') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
@@ -799,7 +799,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Services:</label>
-                                <input type="text" class="form-control"  id="recipient-name" wire:model="services">
+                                <input type="text" class="form-control" maxlength="32" id="recipient-name" wire:model="services">
                                 @error('services') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">

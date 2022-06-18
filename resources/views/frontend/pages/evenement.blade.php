@@ -235,7 +235,7 @@
                                     <div class="item-inner ">
                                         <article>
                                             <div class="card ">
-                                                <figure class="card-img-top overlay overlay-1 hover-scale ">
+                                                <figure class="card-img-top overlay overlay-1 hover-scale " style="min-height: 350px;max-height: 35s0px">
                                                     <a href="{{ route('detail-evenement',$npEvent->id) }}"> <img src="{{asset('/app/evenement/'.$npEvent->image_principal)}}" alt=" "><span class="bg "></span></a>
                                                     <figcaption>
                                                         <h5 class="from-top mb-0">Lire plus</h5>
@@ -251,7 +251,7 @@
                                                     </div>
                                                     <!-- /.post-header -->
                                                     <div class="post-content ">
-                                                        <p>{{ $npEvent->libelet1a }}</p>
+                                                        <p>{!!substr($npEvent->libelet1a,0,150)!!} [...]</p>
                                                     </div>
                                                     <!-- /.post-content -->
                                                 </div>
@@ -259,7 +259,7 @@
                                                 <div class="card-footer ">
                                                     <ul class="post-meta d-flex mb-0 ">
                                                         <li class="post-date "><i class="uil uil-calendar-alt "></i><span>{{ $npEvent->created_at->format('d') }} {{ $npEvent->created_at->format('M') }} {{ $npEvent->created_at->format('Y') }}</span></li>
-                                                        <li class="post-comments "><a href="# "><i class="uil uil-comment "></i></a></li>
+                                                        <li class="post-comments "><a href="# "><i class="uil uil-comment "></i>xx</a></li>
                                                     </ul>
                                                     <!-- /.post-meta -->
                                                 </div>
