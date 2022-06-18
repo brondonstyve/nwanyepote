@@ -314,13 +314,16 @@
                                 <div class="item-inner ">
                                     <article>
                                         <div class="card ">
-                                            <figure class="card-img-top overlay overlay-1 hover-scale"  style="min-height: 350px;max-height: 350px">
-                                                <a href="{{route('detail-evenement',$item->id)}}"> <img src="{{asset('app/evenement/'.$item->image_principal)}}" alt=" "><span class="bg "></span></a>
-                                                <figcaption>
-                                                    <h5 class="from-top mb-0">Lire plus</h5>
+                                            <a href="{{route('detail-evenement',$item->id)}}"> 
+                                            <figure class="overlay overlay-1 hover-scale rounded mb-5" 
+                                            style="min-height: 350px;max-height: 350px;background-image: url({{asset('app/evenement/'.$item->image_principal)}});
+                                            background-size: cover;background-position: center;background-repeat: no-repeat;">
+                                                <figcaption style="background-image: linear-gradient(45deg, #2991d6, #050b2b);">
+                                                <h5 class="from-top mb-0 text-dark">Lire Plus</h5>
                                                 </figcaption>
                                             </figure>
-                                            <div class="card-body " style="min-height: 250px;max-height: 250px">
+                                            </a>
+                                            <div class="card-body " style="min-height: 250px;max-height: 270px">
                                                 <div class="post-header ">
                                                     <div class="post-category text-line ">
                                                         <a href="{{route('detail-evenement',$item->id)}}" class="hover " rel="category ">Evénement Non Participatif</a>
@@ -365,13 +368,16 @@
                                 <div class="item-inner ">
                                     <article>
                                         <div class="card ">
-                                            <figure class="card-img-top overlay overlay-1 hover-scale"  style="min-height: 350px;max-height: 350px">
-                                                <a href="{{route('detail-evenement-participatif',$item->id)}}"> <img src="{{asset('app/evenementparticipatif/'.$item->image)}}" alt=" "><span class="bg "></span></a>
-                                                <figcaption>
-                                                    <h5 class="from-top mb-0">Lire plus</h5>
+                                            <a href="{{route('detail-evenement-participatif',$item->id)}}"> 
+                                            <figure class="overlay overlay-1 hover-scale rounded mb-5" 
+                                            style="min-height: 350px;max-height: 350px;background-image: url({{asset('app/evenementparticipatif/'.$item->image)}});
+                                            background-size: cover;background-position: center;background-repeat: no-repeat;">
+                                                <figcaption style="background-image: linear-gradient(45deg, #2991d6, #050b2b);">
+                                                <h5 class="from-top mb-0 text-dark">Lire Plus</h5>
                                                 </figcaption>
                                             </figure>
-                                            <div class="card-body " style="min-height: 250px;max-height: 250px">
+                                            </a>
+                                            <div class="card-body " style="min-height: 250px;max-height: 270px">
                                                 <div class="post-header ">
                                                     <div class="post-category text-line ">
                                                         <a href="{{route('detail-evenement-participatif',$item->id)}}" class="hover " rel="category ">Evénement Participatif</a>
@@ -380,7 +386,7 @@
                                                     <h2 class="post-title h3 mt-1 mb-3 "><a class="link-dark " href="{{route('detail-evenement-participatif',$item->id)}}">{{$item->titre}}</a></h2>
                                                 </div>
                                                 <!-- /.post-header -->
-                                                <div class="post-content text-justify">
+                                                <div class="post-content text-justify" >
                                                     <p>{!!substr($item->article1,0,150)!!} [...]</p>
                                                 </div>
                                                 <!-- /.post-content -->
@@ -493,12 +499,20 @@
                   @foreach ($article as $item)
                   <div class="swiper-slide">
                     <article>
-                      <figure class="overlay overlay-1 hover-scale rounded mb-5"style="min-height: 350px;max-height: 350px"><a href="{{route('detail-article',$item->id)}}"> <img src="{{asset('app/article/'.$item->image)}}" alt="" /></a>
-                        <figcaption>
-                          <h5 class="from-top mb-0">Lire Plus</h5>
+                        <a href="{{route('detail-article',$item->id)}}"> 
+                      <figure class="overlay overlay-1 hover-scale rounded mb-5" 
+                      style="min-height: 350px;max-height: 350px;background-image: url({{asset('app/article/'.$item->image)}});
+                      background-size: cover;background-position: center;background-repeat: no-repeat;">
+                        <figcaption style="background-image: linear-gradient(45deg, #2991d6, #050b2b);">
+                          <h5 class="from-top mb-0 text-dark">Lire Plus</h5>
                         </figcaption>
                       </figure>
-                      <div class="post-header" style="min-height: 350px;max-height: 350px">
+                    </a>
+
+                      <div class="post-header" style="min-height: 100px;max-height: 100px">
+                        <div class="post-category text-line ">
+                            <a href="{{route('detail-article',$item->id)}}" class="hover " rel="category ">{{$item->domaine}}</a>
+                        </div>
                         <!-- /.post-category -->
                         <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="{{route('detail-article',$item->id)}}">{{$item->titre}}</a></h2>
                       </div>

@@ -65,9 +65,11 @@
                         
                             @foreach (array_reverse(explode('<-->',$item->image)) as $item)
                             @if ($item)
-                            <div class="item col-md-5">
-                                <figure class="itooltip itooltip-light hover-scale rounded" title=''>
-                                    <a href="{{asset('app/sport/'.$item)}}" data-glightbox="title: Cursus Inceptos Sit" data-gallery="project-1"> <img src="{{asset('app/sport/'.$item)}}" alt="" /></a>
+                            <div class="item col-md-6">
+                                <figure class="itooltip itooltip-light hover-scale rounded" title=''
+                                style="min-height: 400px;max-height: 400px;
+                                background-image: url({{asset('app/sport/'.$item)}});
+                                background-size: cover;background-position: center;background-repeat: no-repeat;">
                                 </figure>
                             </div>
                             @endif

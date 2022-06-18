@@ -79,12 +79,15 @@
                         @foreach ($this->articles as $key=>$item)
                         <article class="post">
                             <div class="card">
-                                <figure class="card-img-top overlay overlay-1 hover-scale"  style="min-height: 300px;max-height: 600px">
-                                    <a href="{{route('detail-article',$item->id)}}"><img src='{{asset("app/article/$item->image")}}' alt=""><span class="bg"></span></a>
-                                    <figcaption>
-                                        <h5 class="from-top mb-0">Lire plus</h5>
-                                    </figcaption>
-                                </figure>
+                                <a href="{{route('detail-article',$item->id)}}"> 
+                                    <figure class="card-img-top overlay overlay-1 hover-scale"
+                                            style="min-height: 500px;max-height: 600px;background-image: url({{asset("app/article/$item->image")}});
+                                            background-size: cover;background-position: center;background-repeat: no-repeat;">
+                                                <figcaption style="background-image: linear-gradient(45deg, #2991d6, #050b2b);">
+                                                <h5 class="from-top mb-0 text-dark">Lire Plus</h5>
+                                                </figcaption>
+                                            </figure>
+                                    </a>
                                 <div class="card-body">
                                     <div class="post-header">
                                         <div class="post-category text-line">

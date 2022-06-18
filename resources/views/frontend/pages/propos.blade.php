@@ -370,15 +370,22 @@
                                         <div class="item-inner">
                                             <div class="card" style="min-height: 350px;max-height: 35s0px">
                                                 <div class="card-body">
-                                                    <img class="rounded-circle w-15 mb-4" src="app/apropos/{{$partenaire->logo}}" srcset="app/apropos/{{$partenaire->logo}} 2x" alt="" />
-                                                    <h4 class="mb-1">{{$partenaire->nom_part}}</h4>
+                                                    <figure class="overlay overlay-1 hover-scale rounded mb-5" 
+                                                style="min-height: 100px;max-height: 100px;background-image: url({{asset('app/apropos/'.$partenaire->logo)}});
+                                                background-size: cover;background-position: center;background-repeat: no-repeat;">
+                                                </figure>
+                                                <div style="max-height: 70px;min-height: 70px"> 
+                                                    <h4 class="mb-1"> {!!substr($partenaire->nom_part,0,30)!!}</h4>
                                                     <div class="meta mb-2">{!!substr($partenaire->services,0,33)!!}</div>
-                                                    <nav class="nav social mb-0">
-                                                        <a href="{{$partenaire->link1}}"><i class="{{$partenaire->social_media1}}"></i></a>
-                                                        <a href="{{$partenaire->link2}}"><i class="{{$partenaire->social_media2}}"></i></a>
-                                                        <a href="{{$partenaire->link3}}"><i class="{{$partenaire->social_media3}}"></i></a>
-                                                    </nav>
-                                                    <!-- /.social -->
+                                                    
+                                                </div>
+                                                <br>
+                                                <nav class="nav social mb-0">
+                                                    <a href="{{$partenaire->link1}}"><i class="{{$partenaire->social_media1}}"></i></a>
+                                                    <a href="{{$partenaire->link2}}"><i class="{{$partenaire->social_media2}}"></i></a>
+                                                    <a href="{{$partenaire->link3}}"><i class="{{$partenaire->social_media3}}"></i></a>
+                                                </nav>
+                                                <!-- /.social -->
                                                 </div>
                                                 <!--/.card-body -->
                                             </div>
