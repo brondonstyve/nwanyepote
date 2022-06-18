@@ -72,7 +72,7 @@
                                         @endif
                                 </h5>
                             </div>
-                            <div class="ms-auto">
+                            <div class="ms-auto" wire:loading.remove>
                                 <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"
                                     wire:click="$set('supp',{{$evenementparticipatif->id}})"><i class="far fa-trash-alt me-2"
                                         aria-hidden="true"></i>Supprimer</a>
@@ -90,6 +90,9 @@
                                         <a class="btn btn-link text-dark text-gradient px-3 mb-0" href="{{route('admin-participant',$evenementparticipatif->id)}}">
                                             <i class="fas fa-pencil-alt text-dark  me-2" aria-hidden="true"></i>Participants</a>
 
+                            </div>
+                            <div class="ms-auto">
+                                <button class="btn btn-danger" wire:loading>Patientez svp ...</button>
                             </div>
                         </li>
                         @endif

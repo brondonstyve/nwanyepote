@@ -493,12 +493,12 @@
                   @foreach ($article as $item)
                   <div class="swiper-slide">
                     <article>
-                      <figure class="overlay overlay-1 hover-scale rounded mb-5"><a href="{{route('detail-article',$item->id)}}"> <img src="{{asset('app/article/'.$item->image)}}" alt="" /></a>
+                      <figure class="overlay overlay-1 hover-scale rounded mb-5"style="min-height: 350px;max-height: 350px"><a href="{{route('detail-article',$item->id)}}"> <img src="{{asset('app/article/'.$item->image)}}" alt="" /></a>
                         <figcaption>
                           <h5 class="from-top mb-0">Lire Plus</h5>
                         </figcaption>
                       </figure>
-                      <div class="post-header">
+                      <div class="post-header" style="min-height: 350px;max-height: 350px">
                         <!-- /.post-category -->
                         <h2 class="post-title h3 mt-1 mb-3"><a class="link-dark" href="{{route('detail-article',$item->id)}}">{{$item->titre}}</a></h2>
                       </div>

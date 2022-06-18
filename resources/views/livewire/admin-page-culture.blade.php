@@ -13,7 +13,6 @@
                     </div>
                 </div>
                 <div class="card-body pt-4 p-3">
-
                     <form wire:submit.prevent="save" action="#" method="POST" role="form text-left"
                         enctype="multipart/form-data">
 
