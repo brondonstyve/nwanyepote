@@ -368,11 +368,11 @@
                                 @foreach ($partenaires as $partenaire)
                                     <div class="swiper-slide">
                                         <div class="item-inner">
-                                            <div class="card">
+                                            <div class="card" style="min-height: 350px;max-height: 35s0px">
                                                 <div class="card-body">
                                                     <img class="rounded-circle w-15 mb-4" src="app/apropos/{{$partenaire->logo}}" srcset="app/apropos/{{$partenaire->logo}} 2x" alt="" />
                                                     <h4 class="mb-1">{{$partenaire->nom_part}}</h4>
-                                                    <div class="meta mb-2">{{$partenaire->services}}</div>
+                                                    <div class="meta mb-2">{!!substr($partenaire->services,0,33)!!}</div>
                                                     <nav class="nav social mb-0">
                                                         <a href="{{$partenaire->link1}}"><i class="{{$partenaire->social_media1}}"></i></a>
                                                         <a href="{{$partenaire->link2}}"><i class="{{$partenaire->social_media2}}"></i></a>
