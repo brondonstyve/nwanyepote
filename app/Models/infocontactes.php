@@ -9,6 +9,6 @@ class infocontactes extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'adresse1', 'adresse2', 'numero1', 'numero2', 'email1', 'email2', 'youtube', 'facebook', 'twiter', 'instagramme'
+        'adresse1', 'adresse2', 'numero1', 'numero2', 'email1', 'email2', 'youtube', 'facebook', 'twiter', 'instagramme', 'cartegooglemap'
     ];
 }

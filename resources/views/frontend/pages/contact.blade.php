@@ -94,7 +94,7 @@
                             @foreach ($infoplateformes as $infoplateforme)
                                 <div class="col-lg-6 align-self-stretch">
                                     <div class="map map-full rounded-top rounded-lg-start">
-                                        <iframe src="{{ $infoplateforme->instagramme }}"
+                                        <iframe src="{{ $infoplateforme->cartegooglemap }}"
                                             style="width:100%; height: 100%; border:0" allowfullscreen></iframe>
                                     </div>
                                     <!-- /.map -->

@@ -96,7 +96,7 @@
                                 <div>
                                     <h5 class="mb-0">Iformation page contact</h5>
                                 </div>
-                                @if(!empty($data2))
+                                @if(sizeof($data2) != 0)
                                     
                                 @else
                                     <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalMessage">+&nbsp; Ajouter info</a>
@@ -360,13 +360,13 @@
                                 <input type="text" wire:model="twiter" class="form-control"  id="recipient-name">
                             </div>
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Lien google map :</label>
+                                <label for="recipient-name" class="col-form-label">Instagramme :</label>
                                 <input type="text" wire:model="instagramme" class="form-control"  id="recipient-name">
                             </div>
-                            <!--<div class="form-group">
-                                <label for="exampleFormControlTextarea1">Lien google map</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1"  wire:model="instagramme" rows="7"></textarea>
-                            </div>-->
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Lien google map :</label>
+                                <input type="text" wire:model="cartegooglemap" class="form-control"  id="recipient-name">
+                            </div>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -430,8 +430,12 @@
                                 <input type="text" wire:model="twiter" class="form-control"  id="recipient-name">
                             </div>
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Lien google map :</label>
+                                <label for="recipient-name" class="col-form-label">Instagramme :</label>
                                 <input type="text" wire:model="instagramme" class="form-control"  id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Lien google map :</label>
+                                <input type="text" wire:model="cartegooglemap" class="form-control"  id="recipient-name">
                             </div>
                             <!--<div class="form-group">
                                 <label for="exampleFormControlTextarea1">Lien google map</label>

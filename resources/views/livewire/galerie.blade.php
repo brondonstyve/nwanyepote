@@ -124,11 +124,13 @@
                                 @error('libelet') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Type:</label>
+                                <label for="recipient-type" class="col-form-label">Type:</label>
                                 <select class="form-control" wire:model="type">
+                                    <<option></option>
                                     <option>SPORT</option>
                                     <option>CULTUREL</option>
                                     <option>TRADITIONEL</option>
+                                    <option>BATIE</option>
                                     <option>AUTRE</option>
                                 </select>
                                 @error('type') <span class="text-danger error">{{ $message }}</span>@enderror
@@ -151,13 +153,6 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                             </button>
-
-                            <!--<button class="btn btn-primary btn-sm mt-2" type="button" disabled wire:loading
-                                    wire:target='image'>
-                                    <span class="spinner-border spinner-border-sm" role="status"
-                                        aria-hidden="true"></span>
-                                    Patientez le chargement de(s) image(s)...
-                            </button>-->
                         </div>
                         <div class="modal-body">
                             <form>
@@ -197,11 +192,13 @@
                                 @error('libelet') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Type:</label>
+                                <label for="recipient-type" class="col-form-label">Type:</label>
                                 <select class="form-control" wire:model="type">
+                                    <option></option>
                                     <option>SPORT</option>
                                     <option>CULTUREL</option>
                                     <option>TRADITIONEL</option>
+                                    <option>BATIE</option>
                                     <option>AUTRE</option>
                                 </select>
                                 @error('type') <span class="text-danger error">{{ $message }}</span>@enderror
